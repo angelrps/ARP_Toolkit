@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>AssignViewTemplates.dll</Assembly>
+    <AddInId>7B55D2BE-4A5E-4656-958A-CE89D1736D0C</AddInId>
+    <FullClassName>Entry.CmdMain</FullClassName>
+    <Text>Assign View Templates</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
