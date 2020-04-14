@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>TransferWorksets.dll</Assembly>
+    <AddInId>F200732D-3047-4C17-BDE2-42551B12E864</AddInId>
+    <FullClassName>Entry.CmdMain</FullClassName>
+    <Text>Transfer Worksets</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
+
