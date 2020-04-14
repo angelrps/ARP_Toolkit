@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>TransferViewFilters.dll</Assembly>
+    <AddInId>C7F1BA3C-6D68-4BCE-A113-45BE1E333F0B</AddInId>
+    <FullClassName>Entry.CmdMain</FullClassName>
+    <Text>Transfer View Filters</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
+
