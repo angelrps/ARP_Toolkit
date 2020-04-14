@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>Flip.dll</Assembly>
+    <AddInId>B0AD89BE-1F6A-44ED-BDE2-5EA79130AAB2</AddInId>
+    <FullClassName>Entry.CmdMain</FullClassName>
+    <Text>Flip Walls or Doors</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
