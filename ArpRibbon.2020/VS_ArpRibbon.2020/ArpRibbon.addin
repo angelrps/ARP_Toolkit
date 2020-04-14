@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>ARP Tools</Name>
+    <Assembly>ArpRibbon.dll</Assembly>
+    <FullClassName>Entry.AppMain</FullClassName>
+    <ClientId>0c37a558-6df2-44b7-b367-70b469a399a7</ClientId>
+    <VendorId>272c22da-13ee-40ad-9b9f-d014a7fda46a</VendorId>
+    <VendorDescription>Angel Ruiz-Peinado Sanchez</VendorDescription>
+  </AddIn>
+</RevitAddIns>

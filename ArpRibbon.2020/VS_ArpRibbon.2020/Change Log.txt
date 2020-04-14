@@ -1,0 +1,75 @@
+﻿** Release v1.0.4 **
+Released Date: 2019.08.21
+
+- BUG FIXES -
+
+- IMPROVEMENTS -
+2019.06.05 - New Command added (ParameterMapper)
+2019.06.06 - New Command added (Flip Walls or Doors)
+2019.06.28 - New Command added (Transfer View Templates)
+2019.06.28 - Analytics implemented in commands:
+	DeleteUnusedFilters
+	DeleteUnusedTextNoteTypes
+	ParameterMapper
+	TransferViewTemplates
+2019.08.01 - New Command added (Create Print Set)
+2019.08.09 - New Command added (Assign View Templates)
+2019.08.09 - New Command added (Remove Empty Elevation Tags)
+2019.08.12 - New Command added (Transfer Worksets)
+2019.08.13 - New Command added (Reassign Detail Number)
+2019.08.16 - New Command added (Purge Dimension Styles)
+2019.08.21 - Analytics implemented in commands:
+	Purge Dimension Styles
+	Remove Empty Elevation Tags
+	Purge Families
+	ParameterMapper
+	Transfer Worksets
+	Schedule to Excel
+	Room Centroid, Tag to Room
+	Flip Walls or Doors
+	Assign View Templates
+	Reassign Detail Number
+	Create Print Set
+
+** Release v1.0.5 **
+Released Date: 2019.09.12
+
+- BUG FIXES -
+2019.08.28 - Transfer View Templates: added warning message when no template is selected
+2019.08.28 - Room Centroid, Tag to Room: fixed error when trying to move tags of linked rooms with links unloaded
+
+- IMPROVEMENTS -
+2019.08.28 - New Command Added (Sheet Duplicator)
+2019.09.12 - New Command Added (Parameter Loader)
+
+** Release v1.0.6 **
+Released Date: 2019.10.10
+
+- BUG FIXES -
+
+- IMPROVEMENTS -
+2019.09.23 - Compatibility with Revit 2020 added
+2019.10.10 - CSVAnalytics path changed to a fully accesible route
+
+** Release v1.0.7 **
+Released Date: 14.11.2019
+
+- BUG FIXES -
+2019.10.31 - Room Centroid, Tag to Room: handled exception to ignore Not Enclosed rooms and warn the user about their existence
+2019.11.04 - Reassign Detail Number: handled exception for when detail numbers contain characters
+
+- IMPROVEMENTS -
+2019.11.05 - New button added (Help). It gives you access to ARP Tool revision and User Guide
+2019.11.08 - Three new parameters added to CSVAnalytics (Project Number, Project Name, IsModelInCloud)
+2019.11.11 - Analytics_ScheduleToExcel added
+2019.11.11 - Analytics_SheetDuplicator added
+
+** Release v1.0.8 **
+Released Date: XXXX.XX.XX
+
+- BUG FIXES -
+
+- IMPROVEMENTS -
+2019.11.14 - New button added (Transfer View Filters)
+2019.11.19 - Analytics_TransferViewFilters added
+2019.11.19 - Analytics_Flip added
