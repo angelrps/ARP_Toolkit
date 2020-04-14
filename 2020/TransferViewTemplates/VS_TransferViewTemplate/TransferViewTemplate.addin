@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>TransferViewTemplate.dll</Assembly>
+    <AddInId>B46318A3-8917-43EF-858E-AD98BAC1F74C</AddInId>
+    <FullClassName>Entry.CmdMain</FullClassName>
+    <Text>Transfer View Templates</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
+
