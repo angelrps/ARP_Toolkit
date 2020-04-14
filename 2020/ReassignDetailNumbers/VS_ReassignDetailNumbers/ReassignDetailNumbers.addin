@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>ReassignDetailNumbers.dll</Assembly>
+    <AddInId>1FFC042A-7100-420D-AB03-6927467EA44B</AddInId>
+    <FullClassName>Entry.CmdMain</FullClassName>
+    <Text>Reassign Detail Numbers</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
+
