@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>RemoveEmptyElevationTags.dll</Assembly>
+    <AddInId>AFE68AD6-B55B-4A1D-9BEE-A46D1DFE3381</AddInId>
+    <FullClassName>Entry.CmdMain</FullClassName>
+    <Text>Remove Empty Elevation Tags</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
+
