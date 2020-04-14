@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>CreatePrintSet.dll</Assembly>
+    <AddInId>A018089B-C90C-4E2B-81A7-0C7186470676</AddInId>
+    <FullClassName>Entry.CmdMain</FullClassName>
+    <Text>Create Print Set</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
+
