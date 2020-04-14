@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>SheetDuplicator.dll</Assembly>
+    <AddInId>C0F245BC-69A7-4662-9EB1-739170E4AC0E</AddInId>
+    <FullClassName>Entry.CmdMain</FullClassName>
+    <Text>Duplicate Sheets</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
+
