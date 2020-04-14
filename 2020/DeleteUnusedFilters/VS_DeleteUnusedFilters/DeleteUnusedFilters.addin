@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>DeleteUnusedFilters.dll</Assembly>
+    <AddInId>557AE539-1458-4548-982E-D657C48D9A2B</AddInId>
+    <FullClassName>Entry.CmdMain</FullClassName>
+    <Text>Delete Unused Filters</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
