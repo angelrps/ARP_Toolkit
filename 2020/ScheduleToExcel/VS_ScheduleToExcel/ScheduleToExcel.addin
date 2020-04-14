@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>ScheduleToExcel.dll</Assembly>
+    <AddInId>E8232172-2898-410F-9535-364C2D46445F</AddInId>
+    <FullClassName>Entry.CmdMain</FullClassName>
+    <Text>Schedule to Excel</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
