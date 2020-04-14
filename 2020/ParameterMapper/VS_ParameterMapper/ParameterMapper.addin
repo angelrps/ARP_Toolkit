@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>ParameterMapper.dll</Assembly>
+    <AddInId>BB530605-A179-43F9-B85B-52FF4A41B5D5</AddInId>
+    <FullClassName>Entry.CmdMain</FullClassName>
+    <Text>Parameter Mapper</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
