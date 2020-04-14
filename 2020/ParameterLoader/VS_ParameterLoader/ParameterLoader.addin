@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>ParameterLoader.dll</Assembly>
+    <AddInId>0A78F5B9-6422-469A-ADF8-836D5CEB689D</AddInId>
+    <FullClassName>Entry.CmdMain</FullClassName>
+    <Text>Parameter Loader</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
+
