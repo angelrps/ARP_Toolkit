@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>DeleteUnusedTextNoteTypes.dll</Assembly>
+    <AddInId>72214AC1-046F-4176-A8EB-A31E0CEFF864</AddInId>
+    <FullClassName>DeleteUnusedTextNoteTypes.CmdMain</FullClassName>
+    <Text>Purge Text Notes</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
+
