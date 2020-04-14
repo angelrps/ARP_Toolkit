@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>PurgeNestedFamilies.dll</Assembly>
+    <AddInId>72214AC1-046F-4176-A8EB-A31E0CEFF864</AddInId>
+    <FullClassName>Entry.CmdMain</FullClassName>
+    <Text>Purge Nested Families</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
+
