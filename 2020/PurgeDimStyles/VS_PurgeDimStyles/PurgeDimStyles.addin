@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Assembly>PurgeDimStyles.dll</Assembly>
+    <AddInId>9CC04254-9AAB-48C2-ABC6-D4CBBDF91787</AddInId>
+    <FullClassName>Entry.CmdMain</FullClassName>
+    <Text>Purge Dimension Styles</Text>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
+  </AddIn>
+</RevitAddIns>
+
