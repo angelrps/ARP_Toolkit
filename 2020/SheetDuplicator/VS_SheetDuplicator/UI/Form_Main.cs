@@ -15,9 +15,7 @@ using System.IO;
 using Autodesk.Revit.ApplicationServices;
 using System.Diagnostics;
 using ArpUtilities;
-/// <summary>
-/// //////////////////
-/// </summary>
+
 namespace UI
 {
     public partial class Form_Main : System.Windows.Forms.Form
@@ -159,8 +157,11 @@ namespace UI
                 foreach (KeyValuePair<ViewSheet, string> pair in Data.Helpers.GetFilteredViewSheetDict(m_doc, TxbSearch.Text))
                 {
                     ListViewItem viewItem = new ListViewItem(pair.Key.SheetNumber);
-                    viewItem.SubItems.Add(pair.Value);
 
+                    //set the items font back to regular
+                    viewItem.Font = new Font(viewItem.Font, FontStyle.Regular);
+
+                    viewItem.SubItems.Add(pair.Value);
                     LsvSheets.Items.Add(viewItem);
                 }
             }
@@ -202,12 +203,18 @@ namespace UI
 
         private void LoadSheets()
         {
+            // set font bold so the header is bold
+            LsvSheets.Columns[0].ListView.Font = new Font(LsvSheets.Columns[0].ListView.Font, FontStyle.Bold);
+
             foreach (KeyValuePair<ViewSheet, string> pair in Data.Helpers.GetViewSheetDict(m_doc))
             {
                 ListViewItem viewItem = new ListViewItem(pair.Key.SheetNumber);
-                viewItem.SubItems.Add(pair.Value);
 
-                LsvSheets.Items.Add(viewItem);
+                //set the items font back to regular
+                viewItem.Font = new Font(viewItem.Font, FontStyle.Regular);
+
+                viewItem.SubItems.Add(pair.Value);
+                LsvSheets.Items.Add(viewItem);                
             }
             LsvSheets.Sorting = SortOrder.Ascending;
         }
