@@ -183,5 +183,10 @@ namespace DeleteUnusedTextNoteTypes
         {
             Close();
         }
+
+        private void lbxUsedTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
