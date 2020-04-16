@@ -44,6 +44,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.LblLineSeparator = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.NumOfCopies)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -194,7 +195,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.DimGray;
+            this.panel1.BackColor = System.Drawing.Color.Gray;
             this.panel1.Controls.Add(this.BtnDuplicate);
             this.panel1.Controls.Add(this.BtnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -206,6 +207,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.Controls.Add(this.LblLineSeparator);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -249,6 +251,18 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Select Sheet";
             // 
+            // LblLineSeparator
+            // 
+            this.LblLineSeparator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblLineSeparator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LblLineSeparator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LblLineSeparator.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.LblLineSeparator.Location = new System.Drawing.Point(10, 40);
+            this.LblLineSeparator.Name = "LblLineSeparator";
+            this.LblLineSeparator.Size = new System.Drawing.Size(540, 2);
+            this.LblLineSeparator.TabIndex = 33;
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,6 +277,7 @@
             this.MaximumSize = new System.Drawing.Size(800, 1200);
             this.MinimumSize = new System.Drawing.Size(580, 700);
             this.Name = "Form_Main";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sheet Duplicator";
             ((System.ComponentModel.ISupportInitialize)(this.NumOfCopies)).EndInit();
@@ -291,5 +306,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label LblLineSeparator;
     }
 }
