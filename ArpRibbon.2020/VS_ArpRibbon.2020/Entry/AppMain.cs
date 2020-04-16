@@ -66,9 +66,10 @@ namespace Entry
             #endregion
 
             #region Create Buttons            
+            // uncomment the if block below if restrict button load to specific users
             //load the following buttons ONLY or entitled users            
-            if (Data.Helpers.IsExtendedToolsEntitled())
-            {
+            //if (Data.Helpers.IsExtendedToolsEntitled())
+            //{
                 # region Delete Unused Filters Button
                 // create data needed for the button
                 PushButtonData deleteFiltersButtonData = new PushButtonData(
@@ -198,7 +199,7 @@ namespace Entry
                 BitmapImage transferWorksetsLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/TransferWorksets_32.ico"));
                 transferWorksetsButton.LargeImage = transferWorksetsLargeImage;
                 #endregion
-            }
+            //}
 
             // load the rest of the buttons
             #region Schedule to Excel
