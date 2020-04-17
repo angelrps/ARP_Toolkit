@@ -43,9 +43,13 @@
             this.RbtProject = new System.Windows.Forms.RadioButton();
             this.RbtActiveView = new System.Windows.Forms.RadioButton();
             this.LblAction = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnOK
@@ -71,7 +75,7 @@
             // 
             this.CbxRoomCentroid.AutoSize = true;
             this.CbxRoomCentroid.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbxRoomCentroid.Location = new System.Drawing.Point(23, 180);
+            this.CbxRoomCentroid.Location = new System.Drawing.Point(23, 50);
             this.CbxRoomCentroid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CbxRoomCentroid.Name = "CbxRoomCentroid";
             this.CbxRoomCentroid.Size = new System.Drawing.Size(298, 21);
@@ -83,7 +87,7 @@
             // 
             this.CbxRoomTag.AutoSize = true;
             this.CbxRoomTag.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbxRoomTag.Location = new System.Drawing.Point(23, 210);
+            this.CbxRoomTag.Location = new System.Drawing.Point(23, 80);
             this.CbxRoomTag.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CbxRoomTag.Name = "CbxRoomTag";
             this.CbxRoomTag.Size = new System.Drawing.Size(269, 21);
@@ -103,7 +107,7 @@
             this.BtnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancel.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancel.ForeColor = System.Drawing.Color.White;
-            this.BtnCancel.Location = new System.Drawing.Point(339, 0);
+            this.BtnCancel.Location = new System.Drawing.Point(379, 0);
             this.BtnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(175, 60);
@@ -118,7 +122,7 @@
             this.CbxLinkedRoomTag.AutoSize = true;
             this.CbxLinkedRoomTag.Enabled = false;
             this.CbxLinkedRoomTag.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CbxLinkedRoomTag.Location = new System.Drawing.Point(58, 240);
+            this.CbxLinkedRoomTag.Location = new System.Drawing.Point(58, 110);
             this.CbxLinkedRoomTag.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CbxLinkedRoomTag.Name = "CbxLinkedRoomTag";
             this.CbxLinkedRoomTag.Size = new System.Drawing.Size(201, 21);
@@ -129,11 +133,11 @@
             // 
             // textBox1
             // 
-            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBox1.BackColor = System.Drawing.Color.White;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Enabled = false;
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(71, 259);
+            this.textBox1.Location = new System.Drawing.Point(71, 129);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -147,10 +151,10 @@
             this.panel1.Controls.Add(this.BtnCancel);
             this.panel1.Controls.Add(this.BtnOK);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 321);
+            this.panel1.Location = new System.Drawing.Point(0, 401);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(514, 60);
+            this.panel1.Size = new System.Drawing.Size(554, 60);
             this.panel1.TabIndex = 13;
             // 
             // panel3
@@ -161,7 +165,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(514, 50);
+            this.panel3.Size = new System.Drawing.Size(554, 50);
             this.panel3.TabIndex = 32;
             // 
             // LblLineSeparator
@@ -173,7 +177,7 @@
             this.LblLineSeparator.ForeColor = System.Drawing.SystemColors.ControlText;
             this.LblLineSeparator.Location = new System.Drawing.Point(10, 40);
             this.LblLineSeparator.Name = "LblLineSeparator";
-            this.LblLineSeparator.Size = new System.Drawing.Size(490, 2);
+            this.LblLineSeparator.Size = new System.Drawing.Size(530, 2);
             this.LblLineSeparator.TabIndex = 32;
             // 
             // pictureBox2
@@ -189,7 +193,7 @@
             // 
             this.LblScope.AutoSize = true;
             this.LblScope.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblScope.Location = new System.Drawing.Point(20, 70);
+            this.LblScope.Location = new System.Drawing.Point(20, 20);
             this.LblScope.Name = "LblScope";
             this.LblScope.Size = new System.Drawing.Size(54, 19);
             this.LblScope.TabIndex = 33;
@@ -198,7 +202,7 @@
             // RbtProject
             // 
             this.RbtProject.AutoSize = true;
-            this.RbtProject.Location = new System.Drawing.Point(20, 100);
+            this.RbtProject.Location = new System.Drawing.Point(20, 50);
             this.RbtProject.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RbtProject.Name = "RbtProject";
             this.RbtProject.Size = new System.Drawing.Size(108, 23);
@@ -212,7 +216,7 @@
             // 
             this.RbtActiveView.AutoSize = true;
             this.RbtActiveView.Checked = true;
-            this.RbtActiveView.Location = new System.Drawing.Point(140, 100);
+            this.RbtActiveView.Location = new System.Drawing.Point(140, 50);
             this.RbtActiveView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RbtActiveView.Name = "RbtActiveView";
             this.RbtActiveView.Size = new System.Drawing.Size(362, 23);
@@ -226,11 +230,37 @@
             // 
             this.LblAction.AutoSize = true;
             this.LblAction.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblAction.Location = new System.Drawing.Point(20, 150);
+            this.LblAction.Location = new System.Drawing.Point(20, 20);
             this.LblAction.Name = "LblAction";
             this.LblAction.Size = new System.Drawing.Size(109, 19);
             this.LblAction.TabIndex = 34;
             this.LblAction.Text = "Choose Action:";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.LblAction);
+            this.panel2.Controls.Add(this.CbxRoomCentroid);
+            this.panel2.Controls.Add(this.CbxRoomTag);
+            this.panel2.Controls.Add(this.CbxLinkedRoomTag);
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Location = new System.Drawing.Point(20, 190);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(510, 180);
+            this.panel2.TabIndex = 35;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.LblScope);
+            this.panel4.Controls.Add(this.RbtProject);
+            this.panel4.Controls.Add(this.RbtActiveView);
+            this.panel4.Location = new System.Drawing.Point(20, 70);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(510, 100);
+            this.panel4.TabIndex = 36;
             // 
             // Form_Main
             // 
@@ -238,17 +268,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton = this.BtnCancel;
-            this.ClientSize = new System.Drawing.Size(514, 381);
-            this.Controls.Add(this.LblAction);
-            this.Controls.Add(this.RbtActiveView);
-            this.Controls.Add(this.LblScope);
-            this.Controls.Add(this.RbtProject);
+            this.ClientSize = new System.Drawing.Size(554, 461);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.CbxLinkedRoomTag);
-            this.Controls.Add(this.CbxRoomTag);
-            this.Controls.Add(this.CbxRoomCentroid);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -261,8 +285,11 @@
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -282,5 +309,7 @@
         private System.Windows.Forms.RadioButton RbtProject;
         private System.Windows.Forms.RadioButton RbtActiveView;
         private System.Windows.Forms.Label LblAction;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel4;
     }
 }
