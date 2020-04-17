@@ -48,8 +48,12 @@ namespace Form
         {
             int elemTry = 0;
             int elemFail = 0;
-            int elemSuccess = 0;            
+            int elemSuccess = 0;
 
+            if (RbtFlipHand.Checked == false && RbtFlipFacing.Checked == false && RbtFlipWalls.Checked == false)
+            {
+                Autodesk.Revit.UI.TaskDialog.Show("Information", "You need to choose an option in order to flip.");
+            }
             if (RbtFlipHand.Checked == true)
             {
                 if (!GetSelectedDoors(m_uidoc).Any())
