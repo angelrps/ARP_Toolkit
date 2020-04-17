@@ -28,11 +28,16 @@ namespace UI
 
         private void Form_Main_Load(object sender, EventArgs e)
         {
+            // set font bold so the header is bold
+            LsvSheets.Columns[0].ListView.Font = new Font(LsvSheets.Columns[0].ListView.Font, FontStyle.Bold);
+
             foreach (KeyValuePair<ViewSheet, string> pair in Data.Helpers.GetViewSheetDict(m_doc))
             {
                 ListViewItem viewItem = new ListViewItem(pair.Key.SheetNumber);
-                viewItem.SubItems.Add(pair.Value);
+                //set the items font back to regular
+                viewItem.Font = new Font(viewItem.Font, FontStyle.Regular);
 
+                viewItem.SubItems.Add(pair.Value);
                 LsvSheets.Items.Add(viewItem);
             }
             LsvSheets.Sorting = SortOrder.Ascending;
@@ -60,9 +65,12 @@ namespace UI
 
                 // load sheets
                 LsvSheets.Items.Clear();
+
                 foreach (KeyValuePair<ViewSheet, string> pair in Data.Helpers.GetFilteredViewSheetDict(m_doc, TxbSearch.Text))
                 {
                     ListViewItem viewItem = new ListViewItem(pair.Key.SheetNumber);
+                    //set the items font back to regular
+                    viewItem.Font = new Font(viewItem.Font, FontStyle.Regular);
                     viewItem.SubItems.Add(pair.Value);
 
                     LsvSheets.Items.Add(viewItem);
