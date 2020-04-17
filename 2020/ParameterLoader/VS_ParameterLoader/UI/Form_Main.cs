@@ -33,7 +33,7 @@ namespace UI
             // is family document? If so disable Categories group
             if (m_doc.IsFamilyDocument == true)
             {
-                GbxCategories.Enabled = false;
+                PanCategories.Enabled = false;
             }
 
             LoadCategories();
