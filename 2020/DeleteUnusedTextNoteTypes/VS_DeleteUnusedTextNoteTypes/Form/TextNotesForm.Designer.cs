@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TextNotesForm));
             this.clbUnused = new System.Windows.Forms.CheckedListBox();
             this.lbxUsedTypes = new System.Windows.Forms.ListBox();
@@ -47,6 +48,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.LblLineSeparator = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.CheckButton = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -93,6 +95,7 @@
             this.btnAll.Name = "btnAll";
             this.btnAll.Size = new System.Drawing.Size(50, 35);
             this.btnAll.TabIndex = 5;
+            this.CheckButton.SetToolTip(this.btnAll, "Check All");
             this.btnAll.UseVisualStyleBackColor = true;
             this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
             // 
@@ -107,6 +110,7 @@
             this.btnNone.Name = "btnNone";
             this.btnNone.Size = new System.Drawing.Size(50, 35);
             this.btnNone.TabIndex = 6;
+            this.CheckButton.SetToolTip(this.btnNone, "Uncheck All");
             this.btnNone.UseVisualStyleBackColor = true;
             this.btnNone.Click += new System.EventHandler(this.btnNone_Click);
             // 
@@ -271,6 +275,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(602, 561);
             this.Controls.Add(this.panel3);
@@ -291,6 +296,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MinimumSize = new System.Drawing.Size(618, 600);
             this.Name = "TextNotesForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -324,5 +330,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label LblLineSeparator;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolTip CheckButton;
     }
 }
