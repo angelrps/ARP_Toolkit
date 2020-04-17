@@ -99,6 +99,7 @@
             this.BtnAll.Name = "BtnAll";
             this.BtnAll.Size = new System.Drawing.Size(50, 35);
             this.BtnAll.TabIndex = 5;
+            this.Tooltip.SetToolTip(this.BtnAll, "Check All");
             this.BtnAll.UseVisualStyleBackColor = false;
             this.BtnAll.Click += new System.EventHandler(this.BtnAll_Click);
             // 
@@ -115,6 +116,7 @@
             this.BtnNone.Name = "BtnNone";
             this.BtnNone.Size = new System.Drawing.Size(50, 35);
             this.BtnNone.TabIndex = 6;
+            this.Tooltip.SetToolTip(this.BtnNone, "Uncheck All");
             this.BtnNone.UseVisualStyleBackColor = false;
             this.BtnNone.Click += new System.EventHandler(this.BtnNone_Click);
             // 
