@@ -115,13 +115,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(SolutionDir)..\..\..\Deploy\LvaRibbon.bundle\Contents\2018" mkdir "$(SolutionDir)..\..\..\Deploy\LvaRibbon.bundle\Contents\2018"
-xcopy "$(SolutioDir)PurgeNestedFamilies.dll" "$(SolutionDir)..\..\..\Deploy\LvaRibbon.bundle\Contents\2018" /E /Y
+    <PostBuildEvent>if not exist "$(SolutionDir)..\..\..\Deploy\ArpRibbon.bundle\Contents\2018" mkdir "$(SolutionDir)..\..\..\Deploy\ArpRibbon.bundle\Contents\2018"
+xcopy "$(SolutioDir)PurgeNestedFamilies.dll" "$(SolutionDir)..\..\..\Deploy\ArpRibbon.bundle\Contents\2018" /E /Y
 
-if not exist "$(SolutionDir)..\..\..\Deploy\LvaRibbon.bundle\Contents\2019" mkdir "$(SolutionDir)..\..\..\Deploy\LvaRibbon.bundle\Contents\2019"
-xcopy "$(SolutioDir)PurgeNestedFamilies.dll" "$(SolutionDir)..\..\..\Deploy\LvaRibbon.bundle\Contents\2019" /E /Y
+if not exist "$(SolutionDir)..\..\..\Deploy\ArpRibbon.bundle\Contents\2019" mkdir "$(SolutionDir)..\..\..\Deploy\ArpRibbon.bundle\Contents\2019"
+xcopy "$(SolutioDir)PurgeNestedFamilies.dll" "$(SolutionDir)..\..\..\Deploy\ArpRibbon.bundle\Contents\2019" /E /Y
 
-if not exist "$(SolutionDir)..\..\..\Deploy\LvaRibbon.bundle\Contents\2020" mkdir "$(SolutionDir)..\..\..\Deploy\LvaRibbon.bundle\Contents\2020"
-xcopy "$(SolutioDir)PurgeNestedFamilies.dll" "$(SolutionDir)..\..\..\Deploy\LvaRibbon.bundle\Contents\2020" /E /Y</PostBuildEvent>
+if not exist "$(SolutionDir)..\..\..\Deploy\ArpRibbon.bundle\Contents\2020" mkdir "$(SolutionDir)..\..\..\Deploy\ArpRibbon.bundle\Contents\2020"
+xcopy "$(SolutioDir)PurgeNestedFamilies.dll" "$(SolutionDir)..\..\..\Deploy\ArpRibbon.bundle\Contents\2020" /E /Y</PostBuildEvent>
   </PropertyGroup>
 </Project>

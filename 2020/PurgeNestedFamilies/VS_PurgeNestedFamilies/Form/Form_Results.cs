@@ -28,9 +28,14 @@ namespace UI.Results
             else
             {
                 LoadTree();
-                TreeResults.SelectedNode = null;
-               
+                TreeResults.SelectedNode = null;               
             }
+        }
+
+        private void BtnOk_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         #region HELPERS
@@ -101,21 +106,7 @@ namespace UI.Results
             }
             TreeResults.ExpandAll();
         }
-        #endregion
-
-
-
-        private void BtnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
-        }
-
-        private void BtnOk_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.OK;
-            Close();
-        }
+        #endregion        
     }
 
 }

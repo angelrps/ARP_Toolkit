@@ -136,6 +136,7 @@
             // 
             this.LblWarningMessage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LblWarningMessage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LblWarningMessage.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblWarningMessage.Location = new System.Drawing.Point(0, 70);
             this.LblWarningMessage.Name = "LblWarningMessage";
             this.LblWarningMessage.Padding = new System.Windows.Forms.Padding(50, 0, 50, 0);
