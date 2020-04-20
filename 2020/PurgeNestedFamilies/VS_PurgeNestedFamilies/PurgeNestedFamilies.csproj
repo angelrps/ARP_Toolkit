@@ -80,7 +80,18 @@
     <Compile Include="Form\Form_Results.Designer.cs">
       <DependentUpon>Form_Results.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\Form_Warning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Form_Warning.Designer.cs">
+      <DependentUpon>Form_Warning.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resouces\" />
@@ -93,6 +104,13 @@
   <ItemGroup>
     <EmbeddedResource Include="Form\Form_Results.resx">
       <DependentUpon>Form_Results.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Form_Warning.resx">
+      <DependentUpon>Form_Warning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

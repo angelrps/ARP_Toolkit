@@ -20,7 +20,10 @@ namespace Entry
         public static List<string> lt_purgedFamilies = new List<string>();
         public static List<string> lt_purgedNestedFam = new List<string>();
         public static List<string> lt_purgedNestedTypes = new List<string>();
-        public static Dictionary<string, Dictionary<string, List<string>>> DictResults = new Dictionary<string, Dictionary<string, List<string>>>();
+        // dictionary with results in regards to purged types. PHASE 1.
+        public static Dictionary<string, Dictionary<string, List<string>>> DictTypeResults = new Dictionary<string, Dictionary<string, List<string>>>();
+        // dictionary with results in regards to purged nested families. PHASE 2.
+        public static Dictionary<string, List<string>> dictNestedResults = new Dictionary<string, List<string>>();
 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
@@ -32,9 +35,6 @@ namespace Entry
             #region variables declaration
             List<int> categoriesToPurge = new List<int>();
             List<Family> familiesToPurge = new List<Family>();
-            string st_purgedNestedFam = "";
-            string st_purgedFamilies = "";
-            string st_purgedNestedTypes = "";
             #endregion
 
             #region List of loadable categories which families will be purged
@@ -79,25 +79,17 @@ namespace Entry
             categoriesToPurge.Add((int)BuiltInCategory.OST_Windows);
             #endregion
 
-            // warn the user if he wants to proceed
-            TaskDialog td = new TaskDialog("Purge Nested Families")
+            // Show warning message
+            using (UI.Warning.Form_Warning thisForm = new UI.Warning.Form_Warning())
             {
-                MainIcon = TaskDialogIcon.TaskDialogIconWarning,
-                AllowCancellation = true,
-                MainInstruction = "This tool is very destructive. It deletes all unused nested families from your project families. "
-                                    + "Proceed only if you know what you are doing!"
-                                    + "\n" + "\n" + "Are you sure you want to proceed?",
-                CommonButtons = TaskDialogCommonButtons.Cancel | TaskDialogCommonButtons.Ok,
-                TitleAutoPrefix = false
-            };
-
-            TaskDialogResult tResult = td.Show();
-
-            if (TaskDialogResult.Cancel == tResult)
-            {
-                return Result.Cancelled;
+                thisForm.ShowDialog();
+                if (thisForm.DialogResult == System.Windows.Forms.DialogResult.Cancel)
+                {
+                    return Result.Cancelled;
+                }
             }
 
+            // Proceed to purge
             using (TransactionGroup tg = new TransactionGroup (doc, "Purge Nested Families"))
             {
                 tg.Start();
@@ -108,8 +100,9 @@ namespace Entry
                         .Cast<Family>()
                         .Where(q => categoriesToPurge.Contains(q.FamilyCategory.Id.IntegerValue)))
                 {
-                    // declare dictionary of nested families for results
+                    // declare dictionary (<string nestedf, List<string> typef) of nested families for results. PHASE 1.
                     Dictionary<string, List<string>> DictNestResults = new Dictionary<string, List<string>>();
+                    string parentf = String.Format("<FAMILY> {0}", fam.Name);      // parent family
 
                     // filter editable families
                     if (fam != null && fam.IsInPlace == false && fam.IsEditable == true && fam.Name != "Model Text")
@@ -132,32 +125,28 @@ namespace Entry
                                 .WhereElementIsNotElementType()
                                 .Where(q => q.GetTypeId() == et.Id).Count() == 0)
                             {
-                                nestedTypesToPurge.Add(et.Id);
+                                nestedTypesToPurge.Add(et.Id); // populate list with ids to delete afterwards
 
-                                #region Populate dictionary of results. PHASE 1.
-
-                                string parentf = fam.Name;
-                                string nestedf = et.FamilyName;
-                                string typef = et.Name;
+                                #region Populate dictionary of results to show in TreeView. PHASE 1.                               
+                                string nestedf = string.Format("<FAMILY> {0}", et.FamilyName); // nested family
+                                string typef = string.Format("<TYPE> {0}", et.Name);         // element type inside nested family
 
                                 // does parent family exists?
-                                if (DictResults.ContainsKey(parentf))
+                                if (DictTypeResults.ContainsKey(parentf))
                                 {
                                     // does nested family exist? If yes, add type
                                     if (DictNestResults.ContainsKey(nestedf))
                                     {
                                         typeList.Add(typef);                    // update typeList
                                         DictNestResults[nestedf] = typeList;    // update DictNestResults
-                                        DictResults[parentf] = DictNestResults; // update DictResults
-                                        
+                                        DictTypeResults[parentf] = DictNestResults; // update DictTypeResults                                        
                                     }
                                     // if not, add nested family, add type
                                     else
                                     {
                                         typeList.Add(typef);                    // add first element to typeList
                                         DictNestResults.Add(nestedf, typeList); // create new key-value pair
-                                        DictResults[parentf] = DictNestResults; // update DictResults
-                                        
+                                        DictTypeResults[parentf] = DictNestResults; // update DictTypeResults                                        
                                     }
                                 }
                                 // If not, add parent family, add nested family, add type
@@ -165,7 +154,7 @@ namespace Entry
                                 {
                                     typeList.Add(typef);                        // add first element to typeList
                                     DictNestResults.Add(nestedf, typeList);     // create new key-value pair in DictNestResults
-                                    DictResults.Add(parentf, DictNestResults);  // create new key-value pair in DictResults
+                                    DictTypeResults.Add(parentf, DictNestResults);  // create new key-value pair in DictTypeResults
                                     
                                 }
                                 #endregion
@@ -182,7 +171,6 @@ namespace Entry
                                 foreach (ElementId eId in nestedTypesToPurge)
                                 {
                                     lt_purgedNestedTypes.Add(famdoc.GetElement(eId).Name);
-                                    st_purgedNestedTypes += "-" + famdoc.GetElement(eId).Name + "\n";
                                     famdoc.Delete(eId);
                                 }
                                 t.Commit();
@@ -191,6 +179,11 @@ namespace Entry
                         #endregion
 
                         #region look inside the family for nested families to purge and create "nestedFamiliesToPurge" list
+                        
+                        List<string> listNestedResults = new List<string>(); // declare list of nested families to show on results
+
+                        dictNestedResults.Add(parentf, listNestedResults);
+
                         foreach (Family nesfam in new FilteredElementCollector(famdoc)
                                 .OfClass(typeof(Family))
                                 .Cast<Family>()
@@ -204,6 +197,9 @@ namespace Entry
                             {
                                 nestedFamiliesToPurge.Add(nesfam.Id);
                                 familiesToPurge.Add(fam);
+
+                                listNestedResults.Add(string.Format("<FAMILY> {0}", nesfam.Name));             // update results list of purged nested families
+                                dictNestedResults[parentf] = listNestedResults; // update dictionary to show on results
                             }
                         }
                         familiesToPurge = familiesToPurge.Distinct().ToList();
@@ -214,30 +210,20 @@ namespace Entry
                         {
                             if (famdoc.GetElement(eId) != null)
                             {
-                                //string familyMother = famdoc.OwnerFamily.Name;
                                 try
                                 {
                                     lt_purgedNestedFam.Add(famdoc.GetElement(eId).Name);
-                                    st_purgedNestedFam += "-" + famdoc.GetElement(eId).Name + "\n";
                                     using (Transaction t = new Transaction(famdoc, "Purge nested families Transaction"))
                                     {
                                         t.Start();
                                         famdoc.Delete(eId);
                                         t.Commit();
                                     }
-
                                 }
                                 catch (Exception)
                                 {
 
                                 }
-                                //st_purgedNestedFam += famdoc.GetElement(eId).Name + "\n";
-                                //using (Transaction t = new Transaction (famdoc, "Purge nested families Transaction"))
-                                //{
-                                //    t.Start();
-                                //    famdoc.Delete(eId);
-                                //    t.Commit();
-                                //}
                             }
                         }
                         #endregion
@@ -248,7 +234,6 @@ namespace Entry
                 foreach (Family f in familiesToPurge)
                 {
                     lt_purgedFamilies.Add(f.Name);
-                    st_purgedFamilies += "-" + f.Name + "\n";
                     Document fdoc = doc.EditFamily(f);
 
                     Data.Helpers.MyFamilyLoadOptions familyOptions = new Data.Helpers.MyFamilyLoadOptions();
@@ -260,11 +245,8 @@ namespace Entry
                 tg.Assimilate();
             }
 
-            TaskDialog.Show("Information", "Purged Families:" + "\n" + st_purgedFamilies + "\n"
-                                           + "Deleted Nested Families:" + "\n" + st_purgedNestedFam + "\n"
-                                           + "Deleted Nested Types:" + "\n" + st_purgedNestedTypes);
-
-            using (UI.Form_Results thisForm = new UI.Form_Results())
+            // Show results
+            using (UI.Results.Form_Results thisForm = new UI.Results.Form_Results())
             {
                 thisForm.ShowDialog();
                 if (thisForm.DialogResult == System.Windows.Forms.DialogResult.Cancel)
