@@ -23,8 +23,10 @@ namespace DeleteUnusedTextNoteTypes
             // check if there are unused text note types and show a message if there aren´t
             if (!Helpers.GetUnusedTextNoteTypes(doc).Any())
             {
-                TaskDialog.Show("Message", "There are not unused text note types in this document.");
-
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
+                {
+                    thisForm.ShowDialog();
+                }
                 return Result.Succeeded;
             }
 

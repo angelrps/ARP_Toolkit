@@ -13,12 +13,13 @@ using ArpUtilities;
 
 namespace DeleteUnusedTextNoteTypes
 {
-    using static DeleteUnusedTextNoteTypes.Helpers;
-
     public partial class TextNotesForm : System.Windows.Forms.Form
     {
         public Document m_doc;
         public Autodesk.Revit.ApplicationServices.Application m_app;
+        public static int nOfItems = 0;
+        public static List<string> infoList = new List<string>();
+        public static List<string> itemExceptList = new List<string>();
 
         public TextNotesForm(Document doc, Autodesk.Revit.ApplicationServices.Application app)
         {
@@ -96,7 +97,10 @@ namespace DeleteUnusedTextNoteTypes
             // check if there are any boxes checked
             if (!checkedIndices.Any())
             {
-                TaskDialog.Show("Message", "You have not selected any item to purge.");
+                using (UI.Info.Form_Info2 thisForm = new UI.Info.Form_Info2())
+                {
+                    thisForm.ShowDialog();
+                }
             }
 
             else
@@ -110,11 +114,6 @@ namespace DeleteUnusedTextNoteTypes
                 }
 
                 // delete selected filters
-                List<string> infoList = new List<string>();
-                List<string> itemExceptList = new List<string>();
-                string infoSt = "";
-                string infoExceptSt = "";
-                int nOfItems = 0;
 
                 using (Transaction t = new Transaction(m_doc, "Purge Text Note Types"))
                 {
@@ -140,8 +139,12 @@ namespace DeleteUnusedTextNoteTypes
                     
                     t.Commit();
                 }
+                // show Results Form
+                using (UI.Info.Form_Results thisForm = new UI.Info.Form_Results())
+                {
+                    thisForm.ShowDialog();
+                }
 
-                this.DialogResult = DialogResult.OK;
                 try
                 {
                     Utilities.GetAnalyticsCSV(m_doc, m_app);
@@ -150,32 +153,9 @@ namespace DeleteUnusedTextNoteTypes
                 catch (Exception)
                 {
                 }
-                
+                                
+                this.DialogResult = DialogResult.OK;
                 Close();
-
-                if (!itemExceptList.Any())
-                {                    
-                    foreach(string st in infoList)
-                    {
-                        infoSt += st + "\n";
-                    }
-                    TaskDialog.Show("Message", "You have successfully deleted " + nOfItems.ToString() + " Text Note Type(s):" + "\n" + "\n" + infoSt);
-                }
-                else
-                {
-                    foreach (string st in infoList)
-                    {
-                        infoSt += st + "\n";
-                    }
-                    foreach (string st in itemExceptList)
-                    {
-                        infoExceptSt += st + "\n";
-                    }
-
-                    TaskDialog.Show("Message", "You have successfully deleted " + nOfItems.ToString() + " Text Note Type(s):" + "\n" + "\n"
-                    + infoSt + "\n" + "\n"
-                    + "The following item(s) can´t be deleted:" + "\n" + "\n" + infoExceptSt);
-                }                
             }
         }
 
