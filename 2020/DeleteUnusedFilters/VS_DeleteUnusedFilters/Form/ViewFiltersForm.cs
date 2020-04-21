@@ -19,6 +19,9 @@ namespace DeleteUnusedFilters
     {
         public Document m_doc;
         public Autodesk.Revit.ApplicationServices.Application m_app;
+        public static List<string> listInfo = new List<string>();
+        public static string info = "";
+        public static int nOfFilters = 0;
 
         public ViewFiltersForm(Document doc, Autodesk.Revit.ApplicationServices.Application app)
         {
@@ -37,17 +40,6 @@ namespace DeleteUnusedFilters
 
         private void clbViewFilters_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ////if any box is unchecked, uncheck the Select All radio button
-            //if (clbViewFilters.CheckedItems.Count == clbViewFilters.Items.Count)
-            //{
-            //    btnAll.Enabled = false;
-            //}
-
-            ////if any box is checked, uncheck the Select None radio button
-            //if (clbViewFilters.CheckedItems.Count == 0)
-            //{
-            //    btnNone.Enabled = false;
-            //}
            lbTotalItems.Text = clbViewFilters.CheckedItems.Count.ToString();
         }
 
@@ -82,13 +74,13 @@ namespace DeleteUnusedFilters
                 }
 
                 //deletes selected filters
-                string info = "";
-                int nOfFilters = 0;
+                
                 using (Transaction t = new Transaction(m_doc, "Delete filters"))
                 {
                     t.Start();
                     foreach (ParameterFilterElement pfe in SelectedFilters)
                     {
+                        listInfo.Add(pfe.Name);
                         info += pfe.Name + "\n";
                         nOfFilters += 1;
                         m_doc.Delete(pfe.Id);
@@ -97,6 +89,12 @@ namespace DeleteUnusedFilters
                 }
                 TaskDialog.Show("Message", "You have successfully deleted " + nOfFilters.ToString() + " filters:" + "\n" + "\n" + info);
                 DialogResult = DialogResult.OK;
+
+                using (UI.Info.Form_Results thisForm = new UI.Info.Form_Results())
+                {
+                    thisForm.ShowDialog();
+                }
+
                 try
                 {
                     Utilities.GetAnalyticsCSV(m_doc, m_app);

@@ -25,7 +25,14 @@ namespace DeleteUnusedFilters
             //if there are not, show a message and close the command
             if (!Helpers.GetUnusedFilterElem(doc).Any())
             {
-                TaskDialog.Show("Message", "There are no view filters in this Project / Family." + "\n" + "This application will close.");
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
+                {
+                    thisForm.ShowDialog();
+                    if (thisForm.DialogResult == System.Windows.Forms.DialogResult.Cancel)
+                    {
+                        return Result.Cancelled;
+                    }
+                }
                 return Result.Succeeded;
             }
             //if there are, open the form
@@ -42,7 +49,8 @@ namespace DeleteUnusedFilters
                 }
 
                 return Result.Succeeded;
-            }            
+            }
+            
         }        
     }
 }
