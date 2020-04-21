@@ -206,6 +206,6 @@
     <value>This tool is very destructive. It will look into all loadable families and remove unused nested families and unused types within those nested families.
 
 Proceed only if you know what you are doing.
-(This action CAN be undone)</value>
+(It may take a few minutes)</value>
   </data>
 </root>
