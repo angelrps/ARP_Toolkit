@@ -18,56 +18,47 @@ namespace Entry
     {
         static readonly AddInId appId = new AddInId(new Guid("AFE68AD6-B55B-4A1D-9BEE-A46D1DFE3381"));
 
+        public static List<string> info = new List<string>();       // elements removed
+        public static List<string> infoFail = new List<string>();   // elements failed to be removed
+        public static int count = 0;                                // number of elements removed
+        public static int countFail = 0;                            // number of elements failed
+
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             UIApplication uiapp = commandData.Application;
             Application app = uiapp.Application;
             Document doc = commandData.Application.ActiveUIDocument.Document;
 
-            // check if is family document
+            #region check if it is family document
             if (doc.IsFamilyDocument)
             {
-                TaskDialog tdFam = new TaskDialog("Information")
+                using (UI.Form_Info3 thisForm = new UI.Form_Info3())
                 {
-                    MainInstruction = "This is a family document.\nRun this tool in a project document.",
-                    TitleAutoPrefix = false
-                };
-                TaskDialogResult tdInfoResult = tdFam.Show();
-                return Result.Cancelled;
+                    thisForm.ShowDialog();
+                    return Result.Cancelled;
+                }
             }
+            #endregion
 
-            // warns the user if he wants to proceed
-            TaskDialog td = new TaskDialog("Remove Empty Elevation Tags")
+            #region warn the user if he wants to proceed
+            using (UI.Warning.Form_Warning thisForm = new UI.Warning.Form_Warning())
             {
-                AllowCancellation = true,
-                MainInstruction = "This application will remove all Empty Elevation Tags from the Project."
-                                    + "\n" + "\n" + "Do you want to proceed?",
-                CommonButtons = TaskDialogCommonButtons.Cancel | TaskDialogCommonButtons.Ok,
-                TitleAutoPrefix = false
-            };
-
-            TaskDialogResult tResult = td.Show();
-
-            // cancel execution if dialog is closed or cancelled
-            if (TaskDialogResult.Cancel == tResult)
-            {
-                return Result.Cancelled;
-            }
-            // execute code
-            else
-            {
-                string info = "";       // elements removed
-                string infoFail = "";   // elements failed to be removed
-                int count = 0;          // number of elements removed
-                int countFail = 0;      // number of elements failed
-
-                using (TransactionGroup tg = new TransactionGroup (doc, "Remove Elevation Tags"))
+                thisForm.ShowDialog();
+                if (thisForm.DialogResult == System.Windows.Forms.DialogResult.Cancel)
                 {
-                    tg.Start();
-                    foreach (Element e in new FilteredElementCollector(doc)
-                                            .OfClass(typeof(ElevationMarker))
-                                            .WhereElementIsNotElementType()
-                                            .ToElements())
+                    return Result.Cancelled;
+                }
+            }
+            #endregion
+
+            #region remove elevation tags
+            using (TransactionGroup tg = new TransactionGroup (doc, "Remove Elevation Tags"))
+            {
+                tg.Start();
+                foreach (Element e in new FilteredElementCollector(doc)
+                                        .OfClass(typeof(ElevationMarker))
+                                        .WhereElementIsNotElementType()
+                                        .ToElements())
                     {
                         ElevationMarker em = e as ElevationMarker;
 
@@ -87,56 +78,50 @@ namespace Entry
                                     t.Commit();
                                 }
                                 // collect info
-                                info += itemInfo + "\n";
+                                info.Add(itemInfo);
                                 count += 1;
                             }
                             catch (Exception)
                             {
-                                infoFail += itemFail + "\n";
+                                infoFail.Add(itemFail);
                                 countFail += 1;
                             }
                         }                                               
                     }
-                    tg.Assimilate();
+                tg.Assimilate();
                 }
+            #endregion
 
-                try
+            // if count = 0 show Not Found form
+            if (count == 0)
+            {
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
                 {
-                    Utilities.GetAnalyticsCSV(doc, app);
+                    thisForm.ShowDialog();
                 }
-                catch (Exception)
-                {
-                }
+            }
 
-                if (count == 0)
+            // show Results Form
+            if (count != 0)
+            {
+                using (UI.Info.Form_Results thisForm = new UI.Info.Form_Results())
                 {
-                    TaskDialog tdInfo1 = new TaskDialog("Information")
-                    {
-                        MainInstruction = "There are not Empty Elevation Tags in this document.",
-                        TitleAutoPrefix = false
-                    };
-                    TaskDialogResult tdInfo1Result = tdInfo1.Show();
-                    return Result.Succeeded;
+                    thisForm.ShowDialog();
                 }
+            }
 
-                if (count != 0)
-                {
-                    TaskDialog tdInfo2 = new TaskDialog("Information")
-                    {
-                        MainInstruction = "Items removed: " + count + "\n" + "\n" + info + "\n"
-                                                + "Failed removing these items: " + countFail + "\n" + "\n" + infoFail,
-                        TitleAutoPrefix = false
-                    };
-                    TaskDialogResult tdInfoResult = tdInfo2.Show();
-                    return Result.Succeeded;
-                }
-                
+            #region get analytics
+            try
+            {
+                Utilities.GetAnalyticsCSV(doc, app);
+            }
+            catch (Exception)
+            {
+            }
+            #endregion
 
-                return Result.Succeeded;
-                
-                //TaskDialog.Show("Information", "Items removed: " + count + "\n" + "\n" + info + "\n"
-                //                                + "Failed removing these items: " + countFail + "\n" + "\n" + infoFail);
-            }            
+            return Result.Succeeded;   
+            
         }
     }
 }
