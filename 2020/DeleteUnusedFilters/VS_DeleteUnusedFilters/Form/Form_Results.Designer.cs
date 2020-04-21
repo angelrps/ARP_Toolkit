@@ -37,6 +37,7 @@
             this.LblInfo1 = new System.Windows.Forms.Label();
             this.LblLineSeparator = new System.Windows.Forms.Label();
             this.TbxResultMessage = new System.Windows.Forms.TextBox();
+            this.LblResults = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelHeader.SuspendLayout();
@@ -126,14 +127,31 @@
             // 
             // TbxResultMessage
             // 
+            this.TbxResultMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TbxResultMessage.BackColor = System.Drawing.Color.WhiteSmoke;
             this.TbxResultMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TbxResultMessage.Location = new System.Drawing.Point(65, 96);
+            this.TbxResultMessage.Location = new System.Drawing.Point(20, 140);
             this.TbxResultMessage.Multiline = true;
             this.TbxResultMessage.Name = "TbxResultMessage";
-            this.TbxResultMessage.Size = new System.Drawing.Size(372, 101);
+            this.TbxResultMessage.ReadOnly = true;
+            this.TbxResultMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.TbxResultMessage.Size = new System.Drawing.Size(450, 170);
             this.TbxResultMessage.TabIndex = 34;
             this.TbxResultMessage.Text = "(placeholder text)";
+            this.TbxResultMessage.WordWrap = false;
+            // 
+            // LblResults
+            // 
+            this.LblResults.AutoSize = true;
+            this.LblResults.BackColor = System.Drawing.Color.Transparent;
+            this.LblResults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LblResults.Location = new System.Drawing.Point(20, 100);
+            this.LblResults.Name = "LblResults";
+            this.LblResults.Size = new System.Drawing.Size(45, 19);
+            this.LblResults.TabIndex = 35;
+            this.LblResults.Text = "label1";
             // 
             // Form_Results
             // 
@@ -141,6 +159,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(494, 411);
+            this.Controls.Add(this.LblResults);
             this.Controls.Add(this.TbxResultMessage);
             this.Controls.Add(this.LblLineSeparator);
             this.Controls.Add(this.panelHeader);
@@ -148,6 +167,9 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(510, 1500);
+            this.MinimumSize = new System.Drawing.Size(510, 450);
             this.Name = "Form_Results";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -171,5 +193,6 @@
         private System.Windows.Forms.Label LblInfo1;
         private System.Windows.Forms.Label LblLineSeparator;
         private System.Windows.Forms.TextBox TbxResultMessage;
+        private System.Windows.Forms.Label LblResults;
     }
 }

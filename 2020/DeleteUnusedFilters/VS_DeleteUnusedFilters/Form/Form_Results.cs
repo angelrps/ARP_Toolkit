@@ -20,20 +20,20 @@ namespace UI.Info
 
         private void BtnOk_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.OK;
+
             Close();
         }
 
         private void Form_Results_Load(object sender, EventArgs e)
         {
-            TbxResultMessage.Text = string.Format("You have successfully deleted {0} filters: \r\n \r\n", ViewFiltersForm.nOfFilters);
-            //AppendTextBoxLine(TbxResultMessage, ViewFiltersForm.info);
+            // populate textbox with results
+            LblResults.Text = string.Format("You have successfully deleted {0} filters: \r\n \r\n", ViewFiltersForm.nOfFilters);
+            TbxResultMessage.Clear();
             foreach (string item in ViewFiltersForm.listInfo)
             {
                 TbxResultMessage.AppendText(item + Environment.NewLine);
             }
-
-            //TbxResultMessage.Text = ViewFiltersForm.info;
         }
 
         public void AppendTextBoxLine(TextBox source, string myStr)
