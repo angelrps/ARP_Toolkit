@@ -173,7 +173,7 @@
             this.Name = "Form_Results";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Purge Nested Families";
+            this.Text = "Purge Text Note Types";
             this.Load += new System.EventHandler(this.Form_Results_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

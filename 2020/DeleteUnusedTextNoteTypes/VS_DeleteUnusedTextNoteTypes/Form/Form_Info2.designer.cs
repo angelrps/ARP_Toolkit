@@ -141,6 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(500, 261);
             this.Controls.Add(this.LblLineSeparator);
             this.Controls.Add(this.LblWarningMessage);
@@ -148,7 +149,6 @@
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panel2);
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Form_Info2";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
