@@ -75,6 +75,12 @@
   <ItemGroup>
     <Compile Include="Entry\CmdMain.cs" />
     <Compile Include="Data\Helpers.cs" />
+    <Compile Include="Form\Form_Info2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Form_Info2.Designer.cs">
+      <DependentUpon>Form_Info2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Form_Results.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form\Form_Info2.resx">
+      <DependentUpon>Form_Info2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\Form_Results.resx">
       <DependentUpon>Form_Results.cs</DependentUpon>
     </EmbeddedResource>

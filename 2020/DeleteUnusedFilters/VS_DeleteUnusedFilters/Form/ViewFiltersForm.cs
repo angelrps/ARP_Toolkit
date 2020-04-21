@@ -60,7 +60,10 @@ namespace DeleteUnusedFilters
             //check if there are any boxes checked
             if (!checkedIndices.Any())
             {
-                TaskDialog.Show("Message", "You have not selected any filter.");
+                using (UI.Info.Form_Info2 thisForm = new UI.Info.Form_Info2())
+                {
+                    thisForm.ShowDialog();
+                }
             }
 
             else
@@ -87,9 +90,8 @@ namespace DeleteUnusedFilters
                     }
                     t.Commit();
                 }
-                TaskDialog.Show("Message", "You have successfully deleted " + nOfFilters.ToString() + " filters:" + "\n" + "\n" + info);
-                DialogResult = DialogResult.OK;
 
+                // show Results Form
                 using (UI.Info.Form_Results thisForm = new UI.Info.Form_Results())
                 {
                     thisForm.ShowDialog();
@@ -102,6 +104,8 @@ namespace DeleteUnusedFilters
                 catch (Exception)
                 {
                 }
+                DialogResult = DialogResult.OK;
+                Close();
             }
         }
 
