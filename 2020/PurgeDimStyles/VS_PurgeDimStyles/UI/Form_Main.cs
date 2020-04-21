@@ -23,6 +23,9 @@ namespace UI
         public Autodesk.Revit.ApplicationServices.Application m_app;
         List<ElementId> unusedTypesIds = new List<ElementId>();
         List<ElementId> usedTypesIds = new List<ElementId>();
+        public static int nOfItems = 0;
+        public static List<string> infoList = new List<string>();
+        public static List<string> itemExceptList = new List<string>();
 
         public Form_Main(Document doc, Autodesk.Revit.ApplicationServices.Application app)
         {
@@ -91,13 +94,10 @@ namespace UI
             // message if there are no items selected
             if (LsvUnused.CheckedIndices.Count == 0)
             {
-                TaskDialog tdSelect = new TaskDialog("Information")
+                using (UI.Info.Form_Info2 thisForm = new UI.Info.Form_Info2())
                 {
-                    MainInstruction = "You must select at least one item to purge.",
-                    MainIcon = TaskDialogIcon.TaskDialogIconWarning,
-                    TitleAutoPrefix = false
-                };
-                TaskDialogResult tdResult = tdSelect.Show();
+                    thisForm.ShowDialog();
+                }
             }
             else // go ahead with deleting
             {
@@ -108,13 +108,6 @@ namespace UI
                 {
                     selectedItems.Add(unusedItems[index]);
                 }
-
-                // declare some variables
-                List<string> infoList = new List<string>();
-                List<string> itemExceptList = new List<string>();
-                string infoSt = "";
-                string infoExceptSt = "";
-                int nOfItems = 0;
 
                 // delete items
                 using (Transaction t = new Transaction(m_doc, "Purge Dimension Styles"))
@@ -139,39 +132,10 @@ namespace UI
                     t.Commit();
                 }
 
-                // handle info dialogs
-                if (!itemExceptList.Any())
+                // show results form
+                using (UI.Info.Form_Results thisForm = new UI.Info.Form_Results())
                 {
-                    foreach (string st in infoList)
-                    {
-                        infoSt += st + "\n";
-                    }
-                    TaskDialog tdInfo1 = new TaskDialog("Information")
-                    {
-                        MainInstruction = "You have successfully deleted " + nOfItems.ToString() + " Dimension Style(s):" + "\n" + "\n" + infoSt,
-                        TitleAutoPrefix = false
-                    };
-                    TaskDialogResult tdResult = tdInfo1.Show();
-                }
-                else
-                {
-                    foreach (string st in infoList)
-                    {
-                        infoSt += "- " + st + "\n";
-                    }
-                    foreach (string st in itemExceptList)
-                    {
-                        infoExceptSt += "- " + st + "\n";
-                    }
-
-                    TaskDialog tdInfo2 = new TaskDialog("Information")
-                    {
-                        MainInstruction = "You have successfully deleted " + nOfItems.ToString() + " Dimension Style(s):" + "\n" + "\n" + infoSt
-                                            + "\n" + "\n" + "The following item(s) can´t be deleted." +
-                                            " At least one dimension style of each type must remain in the document:" + "\n" + "\n" + infoExceptSt,
-                        TitleAutoPrefix = false
-                    };
-                    TaskDialogResult tdResult = tdInfo2.Show();
+                    thisForm.ShowDialog();
                 }
 
                 this.DialogResult = DialogResult.OK;
@@ -205,6 +169,5 @@ namespace UI
         {
             Close();
         }
- 
     }
 }
