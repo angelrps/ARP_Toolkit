@@ -49,8 +49,11 @@ namespace Form
 
             if (GetInstances(m_doc, cat).Count < 1)
             {
-                TaskDialog.Show("Information", "There are no element instances for the selected category in your model" +
-                                                " (elements inside groups are excluded from selection).");
+                using (UI.Info.Form_Info2 thisForm = new UI.Info.Form_Info2())
+                {
+                    thisForm.ShowDialog();
+                }
+
                 LblParamTypeSource.Text = "";
                 LblParamTypeTarget.Text = "";
             }
@@ -104,12 +107,16 @@ namespace Form
         {
             if (CbxCategories.SelectedItem == null)
             {
-                TaskDialog tdError = new TaskDialog("Error")
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
                 {
-                    MainIcon = TaskDialogIcon.TaskDialogIconError,
-                    MainInstruction = "You need to select a Category first."
-                };
-                tdError.Show();
+                    thisForm.ShowDialog();
+                }
+                //TaskDialog tdError = new TaskDialog("Error")
+                //{
+                //    MainIcon = TaskDialogIcon.TaskDialogIconError,
+                //    MainInstruction = "You need to select a Category first."
+                //};
+                //tdError.Show();
             }
             else
             {

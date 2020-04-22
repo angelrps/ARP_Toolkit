@@ -74,6 +74,18 @@
   <ItemGroup>
     <Compile Include="Entry\CmdMain.cs" />
     <Compile Include="Data\Helpers.cs" />
+    <Compile Include="Form\Form_Info1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Form_Info1.designer.cs">
+      <DependentUpon>Form_Info1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Form_Info2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Form_Info2.designer.cs">
+      <DependentUpon>Form_Info2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Form_Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +100,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form\Form_Info1.resx">
+      <DependentUpon>Form_Info1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Form_Info2.resx">
+      <DependentUpon>Form_Info2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\Form_Main.resx">
       <DependentUpon>Form_Main.cs</DependentUpon>
     </EmbeddedResource>
