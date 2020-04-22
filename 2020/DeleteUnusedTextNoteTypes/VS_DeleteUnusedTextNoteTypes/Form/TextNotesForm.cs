@@ -139,12 +139,12 @@ namespace DeleteUnusedTextNoteTypes
                     
                     t.Commit();
                 }
+               
                 // show Results Form
                 using (UI.Info.Form_Results thisForm = new UI.Info.Form_Results())
                 {
                     thisForm.ShowDialog();
                 }
-
                 try
                 {
                     Utilities.GetAnalyticsCSV(m_doc, m_app);
@@ -153,7 +153,6 @@ namespace DeleteUnusedTextNoteTypes
                 catch (Exception)
                 {
                 }
-                                
                 this.DialogResult = DialogResult.OK;
                 Close();
             }
