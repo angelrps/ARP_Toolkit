@@ -25,6 +25,17 @@ namespace Entry
             UIDocument uidoc = commandData.Application.ActiveUIDocument;
             Document doc = uidoc.Document;
 
+            #region check if it is family document
+            if (doc.IsFamilyDocument)
+            {
+                using (UI.Form_FamDoc thisForm = new UI.Form_FamDoc())
+                {
+                    thisForm.ShowDialog();
+                    return Result.Cancelled;
+                }
+            }
+            #endregion
+
             using (UI.Form_Main thisForm = new UI.Form_Main(doc, app))
             {
                 thisForm.ShowDialog();

@@ -13,7 +13,13 @@ using Autodesk.Revit.ApplicationServices;
 namespace Data
 {
     class Helpers
-    {   // WORKS
+    {
+        public static List<string> failNamesList = new List<string>();
+        public static int countSuccess = 0;
+        public static List<string> namesSuccess = new List<string>();
+        public static string instanceOrType = "";
+        public static string exceptionMessage = "";
+
         public static SortedDictionary<string, List<Definition>> GetParameterByGroup(Application app)
         {
             SortedDictionary<string, List<Definition>> DefinitionsByGroup = new SortedDictionary<string ,List<Definition>>();
@@ -27,10 +33,15 @@ namespace Data
             catch (Exception)
             {
             }
-            
+
             if (definitionFile is null)
             {
-                TaskDialog.Show("Error", "Something went wrong. DefinitionFile of Shared Parameters File does not exist.");
+                exceptionMessage = "DefinitionFile of Shared Parameters File does not exist." +
+                                    " Something went wrong when trying to open the Shared Parameter File.";
+                using (UI.Info.Form_Warning thisForm = new UI.Info.Form_Warning())
+                {
+                    thisForm.ShowDialog();
+                }
             }
 
             try
@@ -59,58 +70,15 @@ namespace Data
             }
             catch (Exception ex)
             {
-                TaskDialog.Show("Error", "Something went wrong. Parameters could not be loaded." + "\n" + ex.Message);
-            }
-            return DefinitionsByGroup;
-        }
-
-        public static SortedDictionary<string, List<Definition>> GetParameterByGroup_ORIGINAL(Application app)
-        {
-            SortedDictionary<string, List<Definition>> DefinitionsByGroup = new SortedDictionary<string, List<Definition>>();
-
-            DefinitionFile definitionFile = null;
-            // definition file exists?
-            try
-            {
-                definitionFile = app.OpenSharedParameterFile();
-            }
-            catch (Exception)
-            {
-            }
-
-            if (definitionFile is null)
-            {
-                TaskDialog.Show("Error", "Something went wrong. DefinitionFile of Shared Parameters File does not exist.");
-            }
-
-            try
-            {
-                // iterate all groups
-                foreach (DefinitionGroup gr in definitionFile.Groups)
+                exceptionMessage = "Parameters could not be loaded: " + ex.Message;
+                using (UI.Info.Form_Warning thisForm = new UI.Info.Form_Warning())
                 {
-                    foreach (Definition def in gr.Definitions)
-                    {
-                        // By Groups
-                        if (!DefinitionsByGroup.ContainsKey(gr.Name))
-                        {
-                            List<Definition> defList = new List<Definition>();
-                            defList.Add(def);
-                            DefinitionsByGroup.Add(gr.Name, defList);
-                        }
-                        else
-                        {
-                            DefinitionsByGroup[gr.Name].Add(def);
-                        }
-                    }
+                    thisForm.ShowDialog();
                 }
             }
-            catch (Exception)
-            {
-                TaskDialog.Show("Error", "Something went wrong. Parameters could not be loaded.");
-            }
             return DefinitionsByGroup;
         }
-        // WORKS
+
         public static SortedDictionary<string, List<Definition>> GetParameterByType(Application app)
         {
             SortedDictionary<string, List<Definition>> DefinitionsByType = new SortedDictionary<string, List<Definition>>();
@@ -127,7 +95,12 @@ namespace Data
 
             if (definitionFile is null)
             {
-                TaskDialog.Show("Error", "Something went wrong. DefinitionFile of Shared Parameters File does not exist.");
+                exceptionMessage = "DefinitionFile of Shared Parameters File does not exist." +
+                                    " Something went wrong when trying to open the Shared Parameter File.";
+                using (UI.Info.Form_Warning thisForm = new UI.Info.Form_Warning())
+                {
+                    thisForm.ShowDialog();
+                }
             }
 
             try
@@ -156,28 +129,13 @@ namespace Data
             }
             catch (Exception ex)
             {
-                TaskDialog.Show("Error", "Something went wrong. Parameters could not be loaded." + "\n" + ex.Message);
-            }
-            return DefinitionsByType;
-        }
-
-        public static String TestListSort(SortedDictionary<string, List<Definition>> parametersByGrouporType)
-        {
-            string sortedListString = "";
-            List<Definition> list = new List<Definition>();
-            foreach (KeyValuePair<string, List<Definition>> pair in parametersByGrouporType)
-            {
-                foreach (Definition def in pair.Value)
+                exceptionMessage = "Parameters could not be loaded: " + ex.Message;
+                using (UI.Info.Form_Warning thisForm = new UI.Info.Form_Warning())
                 {
-                    list.Add(def);
+                    thisForm.ShowDialog();
                 }
             }
-            List<Definition> sortedList = list.OrderBy(x => x.Name).ToList();
-            foreach (Definition d in sortedList)
-            {
-                sortedListString += d.Name + "\n";
-            }
-            return sortedListString;
+            return DefinitionsByType;
         }
 
         public static void LoadSharedParameterFile(Application app, string file)
@@ -192,7 +150,7 @@ namespace Data
 
             //}
         }
-        // WORKS
+
         public static List<BuiltInParameterGroup> ParameterGroupsList()
         {
             List<BuiltInParameterGroup> validGroups = new List<BuiltInParameterGroup>();
@@ -255,12 +213,10 @@ namespace Data
                                                 BuiltInParameterGroup bipGroup,
                                                 bool isInstance)
         {
-            // variables
-            List<string> failNamesList = new List<string>();
-            string failNames = "";
-            int countSuccess = 0;
-            string namesSuccess = "";
-            string instanceOrType = "";
+            // restart variables to 0.
+            failNamesList.Clear();
+            countSuccess = 0;
+            namesSuccess.Clear();
             instanceOrType = isInstance == true ? instanceOrType = "Instance" : instanceOrType = "Type";
 
             // category set
@@ -290,7 +246,7 @@ namespace Data
                                     famMan.AddParameter(extDef, bipGroup, isInstance);
 
                                     countSuccess += 1;
-                                    namesSuccess += def.Name + "\n";
+                                    namesSuccess.Add(def.Name);
                                 }
                                 catch (Exception e)
                                 {
@@ -307,7 +263,7 @@ namespace Data
                                     doc.ParameterBindings.Insert(extDef, bind, bipGroup);
 
                                     countSuccess += 1;
-                                    namesSuccess += def.Name + "\n";
+                                    namesSuccess.Add(def.Name);
                                 }
                                 else // type parameter
                                 {
@@ -315,7 +271,7 @@ namespace Data
                                     doc.ParameterBindings.Insert(def, bind, bipGroup);
 
                                     countSuccess += 1;
-                                    namesSuccess += def.Name + "\n";
+                                    namesSuccess.Add(def.Name);
                                 }
                             }
                             t.Commit();
@@ -327,27 +283,7 @@ namespace Data
                     }
                 }
                 tg.Assimilate();
-
-                // set MainContent info in case of failures
-                if (failNamesList.Count != 0)
-                {
-                    failNames = "\n" + "\n" + "Failed to load these parameters:" + "\n" + "\n";
-                    foreach (string item in failNamesList)
-                    {
-                        failNames += item + "\n";
-                    }
-                }
-                TaskDialog tdInfo = new TaskDialog("Information")
-                {
-                    MainIcon = TaskDialogIcon.TaskDialogIconInformation,
-                    MainInstruction = countSuccess + " " + instanceOrType + " Parameters Loaded:",
-                    MainContent = namesSuccess + failNames,
-
-                    TitleAutoPrefix = false
-                };
-                TaskDialogResult tdInfoResult = tdInfo.Show();
-            }
-            
+            }            
         }
 
     }

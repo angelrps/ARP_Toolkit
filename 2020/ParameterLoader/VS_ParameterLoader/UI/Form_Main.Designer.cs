@@ -58,11 +58,11 @@
             this.LblLineSeparator = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panSharedFile = new System.Windows.Forms.Panel();
-            this.PanCategories = new System.Windows.Forms.Panel();
-            this.panParamData = new System.Windows.Forms.Panel();
             this.LblSharedParamFile = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.PanCategories = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.panParamData = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -102,7 +102,7 @@
             this.BtnClose.Location = new System.Drawing.Point(634, 0);
             this.BtnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnClose.Name = "BtnClose";
-            this.BtnClose.Size = new System.Drawing.Size(150, 78);
+            this.BtnClose.Size = new System.Drawing.Size(150, 60);
             this.BtnClose.TabIndex = 1;
             this.BtnClose.Text = "Close";
             this.BtnClose.UseVisualStyleBackColor = false;
@@ -120,7 +120,7 @@
             this.BtnAddParameters.Location = new System.Drawing.Point(0, 0);
             this.BtnAddParameters.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnAddParameters.Name = "BtnAddParameters";
-            this.BtnAddParameters.Size = new System.Drawing.Size(200, 78);
+            this.BtnAddParameters.Size = new System.Drawing.Size(200, 60);
             this.BtnAddParameters.TabIndex = 2;
             this.BtnAddParameters.Text = "Add Parameters";
             this.BtnAddParameters.UseVisualStyleBackColor = false;
@@ -385,10 +385,10 @@
             this.panel1.Controls.Add(this.BtnAddParameters);
             this.panel1.Controls.Add(this.BtnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 823);
+            this.panel1.Location = new System.Drawing.Point(0, 841);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(784, 78);
+            this.panel1.Size = new System.Drawing.Size(784, 60);
             this.panel1.TabIndex = 6;
             // 
             // panel3
@@ -437,6 +437,16 @@
             this.panSharedFile.Size = new System.Drawing.Size(739, 100);
             this.panSharedFile.TabIndex = 33;
             // 
+            // LblSharedParamFile
+            // 
+            this.LblSharedParamFile.AutoSize = true;
+            this.LblSharedParamFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSharedParamFile.Location = new System.Drawing.Point(20, 20);
+            this.LblSharedParamFile.Name = "LblSharedParamFile";
+            this.LblSharedParamFile.Size = new System.Drawing.Size(162, 19);
+            this.LblSharedParamFile.TabIndex = 4;
+            this.LblSharedParamFile.Text = "Shared Parameter File:";
+            // 
             // PanCategories
             // 
             this.PanCategories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -454,6 +464,16 @@
             this.PanCategories.Size = new System.Drawing.Size(310, 470);
             this.PanCategories.TabIndex = 34;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(20, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 19);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Categories:";
+            // 
             // panParamData
             // 
             this.panParamData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -470,16 +490,6 @@
             this.panParamData.Size = new System.Drawing.Size(410, 120);
             this.panParamData.TabIndex = 35;
             // 
-            // LblSharedParamFile
-            // 
-            this.LblSharedParamFile.AutoSize = true;
-            this.LblSharedParamFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSharedParamFile.Location = new System.Drawing.Point(20, 20);
-            this.LblSharedParamFile.Name = "LblSharedParamFile";
-            this.LblSharedParamFile.Size = new System.Drawing.Size(162, 19);
-            this.LblSharedParamFile.TabIndex = 4;
-            this.LblSharedParamFile.Text = "Shared Parameter File:";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -489,16 +499,6 @@
             this.label2.Size = new System.Drawing.Size(119, 19);
             this.label2.TabIndex = 5;
             this.label2.Text = "Parameter Data:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(20, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 19);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Categories:";
             // 
             // panel2
             // 
