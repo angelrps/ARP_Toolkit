@@ -122,8 +122,7 @@
             this.LblWarningMessage.Padding = new System.Windows.Forms.Padding(50, 0, 50, 0);
             this.LblWarningMessage.Size = new System.Drawing.Size(500, 152);
             this.LblWarningMessage.TabIndex = 29;
-            this.LblWarningMessage.Text = "This is a family document. You must be in a project document to run this tool.\r\nT" +
-    "his application will close.";
+            this.LblWarningMessage.Text = "This is a family document.\r\n\r\nRun this tool in a project document.";
             this.LblWarningMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LblLineSeparator
