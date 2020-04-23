@@ -66,8 +66,10 @@ namespace Entry
                         if (em.HasElevations() == false)
                         {
                             string elevType = doc.GetElement(e.GetTypeId()).Name;
-                            string itemInfo = "ID: " + "\t" + e.Id + "     Elevation Type: " + elevType;
-                            string itemFail = "ID: " + "\t" + e.Id + "     Elevation Type: " + elevType;
+                            //string itemInfo = "ID: " + "\t" + e.Id + "     Elevation Type: " + elevType;
+                            //string itemFail = "ID: " + "\t" + e.Id + "     Elevation Type: " + elevType;
+                            string itemInfo = string.Format("Elevation Type: {0} (ID: {1})", elevType, e.Id);
+                            string itemFail = string.Format("Elevation Type: {0} (ID: {1})", elevType, e.Id);
                             try
                             {
                                 // delete item
