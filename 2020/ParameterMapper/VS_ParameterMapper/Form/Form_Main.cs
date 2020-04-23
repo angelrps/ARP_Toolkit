@@ -21,6 +21,9 @@ namespace Form
         public Document m_doc;
         public Autodesk.Revit.ApplicationServices.Application m_app;
 
+        public static int elemTry = 0;
+        public static int elemFail = 0;
+
         public Form_Main(Document doc, Autodesk.Revit.ApplicationServices.Application app)
         {
             InitializeComponent();
@@ -107,16 +110,11 @@ namespace Form
         {
             if (CbxCategories.SelectedItem == null)
             {
+                // show Wrong Selection form
                 using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
                 {
                     thisForm.ShowDialog();
                 }
-                //TaskDialog tdError = new TaskDialog("Error")
-                //{
-                //    MainIcon = TaskDialogIcon.TaskDialogIconError,
-                //    MainInstruction = "You need to select a Category first."
-                //};
-                //tdError.Show();
             }
             else
             {
@@ -212,18 +210,16 @@ namespace Form
             // handle error if no data is selected
             if (CbxCategories.SelectedItem == null)
             {
-                TaskDialog tdError = new TaskDialog("Error")
+                // show Wrong Selection form
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
                 {
-                    MainIcon = TaskDialogIcon.TaskDialogIconError,
-                    MainInstruction = "You need to select a Category first."
-                };
-                tdError.Show();
+                    thisForm.ShowDialog();
+                }
             }
             else
             {
                 Category cat = CbxCategories.SelectedItem as Category;
-                int elemTry = GetInstances(m_doc, cat).Count();
-                int elemFail = 0;
+                elemTry = GetInstances(m_doc, cat).Count();
                 
                 KeyValuePair<Parameter, string> targetKeyValuePair = (KeyValuePair<Parameter, string>)CbxTargetParameters.SelectedItem;
                 
@@ -297,14 +293,10 @@ namespace Form
                     tg.Assimilate();
                 }
 
-                TaskDialog tdInfo = new TaskDialog("Information")
+                using (UI.Info.Form_Results thisForm = new UI.Info.Form_Results())
                 {
-                    MainIcon = TaskDialogIcon.TaskDialogIconInformation,
-                    MainInstruction = "Parameter values have been updated.",
-                    MainContent = String.Format("Attempted to update {0} Elements.\n\n{1} Failures.\n\n(Grouped elements are excluded from edition)", elemTry.ToString(), elemFail),
-                };
-
-                TaskDialogResult tResult = tdInfo.Show();
+                    thisForm.ShowDialog();
+                }
                 DialogResult = DialogResult.OK;
             }            
         }

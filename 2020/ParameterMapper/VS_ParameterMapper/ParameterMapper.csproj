@@ -86,11 +86,23 @@
     <Compile Include="Form\Form_Info2.designer.cs">
       <DependentUpon>Form_Info2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\Form_FamDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Form_FamDoc.designer.cs">
+      <DependentUpon>Form_FamDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Form_Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\Form_Main.Designer.cs">
       <DependentUpon>Form_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Form_Results.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Form_Results.designer.cs">
+      <DependentUpon>Form_Results.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -106,8 +118,14 @@
     <EmbeddedResource Include="Form\Form_Info2.resx">
       <DependentUpon>Form_Info2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\Form_FamDoc.resx">
+      <DependentUpon>Form_FamDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\Form_Main.resx">
       <DependentUpon>Form_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Form_Results.resx">
+      <DependentUpon>Form_Results.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
