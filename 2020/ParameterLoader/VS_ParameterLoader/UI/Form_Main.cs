@@ -232,90 +232,61 @@ namespace UI
             }
             #endregion
 
-            #region is there a shared parameter FILE selected?
-            if (m_app.OpenSharedParameterFile() == null)
+            // Check if selected: Shared Parameter FILE, Parameters and Categories
+            if (m_app.OpenSharedParameterFile() == null
+                | defList.Count == 0
+                | catList.Count == 0)
             {
-                TaskDialog tdSelectPrompt = new TaskDialog("Warning")
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
                 {
-                    MainIcon = TaskDialogIcon.TaskDialogIconWarning,
-                    MainInstruction = "Please select a shared parameter file (.txt).",
-                    TitleAutoPrefix = false
-                };
-                tdSelectPrompt.Show();
-                return;
-            }
-            #endregion
-
-            #region is there any PARAMETER selected?
-            if (defList.Count == 0)
-            {
-                TaskDialog tdSelectPrompt = new TaskDialog("Warning")
-                {
-                    MainIcon = TaskDialogIcon.TaskDialogIconWarning,
-                    MainInstruction = "Please select at least one parameter from the list.",
-                    TitleAutoPrefix = false
-                };
-                tdSelectPrompt.Show();
-                return;
-            }
-            #endregion
-
-            #region is there any CATEGORY selected
-            // check if is family document
-            if (m_doc.IsFamilyDocument == false)
-            {
-                if (catList.Count == 0)
-                {
-                    TaskDialog tdSelectPrompt = new TaskDialog("Warning")
-                    {
-                        MainIcon = TaskDialogIcon.TaskDialogIconWarning,
-                        MainInstruction = "Please select at least one category from the list.",
-                        TitleAutoPrefix = false
-                    };
-                    tdSelectPrompt.Show();
-                    return;
+                    thisForm.ShowDialog();
                 }
             }
-            
-            #endregion
 
-            // get parameter group
-            KeyValuePair<BuiltInParameterGroup, string> groupKeyValuePair = (KeyValuePair<BuiltInParameterGroup, string>)CbxGroup.SelectedItem;
-            BuiltInParameterGroup group = groupKeyValuePair.Key;
-
-            // Bind the Definitions
-            Data.Helpers.BindDefinitionsToCategories(m_doc,
-                                                     m_app,
-                                                     defList,
-                                                     catList,
-                                                     group,
-                                                     RbtInstance.Checked);
-
-            TaskDialog tdContinue = new TaskDialog("Continue or Close?")
+            // Load parameters
+            else
             {
-                MainIcon = TaskDialogIcon.TaskDialogIconNone,
-                MainInstruction = "Do you want to load more parameters?",
-                CommonButtons = TaskDialogCommonButtons.Yes | TaskDialogCommonButtons.No,
-                TitleAutoPrefix = false
-            };
-            //TaskDialogResult tdInfoResult = tdContinue.Show();
-            switch (tdContinue.Show())
-            {
-                case TaskDialogResult.Yes:
-                    break;
-                case TaskDialogResult.No:
-                    DialogResult = DialogResult.OK;
-                    break;
-            }
+                // get parameter group
+                KeyValuePair<BuiltInParameterGroup, string> groupKeyValuePair = (KeyValuePair<BuiltInParameterGroup, string>)CbxGroup.SelectedItem;
+                BuiltInParameterGroup group = groupKeyValuePair.Key;
 
-            // uncheck parameters
-            foreach (TreeNode n in TreeViewParameters.Nodes) // parents
-            {
-                n.Checked = false;
-
-                foreach (TreeNode c in n.Nodes) // children
+                // Bind the Definitions
+                Data.Helpers.BindDefinitionsToCategories(m_doc,
+                                                         m_app,
+                                                         defList,
+                                                         catList,
+                                                         group,
+                                                         RbtInstance.Checked);
+                // show Results Form
+                using (UI.Info.Form_Results thisForm = new Info.Form_Results())
                 {
-                    c.Checked = false;
+                    thisForm.ShowDialog();
+                }
+
+                // show form Do you want to load more parameters?
+                using (UI.Info.Form_Info2 thisForm = new UI.Info.Form_Info2())
+                {
+                    thisForm.ShowDialog();
+                    if (thisForm.DialogResult == DialogResult.No)
+                    {
+                        this.DialogResult = DialogResult.OK;
+                    }
+                }
+                
+                // uncheck parameters
+                foreach (TreeNode n in TreeViewParameters.Nodes) // parents
+                {
+                    n.Checked = false;
+
+                    foreach (TreeNode c in n.Nodes) // children
+                    {
+                        c.Checked = false;
+                    }
+                }
+                // uncheck categories
+                foreach (TreeNode n in TreeViewCategories.Nodes)
+                {
+                    n.Checked = false;
                 }
             }
         }
@@ -326,7 +297,7 @@ namespace UI
             Close();
         }
 
-        #region Utilities
+        #region HELPERS
         private void LoadCategories()
         {
             TreeViewCategories.Nodes.Clear();
@@ -361,7 +332,6 @@ namespace UI
                     foreach (KeyValuePair<string, List<Definition>> pair in parametersByBroup)
                     {
                         List<Definition> defList = pair.Value;
-                        //TaskDialog.Show("OJO", "looking through groups");
                         foreach (Definition def in defList)
                         {
                             if (!TreeViewParameters.Nodes.ContainsKey(pair.Key.ToString())) // group doesn´t exist
@@ -375,7 +345,6 @@ namespace UI
                                 TreeNode childNode = TreeViewParameters.Nodes[pair.Key.ToString()].Nodes.Add(def.Name, def.Name);
                                 childNode.Tag = def; // set Definition as object containing data
                             }
-                            //TreeViewParameters.Sort();
                         }
                     }
                 }
@@ -461,117 +430,6 @@ namespace UI
                TreeViewParameters.ExpandAll();
             }
         }
-
-        //private void LoadSharedParameters_ORIGINAL()
-        //{
-        //    TreeViewParameters.Nodes.Clear(); // fresh list
-
-        //    if (RbtByGroup.Checked == true) // load by group
-        //    {
-        //        Dictionary<string, List<Definition>> parametersByBroup = Data.Helpers.GetParameterByGroup(m_app);
-        //        TaskDialog.Show("OJO", "Dictionary calculated");
-        //        foreach (KeyValuePair<string, List<Definition>> pair in parametersByBroup)
-        //        {
-        //            TaskDialog.Show("OJO", "looking through groups");
-        //            foreach (Definition def in pair.Value)
-        //            {
-        //                if (string.IsNullOrEmpty(TxbFilterParam.Text)) // filter is empty
-        //                {
-        //                    if (!TreeViewParameters.Nodes.ContainsKey(pair.Key)) // group doesn´t exist
-        //                    {
-        //                        TreeViewParameters.Nodes.Add(pair.Key, pair.Key);
-        //                        TreeNode childNode = TreeViewParameters.Nodes[pair.Key].Nodes.Add(def.Name, def.Name);
-        //                        childNode.Tag = def; // set Definition as object containing data
-        //                    }
-        //                    else // group exists
-        //                    {
-        //                        TreeNode childNode = TreeViewParameters.Nodes[pair.Key].Nodes.Add(def.Name, def.Name);
-        //                        childNode.Tag = def; // set Definition as object containing data
-        //                    }
-        //                    TreeViewParameters.Sort();
-        //                }
-        //                else // filter contains text
-        //                {
-        //                    if (def.Name.ToLower().Contains(TxbFilterParam.Text.ToLower())) // contains text
-        //                    {
-        //                        if (!TreeViewParameters.Nodes.ContainsKey(pair.Key)) // group doesn´t exist
-        //                        {
-        //                            TreeViewParameters.Nodes.Add(pair.Key, pair.Key);
-        //                            TreeNode childNode = TreeViewParameters.Nodes[pair.Key].Nodes.Add(def.Name, def.Name);
-        //                            childNode.Tag = def; // set Definition as object containing data
-        //                        }
-        //                        else // group exists
-        //                        {
-        //                            TreeNode childNode = TreeViewParameters.Nodes[pair.Key].Nodes.Add(def.Name, def.Name);
-        //                            childNode.Tag = def; // set Definition as object containing data
-        //                        }
-        //                        TreeViewParameters.Sort();
-        //                    }
-        //                    else
-        //                    {
-        //                        continue;
-        //                    }
-        //                }
-        //            }
-        //        }
-        //        TaskDialog.Show("OJO", "TreeView populated");
-        //    }
-        //    else // load by type
-        //    {
-        //        TaskDialog.Show("OJO", "about to load by type");
-        //        Dictionary<string, List<Definition>> parametersByType = Data.Helpers.GetParameterByType(m_app);
-        //        TaskDialog.Show("OJO", "Dictionary calculated");
-        //        foreach (KeyValuePair<string, List<Definition>> pair in parametersByType)
-        //        {
-        //            foreach (Definition def in pair.Value)
-        //            {
-        //                if (string.IsNullOrEmpty(TxbFilterParam.Text)) // filter is empty
-        //                {
-        //                    if (!TreeViewParameters.Nodes.ContainsKey(pair.Key)) // type doesn´t exist
-        //                    {
-        //                        TreeViewParameters.Nodes.Add(pair.Key, pair.Key);
-        //                        TreeNode childNode = TreeViewParameters.Nodes[pair.Key].Nodes.Add(def.Name, def.Name);
-        //                        childNode.Tag = def; // set Definition as object containing data
-        //                    }
-        //                    else // type exists
-        //                    {
-        //                        TreeNode childNode = TreeViewParameters.Nodes[pair.Key].Nodes.Add(def.Name, def.Name);
-        //                        childNode.Tag = def;  // set Definition as object containing data
-        //                    }
-        //                    TreeViewParameters.Sort();
-        //                }
-        //                else // filter contains text
-        //                {
-        //                    if (def.Name.ToLower().Contains(TxbFilterParam.Text.ToLower())) // contains text
-        //                    {
-        //                        if (!TreeViewParameters.Nodes.ContainsKey(pair.Key)) // type doesn´t exist
-        //                        {
-        //                            TreeViewParameters.Nodes.Add(pair.Key, pair.Key);
-        //                            TreeNode childNode = TreeViewParameters.Nodes[pair.Key].Nodes.Add(def.Name, def.Name);
-        //                            childNode.Tag = def; // set Definition as object containing data
-        //                        }
-        //                        else // type exists
-        //                        {
-        //                            TreeNode childNode = TreeViewParameters.Nodes[pair.Key].Nodes.Add(def.Name, def.Name);
-        //                            childNode.Tag = def; // set Definition as object containing data
-        //                        }
-        //                        TreeViewParameters.Sort();
-        //                    }
-        //                    else
-        //                    {
-        //                        continue;
-        //                    }
-        //                }
-        //            }
-        //        }
-        //        TaskDialog.Show("OJO", "TreeView populated");
-        //    }
-        //    // expand all when searching
-        //    if (!string.IsNullOrEmpty(TxbFilterParam.Text))
-        //    {
-        //        TreeViewParameters.ExpandAll();
-        //    }
-        //}
 
         private void LoadGroupingNames()
         {
