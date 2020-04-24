@@ -22,6 +22,8 @@ namespace UI
     {
         public Document m_doc;
         public Autodesk.Revit.ApplicationServices.Application m_app;
+        public static List<string> usedNames = new List<string>();
+        public static List<string> createdWorksets = new List<string>();
 
         public Form_Main(Document doc, Autodesk.Revit.ApplicationServices.Application app)
         {
@@ -59,7 +61,10 @@ namespace UI
             // check if at least one item is selected
             if (LsvWorksets.CheckedItems.Count == 0)
             {
-                TaskDialog.Show("Information", "At least one workset must be selected.");
+                using (UI.Info.Form_Info1 thisForm = new Info.Form_Info1())
+                {
+                    thisForm.ShowDialog();
+                }
             }
             else
             {
@@ -71,25 +76,17 @@ namespace UI
                 }
 
                 // check if workset name is in use
-                if (GetUsedNames(m_doc, selectedWorksets).Any())
+                usedNames = GetUsedNames(m_doc, selectedWorksets);
+                if (usedNames.Any())
                 {
-                    string usedNames = "";
-                    foreach (string s in GetUsedNames(m_doc, selectedWorksets))
+                    using (UI.Info.Form_Warning thisForm = new UI.Info.Form_Warning())
                     {
-                        usedNames += s + "\n";
+                        thisForm.ShowDialog();
                     }
-                    TaskDialog tdUsedNames = new TaskDialog("Information")
-                    {
-                        MainInstruction = "Workset names must be unique. The following names are already in used:"
-                                            + "\n" + "\n" + usedNames,                                        
-                        TitleAutoPrefix = false
-                    };
-                    TaskDialogResult tdWorksharedInfoResult = tdUsedNames.Show();
                 }
                 // proceed if workset names are unique
                 else
                 {
-                    string info = "";
                     using (TransactionGroup tg = new TransactionGroup(m_doc, "Transfer Worksets"))
                     {
                         tg.Start();
@@ -100,19 +97,17 @@ namespace UI
                                 t.Start();
                                 Workset newWorkset = null;
                                 newWorkset = Workset.Create(m_doc, WorksetName);
-                                info += WorksetName + "\n";
+                                createdWorksets.Add(WorksetName);
                                 t.Commit();
                             }
                         }
                         tg.Assimilate();
                     }
-                    TaskDialog tdResult = new TaskDialog("Information")
+                    // show Results Form
+                    using (UI.Info.Form_Results thisForm = new Info.Form_Results())
                     {
-                        MainInstruction = "The following worksets have been created:"
-                                            + "\n" + "\n" + info,
-                        TitleAutoPrefix = false
-                    };
-                    TaskDialogResult tdWorksharedInfoResult = tdResult.Show();
+                        thisForm.ShowDialog();
+                    }
                     DialogResult = DialogResult.OK;
                 }                
             }

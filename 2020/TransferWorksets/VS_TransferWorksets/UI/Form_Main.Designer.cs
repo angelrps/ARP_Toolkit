@@ -44,6 +44,7 @@
             this.LblLineSeparator = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -61,7 +62,7 @@
             this.BtnCreate.Location = new System.Drawing.Point(0, 0);
             this.BtnCreate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnCreate.Name = "BtnCreate";
-            this.BtnCreate.Size = new System.Drawing.Size(200, 60);
+            this.BtnCreate.Size = new System.Drawing.Size(220, 60);
             this.BtnCreate.TabIndex = 0;
             this.BtnCreate.Text = "Create Worksets";
             this.BtnCreate.UseVisualStyleBackColor = false;
@@ -77,10 +78,10 @@
             this.BtnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancel.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancel.ForeColor = System.Drawing.Color.White;
-            this.BtnCancel.Location = new System.Drawing.Point(234, 0);
+            this.BtnCancel.Location = new System.Drawing.Point(239, 0);
             this.BtnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnCancel.Name = "BtnCancel";
-            this.BtnCancel.Size = new System.Drawing.Size(175, 60);
+            this.BtnCancel.Size = new System.Drawing.Size(170, 60);
             this.BtnCancel.TabIndex = 1;
             this.BtnCancel.Text = "Cancel";
             this.BtnCancel.UseVisualStyleBackColor = false;
@@ -94,7 +95,7 @@
             this.BtnAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(172)))), ((int)(((byte)(0)))));
             this.BtnAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAll.Image = ((System.Drawing.Image)(resources.GetObject("BtnAll.Image")));
-            this.BtnAll.Location = new System.Drawing.Point(360, 130);
+            this.BtnAll.Location = new System.Drawing.Point(360, 150);
             this.BtnAll.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnAll.Name = "BtnAll";
             this.BtnAll.Size = new System.Drawing.Size(50, 35);
@@ -111,7 +112,7 @@
             this.BtnNone.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(172)))), ((int)(((byte)(0)))));
             this.BtnNone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNone.Image = ((System.Drawing.Image)(resources.GetObject("BtnNone.Image")));
-            this.BtnNone.Location = new System.Drawing.Point(360, 171);
+            this.BtnNone.Location = new System.Drawing.Point(360, 191);
             this.BtnNone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnNone.Name = "BtnNone";
             this.BtnNone.Size = new System.Drawing.Size(50, 35);
@@ -166,10 +167,10 @@
             this.LsvWorksets.FullRowSelect = true;
             this.LsvWorksets.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.LsvWorksets.HideSelection = false;
-            this.LsvWorksets.Location = new System.Drawing.Point(20, 130);
+            this.LsvWorksets.Location = new System.Drawing.Point(20, 150);
             this.LsvWorksets.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LsvWorksets.Name = "LsvWorksets";
-            this.LsvWorksets.Size = new System.Drawing.Size(340, 320);
+            this.LsvWorksets.Size = new System.Drawing.Size(340, 300);
             this.LsvWorksets.TabIndex = 11;
             this.LsvWorksets.UseCompatibleStateImageBehavior = false;
             this.LsvWorksets.View = System.Windows.Forms.View.Details;
@@ -222,6 +223,16 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(20, 125);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 19);
+            this.label3.TabIndex = 34;
+            this.label3.Text = "Worksets:";
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -229,6 +240,7 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton = this.BtnCancel;
             this.ClientSize = new System.Drawing.Size(409, 541);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.LsvWorksets);
@@ -271,5 +283,6 @@
         private System.Windows.Forms.Label LblLineSeparator;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip Tooltip;
+        private System.Windows.Forms.Label label3;
     }
 }
