@@ -52,13 +52,19 @@ namespace Entry
             // paths to export schedule
             string temp_folder = Path.GetTempPath();
             #endregion
-            
+
             // check if file exists
             if (!Data.Helpers.CheckFileExists(excelPaths_FilePath))
             {
-                TaskDialog.Show("Schedule To Excel", "Could not find the File: " + "\n"
-                                                      + excelPaths_FileName + " in "
-                                                      + assemblyPath + "\n" + "Contact angelruizpeinado@gmail.com for help.");
+                warningMsgMain = "File missing";
+                warningMsgBody = string.Format("Could not find the File: {0}{0}{1} in {2}{0}{0}Contact angelruizpeinado@gmail.com for help.",
+                                                Environment.NewLine,
+                                                excelPaths_FileName,
+                                                assemblyPath);
+                using (UI.Info.Form_Warning thisForm = new UI.Info.Form_Warning())
+                {
+                    thisForm.ShowDialog();
+                }
                 return Result.Cancelled;
             }
 
@@ -66,24 +72,25 @@ namespace Entry
             if (!Data.Helpers.CheckExcelInstall(excelPaths_FilePath))
             {
                 warningMsgMain = "Excel not found";
-                warningMsgBody = "Could not find Excel installed in the usual paths." +
-                                " Please add your Excel path to the OpenInExcel_UserPaths.txt and try again." +
-                                " Contact angelruizpeinado@gmail.com for help.";
+                warningMsgBody = string.Format("Could not find Excel installed in the usual paths.{0}{0}" +
+                                                "Please install Excel or add your Excel path to the OpenInExcel_UserPaths.txt " +
+                                                "(located in {1}) and try again.{0}{0}" +
+                                                "Contact angelruizpeinado@gmail.com for help.", Environment.NewLine, assemblyPath);
 
                 using (UI.Info.Form_Warning thisForm = new UI.Info.Form_Warning())
                 {
                     thisForm.ShowDialog();
                 }
-                //TaskDialog.Show("Schedule To Excel", "Could not find Excel installed in the usual paths." + "\n"
-                //                                     + "Please add you Excel path to OpenInExcel_UserPaths.txt and try again." + "\n"
-                //                                     + "Contact angelruizpeinado@gmail.com for help.");
                 return Result.Cancelled;
             }
 
             // if there are not schedules selected or open throw a message
             if (!Data.Helpers.GetSelectedSchedules(doc, selIds).Any())
             {
-                TaskDialog.Show("Schedule To Excel", "You must have a schedule open or selected in the Project Browser.");
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
+                {
+                    thisForm.ShowDialog();
+                }
                 return Result.Cancelled;
             }
 
@@ -101,7 +108,7 @@ namespace Entry
                     Ana_NoOfExports += 1;   // count number of schedules exported
 
                     string scheduleName = Data.Helpers.ReplaceIllegalCharaters(v.Name);
-                    string txtFileName = scheduleName + randomNumber.Next(100) + ".txt";
+                    string txtFileName = scheduleName + "_" + randomNumber.Next(1000) + ".txt";
                     string scheduleExportPath = Path.Combine(temp_folder, txtFileName);
 
                     // export schedule to .txt

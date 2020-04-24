@@ -30,7 +30,6 @@ namespace UI.Info
         {
             LblWarningMain.Text = Entry.CmdMain.warningMsgMain;
             LblWarningMessage.Text = Entry.CmdMain.warningMsgBody;
-            //LblWarningMessage.Text = Data.Helpers.exceptionMessage;
         }
     }
 }
