@@ -19,6 +19,8 @@ namespace Entry
     public class CmdMain : IExternalCommand
     {
         static AddInId appId = new AddInId(new Guid("E8232172-2898-410F-9535-364C2D46445F"));
+        static public string warningMsgMain = "";
+        static public string warningMsgBody = "";
 
         #region Variables for analytics
         private static readonly Stopwatch useTime = new Stopwatch();        // total time user has the application open and it does actually make a transaction
@@ -56,16 +58,25 @@ namespace Entry
             {
                 TaskDialog.Show("Schedule To Excel", "Could not find the File: " + "\n"
                                                       + excelPaths_FileName + " in "
-                                                      + assemblyPath + "\n" + "Contact the BIM Department for help.");
+                                                      + assemblyPath + "\n" + "Contact angelruizpeinado@gmail.com for help.");
                 return Result.Cancelled;
             }
 
             // check if excel is installed in usual paths
             if (!Data.Helpers.CheckExcelInstall(excelPaths_FilePath))
             {
-                TaskDialog.Show("Schedule To Excel", "Could not find Excel installed in the usual paths." + "\n"
-                                                     + "Please add you Excel path to OpenInExcel_UserPaths.txt and try again." + "\n"
-                                                     + "Contact the BIM Department for help.");
+                warningMsgMain = "Excel not found";
+                warningMsgBody = "Could not find Excel installed in the usual paths." +
+                                " Please add your Excel path to the OpenInExcel_UserPaths.txt and try again." +
+                                " Contact angelruizpeinado@gmail.com for help.";
+
+                using (UI.Info.Form_Warning thisForm = new UI.Info.Form_Warning())
+                {
+                    thisForm.ShowDialog();
+                }
+                //TaskDialog.Show("Schedule To Excel", "Could not find Excel installed in the usual paths." + "\n"
+                //                                     + "Please add you Excel path to OpenInExcel_UserPaths.txt and try again." + "\n"
+                //                                     + "Contact angelruizpeinado@gmail.com for help.");
                 return Result.Cancelled;
             }
 
