@@ -13,7 +13,7 @@ using Autodesk.Revit.ApplicationServices;
 namespace Data
 {
     class Helpers
-    {       
+    {
         public static List<Room> GetModelRooms (Document doc)
         {
             List<Room> modelRooms = new List<Room>();
@@ -187,15 +187,16 @@ namespace Data
 
             if (NotEnclosedRooms == true)   //warn the user about not enclosed rooms
             {
-                TaskDialog tdNotEnclosedRooms = new TaskDialog("Warning!")
+                Form.Form_Main.warningMsgMain = "Warning";
+                Form.Form_Main.warningMsgBody = string.Format("There are 'Not Enclosed' rooms in this project.{0}{0}" +
+                                                                " This application have ignored them," +
+                                                                " but I strongly recommend you to revise them and amend as appropriate."
+                                                                , Environment.NewLine);
+
+                using (UI.Info.Form_Warning thisForm = new UI.Info.Form_Warning())
                 {
-                    MainIcon = TaskDialogIcon.TaskDialogIconWarning,
-                    MainInstruction = "There are Not Enclosed rooms in this project." + "\n"
-                                    + "They have been ignore." + "\n"
-                                    + "We strongly recommend you to revise them and amend as appropriate.",
-                    TitleAutoPrefix = false
-                };
-                TaskDialogResult tdInfoResult = tdNotEnclosedRooms.Show();
+                    thisForm.ShowDialog();
+                }
             }
         }
 
@@ -229,15 +230,16 @@ namespace Data
             }
             if (NotEnclosedRooms == true)   //warn the user about not enclosed rooms
             {
-                TaskDialog tdNotEnclosedRooms = new TaskDialog("Warning!")
+                Form.Form_Main.warningMsgMain = "Warning";
+                Form.Form_Main.warningMsgBody = string.Format("There are 'Not Enclosed' rooms in this project.{0}{0}" +
+                                                                " This application have ignored them," +
+                                                                " but I strongly recommend you to revise them and amend as appropriate."
+                                                                , Environment.NewLine);
+
+                using (UI.Info.Form_Warning thisForm = new UI.Info.Form_Warning())
                 {
-                    MainIcon = TaskDialogIcon.TaskDialogIconWarning,
-                    MainInstruction = "There are Not Enclosed rooms in this project." +"\n"
-                                    + "They have been ignore." + "\n"
-                                    + "We strongly recommend you to revise them and amend as appropriate.",
-                    TitleAutoPrefix = false
-                };
-                TaskDialogResult tdInfoResult = tdNotEnclosedRooms.Show();
+                    thisForm.ShowDialog();
+                }
             }
         }
 

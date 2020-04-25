@@ -74,11 +74,11 @@
             // CbxRoomCentroid
             // 
             this.CbxRoomCentroid.AutoSize = true;
-            this.CbxRoomCentroid.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbxRoomCentroid.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbxRoomCentroid.Location = new System.Drawing.Point(23, 50);
             this.CbxRoomCentroid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CbxRoomCentroid.Name = "CbxRoomCentroid";
-            this.CbxRoomCentroid.Size = new System.Drawing.Size(298, 21);
+            this.CbxRoomCentroid.Size = new System.Drawing.Size(313, 23);
             this.CbxRoomCentroid.TabIndex = 3;
             this.CbxRoomCentroid.Text = "Move Room Insertion Point to Room Centroid.";
             this.CbxRoomCentroid.UseVisualStyleBackColor = true;
@@ -86,11 +86,11 @@
             // CbxRoomTag
             // 
             this.CbxRoomTag.AutoSize = true;
-            this.CbxRoomTag.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbxRoomTag.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbxRoomTag.Location = new System.Drawing.Point(23, 80);
             this.CbxRoomTag.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CbxRoomTag.Name = "CbxRoomTag";
-            this.CbxRoomTag.Size = new System.Drawing.Size(269, 21);
+            this.CbxRoomTag.Size = new System.Drawing.Size(280, 23);
             this.CbxRoomTag.TabIndex = 4;
             this.CbxRoomTag.Text = "Move Room Tag to Room Insertion Point.";
             this.CbxRoomTag.UseVisualStyleBackColor = true;
@@ -121,11 +121,11 @@
             // 
             this.CbxLinkedRoomTag.AutoSize = true;
             this.CbxLinkedRoomTag.Enabled = false;
-            this.CbxLinkedRoomTag.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CbxLinkedRoomTag.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbxLinkedRoomTag.Location = new System.Drawing.Point(58, 110);
             this.CbxLinkedRoomTag.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CbxLinkedRoomTag.Name = "CbxLinkedRoomTag";
-            this.CbxLinkedRoomTag.Size = new System.Drawing.Size(201, 21);
+            this.CbxLinkedRoomTag.Size = new System.Drawing.Size(208, 23);
             this.CbxLinkedRoomTag.TabIndex = 7;
             this.CbxLinkedRoomTag.Text = "Include Tags of Linked Rooms";
             this.CbxLinkedRoomTag.UseVisualStyleBackColor = true;
@@ -136,8 +136,8 @@
             this.textBox1.BackColor = System.Drawing.Color.White;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(71, 129);
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(71, 130);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";

@@ -16,6 +16,10 @@ namespace Form
     public partial class Form_Main : System.Windows.Forms.Form
     {
         public Document m_doc;
+        public static string infoMsgMain = "";
+        public static string infoMsgBody = "";
+        public static string warningMsgMain = "";
+        public static string warningMsgBody = "";
 
         public Form_Main(Document doc)
         {
@@ -28,7 +32,12 @@ namespace Form
             // show message if both boxes are unchecked
             if (!CbxRoomCentroid.Checked && !CbxRoomTag.Checked)
             {
-                TaskDialog.Show("Information", "Select and option to move.");
+                infoMsgMain = "Hey!";
+                infoMsgBody = "Choose an action from the menu.";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
+                {
+                    thisForm.ShowDialog();
+                }
             }
 
             // show message if there are neither tags not rooms
@@ -37,7 +46,10 @@ namespace Form
                 && !Data.Helpers.GetModelRoomTags(m_doc).Any()
                 && !Data.Helpers.GetLinkRoomTags(m_doc).Any())
             {
-                TaskDialog.Show("Information", "There are not placed rooms or room tags in the project.");
+                // show dialog
+                infoMsgMain = "Missing elements";
+                infoMsgBody = "There are not placed rooms or room tags in this project.";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
                 Close();
             }
 
@@ -49,7 +61,10 @@ namespace Form
                     {
                         if (!Data.Helpers.GetModelRooms(m_doc).Any()) // show message if there are no rooms
                         {
-                            TaskDialog.Show("Information", "There are not placed rooms in this Project.");
+                            // show dialog
+                            infoMsgMain = "Missing elements";
+                            infoMsgBody = "There are not placed rooms in this project.";
+                            using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
                             Close();
                         }
                         else // move room insertion point to centroid
@@ -60,8 +75,10 @@ namespace Form
                                 Data.Helpers.MoveRoomToCentroid(m_doc, Data.Helpers.GetModelRooms(m_doc));
                                 t.Commit();
                             }
-                            TaskDialog.Show("Information", "Room insertion points have been moved to centroid.");
-
+                            // show dialog
+                            infoMsgMain = "Result";
+                            infoMsgBody = "Room location points have been moved to centroid.";
+                            using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
                             DialogResult = DialogResult.OK;
                         }
                     }
@@ -70,7 +87,10 @@ namespace Form
                     {
                         if (!Data.Helpers.GetModelRoomsActView(m_doc).Any()) // show message if there are no rooms in active view
                         {
-                            TaskDialog.Show("Information", "There are not placed rooms in this view.");
+                            // show dialog
+                            infoMsgMain = "Missing elements";
+                            infoMsgBody = "There are not placed rooms in this view.";
+                            using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
                             Close();
                         }
                         else // move room insertion point to centroid
@@ -81,8 +101,10 @@ namespace Form
                                 Data.Helpers.MoveRoomToCentroid(m_doc, Data.Helpers.GetModelRoomsActView(m_doc));
                                 t.Commit();
                             }
-                            TaskDialog.Show("Information", "Room location points have been moved to centroid.");
-
+                            // show dialog
+                            infoMsgMain = "Result";
+                            infoMsgBody = "Room location points have been moved to centroid.";
+                            using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
                             DialogResult = DialogResult.OK;
                         }
                     }
@@ -94,7 +116,10 @@ namespace Form
                     {
                         if (!Data.Helpers.GetModelRoomTagsActView(m_doc).Any()) // show message if there are no tags
                         {
-                            TaskDialog.Show("Information", "There are not room tags in this active view, or they are tagging rooms from a linked model.");
+                            // show dialog
+                            infoMsgMain = "Missing elements";
+                            infoMsgBody = "There are not room tags in this active view, or they are tagging rooms from a linked model.";
+                            using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
                             Close();
                         }
                         else // move tag to room insertion point
@@ -105,8 +130,10 @@ namespace Form
                                 Data.Helpers.MoveModelTags(m_doc, Data.Helpers.GetModelRoomTagsActView(m_doc));
                                 t.Commit();
                             }
-                            TaskDialog.Show("Information", "Room tags have been moved to room location point.");
-
+                            // show dialog
+                            infoMsgMain = "Result";
+                            infoMsgBody = "Room tags have been moved to room location point.";
+                            using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
                             DialogResult = DialogResult.OK;
                         }
                     }
@@ -117,7 +144,10 @@ namespace Form
                         {                            
                             if (!Data.Helpers.GetLinkRoomTags(m_doc).Any())
                             {
-                                TaskDialog.Show("Information", "There are not room tags tagging linked rooms in the model.");                                
+                                // show dialog
+                                infoMsgMain = "Missing elements";
+                                infoMsgBody = "There are not room tags tagging linked rooms in the model.";
+                                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
                             }
                             else // move all tags
                             {
@@ -125,26 +155,33 @@ namespace Form
                                 {
                                     t.Start();
                                     Data.Helpers.MoveModelTags(m_doc, Data.Helpers.GetModelRoomTags(m_doc)); // move model tags
-                                    TaskDialog.Show("Information", "Room tags have been moved to room insertion point.");
+                                    // show dialog
+                                    infoMsgMain = "Result";
+                                    infoMsgBody = "Room tags have been moved to room location point.";
+                                    using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
                                     try
                                     {
                                         foreach (RoomTag rt in Data.Helpers.GetLinkRoomTags(m_doc)) // move linked tags
                                         {
                                             Data.Helpers.MoveLinkTags(m_doc, rt);
                                         }
-                                        TaskDialog.Show("Information", "Tags of linked rooms have been moved to room insertion point.");
+                                        // show dialog
+                                        infoMsgMain = "Result";
+                                        infoMsgBody = "Tags of linked rooms have been moved to room insertion point.";
+                                        using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }                                        
                                     }
                                     catch (Exception)
                                     {
-                                        TaskDialog.Show("Information","Tags of linked rooms were not moved.\n" +
-                                                                        "One or more links containing tagged rooms are unloaded.\n" +
-                                                                        "Please, reload links and try again.");
+                                        // show dialog
+                                        warningMsgMain = "For your information";
+                                        warningMsgBody = string.Format("Some tags of linked rooms were not moved " +
+                                                                        "because one or more links containing tagged rooms are unloaded.{0}{0}" +
+                                                                        "Please, reload links and try again.", Environment.NewLine);
+                                        using (UI.Info.Form_Warning thisForm = new UI.Info.Form_Warning()) { thisForm.ShowDialog(); }
                                         DialogResult = DialogResult.Cancel;
                                     }                                                                      
                                     t.Commit();
                                 }
-                                //TaskDialog.Show("Information", "Room tags have been moved to room insertion point. Including tags of linked rooms.");
-
                                 DialogResult = DialogResult.OK;
                             }
                         }
@@ -153,7 +190,11 @@ namespace Form
                         {
                             if (!Data.Helpers.GetModelRoomTags(m_doc).Any())
                             {
-                                TaskDialog.Show("Information", "There are not room tags in the model, or they are tagging rooms from a linked model.");
+                                // show dialog
+                                infoMsgMain = "Missing elements";
+                                infoMsgBody = "There are not room tags in the model, or they are tagging rooms from a linked model.";
+                                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
+
                                 Close();
                             }
                             else // move model tags
@@ -164,7 +205,10 @@ namespace Form
                                     Data.Helpers.MoveModelTags(m_doc, Data.Helpers.GetModelRoomTags(m_doc));
                                     t.Commit();
                                 }
-                                TaskDialog.Show("Information", "Room tags have been moved to room insertion point.");
+                                // show dialog
+                                infoMsgMain = "ResultAA";
+                                infoMsgBody = "Room tags have been moved to room insertion point.";
+                                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
 
                                 DialogResult = DialogResult.OK;
                             }
