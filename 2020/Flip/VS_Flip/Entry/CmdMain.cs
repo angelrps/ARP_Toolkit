@@ -20,6 +20,9 @@ namespace Entry
     {
         static AddInId appId = new AddInId(new Guid("B0AD89BE-1F6A-44ED-BDE2-5EA79130AAB2"));
 
+        public static string infoMsgMain = "";
+        public static string infoMsgBody = "";
+
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             UIApplication uiapp = commandData.Application;
@@ -29,7 +32,10 @@ namespace Entry
 
             if (!GetSelectedDoors(uidoc).Any() && !GetSelectedWalls(uidoc).Any())
             {
-                TaskDialog.Show("Information", "You need to make a door or wall selection.");
+                infoMsgMain = "Select";
+                infoMsgBody = "You need to select walls or doors before executing the application";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
+
                 return Result.Cancelled;
             }
 

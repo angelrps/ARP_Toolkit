@@ -65,10 +65,10 @@
             this.BtnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancel.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancel.ForeColor = System.Drawing.Color.Transparent;
-            this.BtnCancel.Location = new System.Drawing.Point(494, 0);
+            this.BtnCancel.Location = new System.Drawing.Point(444, 0);
             this.BtnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnCancel.Name = "BtnCancel";
-            this.BtnCancel.Size = new System.Drawing.Size(150, 60);
+            this.BtnCancel.Size = new System.Drawing.Size(200, 60);
             this.BtnCancel.TabIndex = 5;
             this.BtnCancel.Text = "Cancel";
             this.BtnCancel.UseVisualStyleBackColor = false;
@@ -125,7 +125,7 @@
             this.BtnOK.Location = new System.Drawing.Point(0, 0);
             this.BtnOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnOK.Name = "BtnOK";
-            this.BtnOK.Size = new System.Drawing.Size(150, 60);
+            this.BtnOK.Size = new System.Drawing.Size(200, 60);
             this.BtnOK.TabIndex = 4;
             this.BtnOK.Text = "OK";
             this.BtnOK.UseVisualStyleBackColor = false;

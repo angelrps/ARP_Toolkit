@@ -75,11 +75,23 @@
   <ItemGroup>
     <Compile Include="Entry\CmdMain.cs" />
     <Compile Include="Data\Helpers.cs" />
+    <Compile Include="Form\Form_Info1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Form_Info1.designer.cs">
+      <DependentUpon>Form_Info1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Form_Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\Form_Main.Designer.cs">
       <DependentUpon>Form_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Form_Results.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Form_Results.designer.cs">
+      <DependentUpon>Form_Results.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -89,9 +101,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form\Form_Info1.resx">
+      <DependentUpon>Form_Info1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\Form_Main.resx">
       <DependentUpon>Form_Main.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Form_Results.resx">
+      <DependentUpon>Form_Results.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

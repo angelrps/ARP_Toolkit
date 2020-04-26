@@ -16,12 +16,16 @@ using ArpUtilities;
 namespace Form
 {
     using static Data.Helpers;
+    using static Entry.CmdMain;
 
     public partial class Main_Form : System.Windows.Forms.Form
     {
         public Document m_doc;
         public UIDocument m_uidoc;
         public Autodesk.Revit.ApplicationServices.Application m_app;
+        public static int elemTry = 0;
+        public static int elemFail = 0;
+        public static int elemSuccess = 0;
 
         #region Variables for analytics
         private static Stopwatch useTime = new Stopwatch();         // total time user has the application open and it does actually make a transaction
@@ -46,19 +50,21 @@ namespace Form
 
         private void BtnOK_Click(object sender, EventArgs e)
         {
-            int elemTry = 0;
-            int elemFail = 0;
-            int elemSuccess = 0;
-
             if (RbtFlipHand.Checked == false && RbtFlipFacing.Checked == false && RbtFlipWalls.Checked == false)
             {
-                Autodesk.Revit.UI.TaskDialog.Show("Information", "You need to choose an option in order to flip.");
+                infoMsgMain = "Choose option";
+                infoMsgBody = "You need to choose an option in order to flip.";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
+                
             }
+
             if (RbtFlipHand.Checked == true)
             {
                 if (!GetSelectedDoors(m_uidoc).Any())
                 {
-                    Autodesk.Revit.UI.TaskDialog.Show("Information", "You need to make a Door selection.");
+                    infoMsgMain = "Select";
+                    infoMsgBody = "You need to select a door.";
+                    using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
                 }
                 else
                 {
@@ -86,8 +92,9 @@ namespace Form
                     executionTime.Stop();                                       // collect data for analytics
                     ExecTimeElapseS = executionTime.Elapsed.Seconds.ToString(); // collect data for analytics
 
-                    TaskDialog td = MyTaskDialog(elemTry, elemFail, elemSuccess);
-                    TaskDialogResult tResult = td.Show();
+                    // show Results Form
+                    using (UI.Info.Form_Results thisForm = new UI.Info.Form_Results()){ thisForm.ShowDialog(); }
+                    
                     DialogResult = DialogResult.OK;
 
                     useTime.Stop();
@@ -102,7 +109,9 @@ namespace Form
             {
                 if (!GetSelectedDoors(m_uidoc).Any())
                 {
-                    Autodesk.Revit.UI.TaskDialog.Show("Information", "You need to make a Door selection.");
+                    infoMsgMain = "Select";
+                    infoMsgBody = "You need to select one or more doors.";
+                    using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
                 }
                 else
                 {
@@ -130,8 +139,9 @@ namespace Form
                     executionTime.Stop();                                       // collect data for analytics
                     ExecTimeElapseS = executionTime.Elapsed.Seconds.ToString(); // collect data for analytics
 
-                    TaskDialog td = MyTaskDialog(elemTry, elemFail, elemSuccess);
-                    TaskDialogResult tResult = td.Show();
+                    // show Results Form
+                    using (UI.Info.Form_Results thisForm = new UI.Info.Form_Results()) { thisForm.ShowDialog(); }
+
                     DialogResult = DialogResult.OK;
 
                     useTime.Stop();
@@ -146,7 +156,9 @@ namespace Form
             {
                 if (!GetSelectedWalls(m_uidoc).Any())
                 {
-                    Autodesk.Revit.UI.TaskDialog.Show("Information", "You need to make a Wall selection.");
+                    infoMsgMain = "Select";
+                    infoMsgBody = "You need to select one or more walls.";
+                    using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
                 }
                 else
                 {
@@ -188,8 +200,9 @@ namespace Form
                     executionTime.Stop();                                       // collect data for analytics
                     ExecTimeElapseS = executionTime.Elapsed.Seconds.ToString(); // collect data for analytics
 
-                    TaskDialog td = MyTaskDialog(elemTry, elemFail, elemSuccess);
-                    TaskDialogResult tResult = td.Show();
+                    // show Results Form
+                    using (UI.Info.Form_Results thisForm = new UI.Info.Form_Results()) { thisForm.ShowDialog(); }
+
                     DialogResult = DialogResult.OK;
 
                     useTime.Stop();
@@ -230,17 +243,5 @@ namespace Form
         {
             Close();
         }
-
-        public static TaskDialog MyTaskDialog (int eTry, int eFail, int eSuccess)
-        {
-            TaskDialog tdInfo = new TaskDialog("Information")
-            {
-                MainIcon = TaskDialogIcon.TaskDialogIconInformation,
-                MainInstruction = eSuccess + " Elements have been flipped",
-                MainContent = String.Format("Attempted to flip {0} elements.\n\n{1} failures.", eTry, eFail),
-            };
-            return tdInfo;
-        }
-
     }
 }
