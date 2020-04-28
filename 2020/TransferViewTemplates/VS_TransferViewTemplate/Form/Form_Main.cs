@@ -21,7 +21,11 @@ namespace Form
     public partial class Form_Main : System.Windows.Forms.Form
     {
         public Document m_doc;
-        public Autodesk.Revit.ApplicationServices.Application m_app;
+        public Autodesk.Revit.ApplicationServices.Application m_app;    
+
+        public static List<string> resultBody = new List<string>();
+        public static string resultHead = "";
+        public static string resultMain = "";
 
         public Form_Main(Document doc, Autodesk.Revit.ApplicationServices.Application app)
         {
@@ -62,23 +66,19 @@ namespace Form
         }
 
         private void BtnOK_Click(object sender, EventArgs e)
-        {
-            string info = "";
-            string duplicatedNames = "";
+        {            
             CopyPasteOptions copyOpt = new CopyPasteOptions();
             Document sourceDoc = CbxOpenDocs.SelectedItem as Document;
             List<ElementId> templatesToCopy = new List<ElementId>();
+            List<string> duplicatedNames = new List<string>();
+            List<string> transferredViews = new List<string>();
 
             // is there at least one item selected?
             if (ClbTemplates.CheckedItems.Count == 0)
             {
-                TaskDialog tdItemChecked = new TaskDialog("Information")
-                {
-                    MainIcon = TaskDialogIcon.TaskDialogIconWarning,
-                    MainInstruction = "At least one View Template must be selected.",
-                    TitleAutoPrefix = false
-                };
-                TaskDialogResult tdInfoResult = tdItemChecked.Show();
+                UI.Info.Form_Info1.infoMsgMain = "Select";
+                UI.Info.Form_Info1.infoMsgBody = "Select one or more View Templates to continue.";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1()) { thisForm.ShowDialog(); }
             }
             
             // proceed to transfer
@@ -87,47 +87,47 @@ namespace Form
                 foreach (Autodesk.Revit.DB.View v in ClbTemplates.CheckedItems)
                 {
                     templatesToCopy.Add(v.Id);
-                    info += v.Name + "\n";
+                    transferredViews.Add(v.Name);
 
                     // get duplicated names
                     if (GetViewTemplateNames(m_doc).Contains(v.Name))
                     {
-                        duplicatedNames += "- " + v.Name + "\n";
+                        duplicatedNames.Add(v.Name);
                     }
                 }
-                if (duplicatedNames != "") // show message if there are duplicated names
+                // show message if there are duplicated names
+                if (duplicatedNames.Any())
                 {
-                    TaskDialog tdDuplicates = new TaskDialog("Information")
+                    resultHead = "Information";
+                    resultMain = "The following templates already exist or have the same name:";
+                    resultBody = duplicatedNames;
+                    // show message if there are duplicates
+                    using (UI.Info.Form_DupResults thisForm = new UI.Info.Form_DupResults())
                     {
-                        MainIcon = TaskDialogIcon.TaskDialogIconWarning,
-                        MainInstruction = "The following templates already exist or have the same name:"
-                                            + "\n" + "\n" + duplicatedNames
-                                            + "\n" + "\n" + "A suffix will be added to the name." + "\n"
-                                            + "Do you want to continue?",
-                        TitleAutoPrefix = false,
-                        CommonButtons =TaskDialogCommonButtons.No | TaskDialogCommonButtons.Yes,
-                    };
-                    TaskDialogResult tdInfoResult = tdDuplicates.Show();
+                        thisForm.ShowDialog();
 
-                    //TaskDialog.Show("Information", "The following templates already exist or have the same name."
-                    //                            + "\n" + "\n" + duplicatedNames
-                    //                            + "\n" + "\n" + "A suffix will be added to the name.");
-                    if (tdInfoResult == TaskDialogResult.No)    // close Taskdialog if press NO
-                    {
-                        DialogResult = DialogResult.None;
-                    }
-                    else // continue transfering view templates
-                    {
-                        using (Transaction t = new Transaction(m_doc, "Transfer View Templates"))
+                        // transfer view templates y pressed 'Yes'
+                        if (thisForm.DialogResult == DialogResult.Yes)
                         {
-                            t.Start();
-                            ElementTransformUtils.CopyElements(sourceDoc, templatesToCopy, m_doc, Transform.Identity, copyOpt);
-                            t.Commit();
+                            using (Transaction t = new Transaction(m_doc, "Transfer View Templates"))
+                            {
+                                t.Start();
+                                ElementTransformUtils.CopyElements(sourceDoc, templatesToCopy, m_doc, Transform.Identity, copyOpt);
+                                t.Commit();
+                            }
+                            // show Results Form
+                            resultHead = "Result";
+                            resultMain = "The following View Templates have been transferred:";
+                            resultBody = transferredViews;
+                            using (UI.Info.Form_Results ResultForm = new UI.Info.Form_Results())
+                            {
+                                ResultForm.ShowDialog();
+                            }
+                            DialogResult = DialogResult.OK;
                         }
-                        TaskDialog.Show("Information", "The following View Templates have been transferred:" + "\n" + "\n" + info);
-                        DialogResult = DialogResult.OK;
                     }
                 }
+                // go ahead if no duplicates
                 else
                 {
                     using (Transaction t = new Transaction(m_doc, "Transfer View Templates"))
@@ -136,12 +136,16 @@ namespace Form
                         ElementTransformUtils.CopyElements(sourceDoc, templatesToCopy, m_doc, Transform.Identity, copyOpt);
                         t.Commit();
                     }
-                    TaskDialog.Show("Information", "The following View Templates have been transferred:" + "\n" + "\n" + info);
+                    // show Results Form
+                    resultHead = "Result";
+                    resultMain = "The following View Templates have been transferred:";
+                    resultBody = transferredViews;
+                    using (UI.Info.Form_Results ResultForm = new UI.Info.Form_Results())
+                    {
+                        ResultForm.ShowDialog();
+                    }
                     DialogResult = DialogResult.OK;
                 }
-                
-                //TaskDialog.Show("Information", "The following View Templates have been transferred:" + "\n" + "\n" + info);
-                //DialogResult = DialogResult.OK;
             }
             catch (Exception)
             {

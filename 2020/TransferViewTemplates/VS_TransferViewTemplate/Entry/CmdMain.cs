@@ -23,19 +23,32 @@ namespace Entry
             UIApplication uiapp = commandData.Application;
             Application app = uiapp.Application;
             Document doc = commandData.Application.ActiveUIDocument.Document;
-
-            if (Data.Helpers.GetOpenDocuments(doc, app).Count() == 0)
-            {
-                TaskDialog.Show("Information", "There are not other project documents open in this session.\nThis application will close.");
-                return Result.Cancelled;
-            }
-
+            
+            // is family document
             if (doc.IsFamilyDocument)
             {
-                TaskDialog.Show("Information", "This is a family document.\nRun this tool in a project document.");
-                return Result.Cancelled;
+                UI.Info.Form_Info1.infoMsgMain = "Wrong document";
+                UI.Info.Form_Info1.infoMsgBody = "This is a family document.\nRun this tool in a project document.";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
+                {
+                    thisForm.ShowDialog();
+                    return Result.Cancelled;
+                }
             }
 
+            // are there other projects open?
+            if (Data.Helpers.GetOpenDocuments(doc, app).Count() == 0)
+            {
+                UI.Info.Form_Info1.infoMsgMain = "Project not found";
+                UI.Info.Form_Info1.infoMsgBody = "There are not other project documents open in this session.\nThis application will close.";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
+                {
+                    thisForm.ShowDialog();
+                    return Result.Cancelled;
+                }
+            }
+
+            // open main form
             using (Form.Form_Main thisForm = new Form.Form_Main(doc, app))
             {
                 thisForm.ShowDialog();
