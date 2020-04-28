@@ -55,6 +55,7 @@
             // 
             // BtnOk
             // 
+            this.BtnOk.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnOk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnOk.FlatAppearance.BorderSize = 0;
             this.BtnOk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(172)))), ((int)(((byte)(0)))));
@@ -142,6 +143,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.CancelButton = this.BtnOk;
             this.ClientSize = new System.Drawing.Size(500, 261);
             this.Controls.Add(this.LblLineSeparator);
             this.Controls.Add(this.LblInfo1Body);
