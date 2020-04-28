@@ -99,7 +99,7 @@
             this.BtnClose.Location = new System.Drawing.Point(304, 0);
             this.BtnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnClose.Name = "BtnClose";
-            this.BtnClose.Size = new System.Drawing.Size(150, 78);
+            this.BtnClose.Size = new System.Drawing.Size(150, 60);
             this.BtnClose.TabIndex = 3;
             this.BtnClose.Text = "Close";
             this.BtnClose.UseVisualStyleBackColor = false;
@@ -142,10 +142,10 @@
             this.panel1.BackColor = System.Drawing.Color.Gray;
             this.panel1.Controls.Add(this.BtnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 573);
+            this.panel1.Location = new System.Drawing.Point(0, 591);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(454, 78);
+            this.panel1.Size = new System.Drawing.Size(454, 60);
             this.panel1.TabIndex = 7;
             // 
             // label1
