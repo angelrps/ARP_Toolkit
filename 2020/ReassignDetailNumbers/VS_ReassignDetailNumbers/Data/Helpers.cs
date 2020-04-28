@@ -33,7 +33,7 @@ namespace Data
             return vList;
         }
 
-        public static Dictionary<string, Element> GetAllViewports_DICT (Document doc, List<Element> viewports)
+        public static Dictionary<string, Element> GetAllViewports_DICT (List<Element> viewports)
         {
             Dictionary<string, Element> vDict = new Dictionary<string, Element>();
 
@@ -56,13 +56,13 @@ namespace Data
         }
 
         // find max detail number value of viewports
-        public static int MaxDetailNumber (Document doc, List<Element> viewports)
+        public static int MaxDetailNumber (List<Element> viewports)
         {
-            Dictionary<string, Element> vDict = GetAllViewports_DICT(doc, viewports);
+            Dictionary<string, Element> vDict = GetAllViewports_DICT(viewports);
 
             string[] detNumsArray;
             List<int> detNumsIntegers = new List<int>();
-            int maxNumber = 0;
+            int maxNumber;
 
             foreach (string st in vDict.Keys)
             {
