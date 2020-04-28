@@ -41,10 +41,10 @@
             this.CbxDependent = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.LblLineSeparator = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.LblLineSeparator = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.NumOfCopies)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -57,7 +57,7 @@
             this.TxbSearch.BackColor = System.Drawing.Color.WhiteSmoke;
             this.TxbSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxbSearch.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxbSearch.Location = new System.Drawing.Point(74, 93);
+            this.TxbSearch.Location = new System.Drawing.Point(75, 97);
             this.TxbSearch.Multiline = true;
             this.TxbSearch.Name = "TxbSearch";
             this.TxbSearch.Size = new System.Drawing.Size(468, 25);
@@ -69,7 +69,7 @@
             this.LblSearch.AutoSize = true;
             this.LblSearch.BackColor = System.Drawing.Color.Transparent;
             this.LblSearch.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSearch.Location = new System.Drawing.Point(16, 99);
+            this.LblSearch.Location = new System.Drawing.Point(20, 100);
             this.LblSearch.Name = "LblSearch";
             this.LblSearch.Size = new System.Drawing.Size(52, 19);
             this.LblSearch.TabIndex = 2;
@@ -98,7 +98,7 @@
             this.LblNum.BackColor = System.Drawing.Color.Transparent;
             this.LblNum.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblNum.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.LblNum.Location = new System.Drawing.Point(17, 48);
+            this.LblNum.Location = new System.Drawing.Point(20, 65);
             this.LblNum.Name = "LblNum";
             this.LblNum.Size = new System.Drawing.Size(119, 17);
             this.LblNum.TabIndex = 4;
@@ -109,7 +109,7 @@
             this.NumOfCopies.AllowDrop = true;
             this.NumOfCopies.BackColor = System.Drawing.Color.WhiteSmoke;
             this.NumOfCopies.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.NumOfCopies.Location = new System.Drawing.Point(142, 49);
+            this.NumOfCopies.Location = new System.Drawing.Point(140, 65);
             this.NumOfCopies.Minimum = new decimal(new int[] {
             1,
             0,
@@ -186,7 +186,7 @@
             this.CbxDependent.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CbxDependent.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbxDependent.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.CbxDependent.Location = new System.Drawing.Point(254, 49);
+            this.CbxDependent.Location = new System.Drawing.Point(250, 65);
             this.CbxDependent.Name = "CbxDependent";
             this.CbxDependent.Size = new System.Drawing.Size(288, 21);
             this.CbxDependent.TabIndex = 8;
@@ -214,6 +214,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(564, 50);
             this.panel2.TabIndex = 10;
+            // 
+            // LblLineSeparator
+            // 
+            this.LblLineSeparator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblLineSeparator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LblLineSeparator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LblLineSeparator.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.LblLineSeparator.Location = new System.Drawing.Point(10, 40);
+            this.LblLineSeparator.Name = "LblLineSeparator";
+            this.LblLineSeparator.Size = new System.Drawing.Size(540, 2);
+            this.LblLineSeparator.TabIndex = 33;
             // 
             // pictureBox1
             // 
@@ -244,24 +256,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 6);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(20, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 25);
+            this.label1.Size = new System.Drawing.Size(362, 19);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Select Sheet";
-            // 
-            // LblLineSeparator
-            // 
-            this.LblLineSeparator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LblLineSeparator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.LblLineSeparator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LblLineSeparator.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.LblLineSeparator.Location = new System.Drawing.Point(10, 40);
-            this.LblLineSeparator.Name = "LblLineSeparator";
-            this.LblLineSeparator.Size = new System.Drawing.Size(540, 2);
-            this.LblLineSeparator.TabIndex = 33;
+            this.label1.Text = "Select Sheet, number of copies and duplicate option:";
             // 
             // Form_Main
             // 
