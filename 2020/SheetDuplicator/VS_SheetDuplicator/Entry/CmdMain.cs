@@ -29,14 +29,13 @@ namespace Entry
             #region Is family document?
             if (doc.IsFamilyDocument)
             {
-                TaskDialog tdFamily = new TaskDialog("Information")
+                UI.Info.Form_Info1.infoMsgMain = "Wrong document";
+                UI.Info.Form_Info1.infoMsgBody = "This is a family document.\nRun this tool in a project document.";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
                 {
-                    MainIcon = TaskDialogIcon.TaskDialogIconWarning,
-                    MainInstruction = "This is a family document.\nRun this tool in a project document.",
-                    TitleAutoPrefix = false
-                };
-                TaskDialogResult tdInfoResult = tdFamily.Show();
-                return Result.Cancelled;
+                    thisForm.ShowDialog();
+                    return Result.Cancelled;
+                }
             }
             #endregion
 

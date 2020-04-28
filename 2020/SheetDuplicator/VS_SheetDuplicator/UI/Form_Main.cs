@@ -24,9 +24,13 @@ namespace UI
         public Autodesk.Revit.ApplicationServices.Application m_app;
         public bool transactionMade = false; // to check if a transaction has been made before closing the dialog, to trigger Analytics method
 
+        public static string resultHead = "";
+        public static string resultMain = "";
+        public static string resultBody = "";
+
         #region Variables for analytics
-        private static Stopwatch useTime = new Stopwatch(); // total time user has the application open and it does actually make a transaction
-        private static Stopwatch executionTime = new Stopwatch();   // net time of the sheet duplication
+        readonly private static Stopwatch useTime = new Stopwatch(); // total time user has the application open and it does actually make a transaction
+        readonly private static Stopwatch executionTime = new Stopwatch();   // net time of the sheet duplication
 
         public static string UseTimeElapseS { get; set; } = "";
         public static string ExecTimeElapseS { get; set; } = "";
@@ -65,13 +69,12 @@ namespace UI
             // is there at least one item selected?
             if (LsvSheets.CheckedItems.Count == 0)
             {
-                TaskDialog tdItemChecked = new TaskDialog("Information")
+                UI.Info.Form_Info1.infoMsgMain = "Select";
+                UI.Info.Form_Info1.infoMsgBody = "Select one sheet to continue.";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
                 {
-                    MainIcon = TaskDialogIcon.TaskDialogIconWarning,
-                    MainInstruction = "At least one sheet must be selected.",
-                    TitleAutoPrefix = false
-                };
-                TaskDialogResult tdInfoResult = tdItemChecked.Show();
+                    thisForm.ShowDialog();
+                }
             }
 
             // proceed with duplication
@@ -99,35 +102,36 @@ namespace UI
                 executionTime.Stop(); // stop execution time counter
                 ExecTimeElapseS = executionTime.Elapsed.Seconds.ToString();
 
-                TaskDialog tdContinue = new TaskDialog("Information")
+                #region show Results Form
+                resultHead = "Results";
+                resultMain = string.Format("You have made {0} copies of:{1}{1}'{2}'", copies, Environment.NewLine, sourceSheet.Name);
+                resultBody = string.Format("NOTE: A suffix 'DupX' has been added to the view names.{0}" +
+                                            "Please, rename the views appropriately.", Environment.NewLine);
+;                using (UI.Info.Form_Results thisForm = new Info.Form_Results())
                 {
-                    MainIcon = TaskDialogIcon.TaskDialogIconInformation,
-                    MainInstruction = string.Format("You have made {1} copies of '{0}'.\n\nNOTE: A suffix 'DupX' has been added to the view names. "
-                                                    + "Please, rename the views appropriately. \n\nDo you want to duplicate another sheet?"
-                                                    , sourceSheet.Name, copies),
-                    CommonButtons = TaskDialogCommonButtons.Yes | TaskDialogCommonButtons.No,
-                    TitleAutoPrefix = false
-                };
-                switch (tdContinue.Show())
-                {
-                    case TaskDialogResult.Yes:
+                    thisForm.ShowDialog();
+                    if (thisForm.DialogResult == DialogResult.No)
+                    {
+                        useTime.Stop();
+                        UseTimeElapseS = useTime.Elapsed.Seconds.ToString();
+                        Utilities.GetAnalyticsCSV(m_doc, m_app);
+                        Data.Helpers.DuplicateSheetsAnalytics(m_doc, m_app, UseTimeElapseS, ExecTimeElapseS, Ana_NoOfCopies, Ana_NoOfViewports, Ana_SheetNumber, Ana_SheetName);
+
+                        DialogResult = DialogResult.OK;
+                    }
+                    if (thisForm.DialogResult == DialogResult.Yes)
+                    {
+                        LoadSheets();
+                        // get analytics data
                         useTime.Stop();
                         UseTimeElapseS = useTime.Elapsed.Seconds.ToString();
                         Utilities.GetAnalyticsCSV(m_doc, m_app);
                         Data.Helpers.DuplicateSheetsAnalytics(m_doc, m_app, UseTimeElapseS, ExecTimeElapseS, Ana_NoOfCopies, Ana_NoOfViewports, Ana_SheetNumber, Ana_SheetName);
                         useTime.Restart();    // reset use time and start time counter again
-                        break;
-
-                    case TaskDialogResult.No:
-                        useTime.Stop();
-                        UseTimeElapseS = useTime.Elapsed.Seconds.ToString();
-                        Utilities.GetAnalyticsCSV(m_doc, m_app);
-                        Data.Helpers.DuplicateSheetsAnalytics(m_doc, m_app, UseTimeElapseS, ExecTimeElapseS, Ana_NoOfCopies, Ana_NoOfViewports, Ana_SheetNumber, Ana_SheetName);
-
-                        DialogResult = DialogResult.OK;                        
-                        break;
+                    }
                 }
-            }            
+                #endregion
+            }
         }
 
         // text box filter behavior
@@ -203,6 +207,7 @@ namespace UI
 
         private void LoadSheets()
         {
+            LsvSheets.Items.Clear();
             // set font bold so the header is bold
             LsvSheets.Columns[0].ListView.Font = new Font(LsvSheets.Columns[0].ListView.Font, FontStyle.Bold);
 
