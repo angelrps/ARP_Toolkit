@@ -26,11 +26,18 @@ namespace Entry
             UIDocument uidoc = commandData.Application.ActiveUIDocument;
             Document doc = commandData.Application.ActiveUIDocument.Document;
 
+            #region Is family document?
             if (doc.IsFamilyDocument)
             {
-                TaskDialog.Show("Information", "This is a family document.\nRun this tool in a project document.");
-                return Result.Cancelled;
+                UI.Info.Form_Info1.infoMsgMain = "Wrong document";
+                UI.Info.Form_Info1.infoMsgBody = "This is a family document.\nRun this tool in a project document.";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
+                {
+                    thisForm.ShowDialog();
+                    return Result.Cancelled;
+                }
             }
+            #endregion
 
             using (UI.Form_Main thisForm = new UI.Form_Main(doc))
             {

@@ -82,73 +82,95 @@ namespace UI
 
         private void BtnCreate_Click(object sender, EventArgs e)
         {
-            // check if at least one item is selected
-            if (LsvSheets.CheckedItems.Count == 0)
-            {
-                TaskDialog.Show("Information", "At least one sheet must be selected");
-            }
-
-            // check if the user entered a Set Name
+            #region check Sheet Set Name entered?
             if (TxbSetName.Text == "")
             {
-                TaskDialog.Show("Information", "Please, enter Sheet Set Name.");
+                UI.Info.Form_Info1.infoMsgMain = "Value missing";
+                UI.Info.Form_Info1.infoMsgBody = "Please, enter Sheet Set Name to continue.";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
+                {
+                    thisForm.ShowDialog();
+                }
+                return;
             }
-            else
+            #endregion// check if the user entered a Set Name
+
+            #region check if new print set name exists
+            // get new sheet set name
+            string sheetSetName = TxbSetName.Text;
+
+            // collect existing view sheet sets
+            List<Element> existingViewSheetSet = new FilteredElementCollector(m_doc)
+                                                     .OfClass(typeof(ViewSheetSet))
+                                                     .WhereElementIsNotElementType()
+                                                     .ToElements()
+                                                     .ToList();
+            Dictionary<Element, string> existingVSSDict = new Dictionary<Element, string>();
+            foreach (Element el in existingViewSheetSet)
             {
-                string sheetSetName = TxbSetName.Text;
-
-                // collect selected sheets
-                List<string> selSheetsTxt = new List<string>();
-                List<ViewSheet> allViewSheets = Data.Helpers.GetViewSheets(m_doc);
-                foreach (ListViewItem lv in LsvSheets.CheckedItems)
-                {
-                    selSheetsTxt.Add(lv.SubItems[0].Text);
-                }
-                List<ViewSheet> selViewSheets = Data.Helpers.GetSelectedSheets(allViewSheets, selSheetsTxt);
-
-                // collect existing view sheet sets
-                List<Element> existingViewSheetSet = new FilteredElementCollector(m_doc)
-                                                         .OfClass(typeof(ViewSheetSet))
-                                                         .WhereElementIsNotElementType()
-                                                         .ToElements()
-                                                         .ToList();
-
-                // check if new print set name exists
-                Dictionary<Element, string> existingVSSDict = new Dictionary<Element, string>();
-                foreach (Element el in existingViewSheetSet)
-                {
-                    existingVSSDict.Add(el, el.Name);
-                }
-                if (existingVSSDict.ContainsValue(sheetSetName))
-                {
-                    TaskDialog.Show("Information", "You have chosen a Sheet Set Name that already exists.\nPlease enter a different name.");
-                }
-                else
-                {
-                    using (Transaction t = new Transaction(m_doc, "Create New Sheet Set"))
-                    {
-                        t.Start();
-                        PrintManager printManager = m_doc.PrintManager;
-                        printManager.PrintRange = PrintRange.Select;
-                        ViewSheetSetting existingPrintSets = printManager.ViewSheetSetting;
-
-                        // create ViewSet
-                        ViewSet myViewSet = new ViewSet();
-                        foreach (ViewSheet vs in selViewSheets)
-                        {
-                            myViewSet.Insert(vs);
-                        }
-
-                        existingPrintSets.CurrentViewSheetSet.Views = myViewSet;
-                        existingPrintSets.SaveAs(sheetSetName);
-                        t.Commit();
-                    }
-                    TaskDialog.Show("Information", $"A new Sheet Set '{sheetSetName}' has been added to the project.");
-                    DialogResult = DialogResult.OK;
-                }
+                existingVSSDict.Add(el, el.Name);
             }
+            if (existingVSSDict.ContainsValue(sheetSetName))
+            {
+                UI.Info.Form_Info1.infoMsgMain = "Duplicated name";
+                UI.Info.Form_Info1.infoMsgBody = "You have chosen a Sheet Set Name that already exists.\nPlease enter a different name.";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
+                {
+                    thisForm.ShowDialog();
+                }
+                return;
+            }
+            #endregion
 
+            #region check sheets selected?
+            if (LsvSheets.CheckedItems.Count == 0)
+            {
+                UI.Info.Form_Info1.infoMsgMain = "Select";
+                UI.Info.Form_Info1.infoMsgBody = "Please, select one or more sheets to continue.";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
+                {
+                    thisForm.ShowDialog();
+                }
+                return;
+            }
+            #endregion        
 
+            #region create Sheet Set
+            // collect selected sheets
+            List<string> selSheetsTxt = new List<string>();
+            List<ViewSheet> allViewSheets = Data.Helpers.GetViewSheets(m_doc);
+            foreach (ListViewItem lv in LsvSheets.CheckedItems)
+            {
+                selSheetsTxt.Add(lv.SubItems[0].Text);
+            }
+            List<ViewSheet> selViewSheets = Data.Helpers.GetSelectedSheets(allViewSheets, selSheetsTxt);
+            using (Transaction t = new Transaction(m_doc, "Create New Sheet Set"))
+            {
+                t.Start();
+                PrintManager printManager = m_doc.PrintManager;
+                printManager.PrintRange = PrintRange.Select;
+                ViewSheetSetting existingPrintSets = printManager.ViewSheetSetting;
+
+                // create ViewSet
+                ViewSet myViewSet = new ViewSet();
+                foreach (ViewSheet vs in selViewSheets)
+                {
+                    myViewSet.Insert(vs);
+                }
+
+                existingPrintSets.CurrentViewSheetSet.Views = myViewSet;
+                existingPrintSets.SaveAs(sheetSetName);
+                t.Commit();
+            }
+            #endregion
+
+            #region show Results Form
+            UI.Info.Form_Info1.infoMsgMain = "Results";
+            UI.Info.Form_Info1.infoMsgBody = $"A new Sheet Set '{sheetSetName}' has been added to the project.";
+            using (UI.Info.Form_Info1 thisForm = new Info.Form_Info1()) { thisForm.ShowDialog(); }
+            #endregion
+
+            DialogResult = DialogResult.OK;
         }
 
         // remove "Filter" text and change font to black when searching

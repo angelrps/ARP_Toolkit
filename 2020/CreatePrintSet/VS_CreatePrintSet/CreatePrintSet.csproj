@@ -80,6 +80,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UI\Form_Info1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form_Info1.designer.cs">
+      <DependentUpon>Form_Info1.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Form_Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form_Info1.resx">
+      <DependentUpon>Form_Info1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Form_Main.resx">
       <DependentUpon>Form_Main.cs</DependentUpon>

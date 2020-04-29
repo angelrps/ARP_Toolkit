@@ -286,7 +286,7 @@
             this.Name = "Form_Main";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Create Print Set From Selected Sheets";
+            this.Text = "Create Print Set";
             this.Load += new System.EventHandler(this.Form_Main_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
