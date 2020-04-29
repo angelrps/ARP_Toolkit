@@ -97,14 +97,14 @@ namespace UI
             {
                 if (item != selectedItem && item.Text == selectedItem.Text)
                 {
-                    TaskDialog tdCheckWarning = new TaskDialog("Information")
+                    UI.Info.Form_Info1.infoMsgMain = "Duplicated Selection";
+                    UI.Info.Form_Info1.infoMsgBody = "This filter is already selected in another template." +
+                                                    "\nYou can only select a filter once." +
+                                                    "\nThis filter will be unchecked.";
+                    using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
                     {
-                        MainIcon = TaskDialogIcon.TaskDialogIconWarning,
-                        MainInstruction = "This filter is already selected in another template. \nYou can only select a filter once. \nThis filter will be unchecked.",
-                        TitleAutoPrefix = false
-                    };
-                    TaskDialogResult tdInfoResult = tdCheckWarning.Show();
-
+                        thisForm.ShowDialog();
+                    }
                     e.NewValue = CheckState.Unchecked;
                 }
             }            
@@ -112,11 +112,28 @@ namespace UI
 
         private void BtnTransfer_Click(object sender, EventArgs e)
         {
-            string infoFiltersTransferred = "None";
-            string infoFiltersGraphicOverriden = "None";
+            List<string> infoFiltersTransferred = new List<string>();
+            List<string> infoFiltersGraphicOverriden = new List<string>();
+
+            #region items selected?
+            if (LsvFilters.CheckedItems.Count == 0)
+            {
+                UI.Info.Form_Info1.infoMsgMain = "Select";
+                UI.Info.Form_Info1.infoMsgBody = "Select one or more View Filters from the list to continue.";
+                using (UI.Info.Form_Info1 thisForm = new Info.Form_Info1()) { thisForm.ShowDialog(); }
+                return;
+            }
+            if (LsvTemplates.CheckedItems.Count == 0)
+            {
+                UI.Info.Form_Info1.infoMsgMain = "Select";
+                UI.Info.Form_Info1.infoMsgBody = "Select one or more View Templates from the list to continue.";
+                using (UI.Info.Form_Info1 thisForm = new Info.Form_Info1()) { thisForm.ShowDialog(); }
+                return;
+            }
+            #endregion
 
             #region CHECK IF FILTER IS ALREADY APPLIED
-            string infoIsFilterApplied = "";
+            List<string> infoIsFilterApplied = new List<string>();
             bool triggerIsFilterApplied = false;
             foreach (ListViewItem tItem in LsvTemplates.CheckedItems)    // LOOP THROUGH TEMPLATES
             {
@@ -128,23 +145,22 @@ namespace UI
                     ElementId filterId = new ElementId(vItem.ImageIndex);
                     if (template.IsFilterApplied(filterId))
                     {
-                        infoIsFilterApplied += vItem.Text + " : " + template.Name + "\n" + "";
+                        infoIsFilterApplied.Add(string.Format("{0} -> {1}",vItem.Text, template.Name));
                         triggerIsFilterApplied = true;
                     }
                 }                
             }
             if (triggerIsFilterApplied)
             {
-                TaskDialog tdContinue = new TaskDialog("Information")
+                // show warning form
+                UI.Info.Form_Warning.warningHead = "You should know...";
+                UI.Info.Form_Warning.warningMain = "The following Filters are already applied to one or more selected View Templates:";
+                UI.Info.Form_Warning.warningFoot = "Graphic settings will be overriden.";
+                UI.Info.Form_Warning.warningList = infoIsFilterApplied;
+                using (UI.Info.Form_Warning thisForm = new Info.Form_Warning())
                 {
-                    MainIcon = TaskDialogIcon.TaskDialogIconInformation,
-                    MainInstruction = string.Format("The following Filters are already applied to one or more selected View Templates:\n\n" +
-                                                    "{0}\nGraphic settings will be overriden."
-                                                    , infoIsFilterApplied),
-                    CommonButtons = TaskDialogCommonButtons.Ok,
-                    TitleAutoPrefix = false
-                };
-                TaskDialogResult tdContinueResult = tdContinue.Show();
+                    thisForm.ShowDialog();
+                }
             }
             #endregion
 
@@ -174,8 +190,7 @@ namespace UI
                             targetTemplate.AddFilter(filterId);
                             targetTemplate.SetFilterOverrides(filterId, graphSetting);
 
-                            infoFiltersTransferred = infoFiltersTransferred.Replace("None", ""); // remove "none" from original string value
-                            infoFiltersTransferred += m_doc.GetElement(filterId).Name + " : " + targetTemplate.Name + "\n";
+                            infoFiltersTransferred.Add(m_doc.GetElement(filterId).Name + " -> " + targetTemplate.Name);
 
                             Ana_NoOfFilters_Applied += 1;       // collect data for analytics
                         }
@@ -184,8 +199,7 @@ namespace UI
                         {
                             targetTemplate.SetFilterOverrides(filterId, graphSetting);
 
-                            infoFiltersGraphicOverriden = infoFiltersGraphicOverriden.Replace("None", ""); // remove "none" from original string value
-                            infoFiltersGraphicOverriden += m_doc.GetElement(filterId).Name + " : " + targetTemplate.Name + "\n";
+                            infoFiltersGraphicOverriden.Add(m_doc.GetElement(filterId).Name + " -> " + targetTemplate.Name);
 
                             Ana_NoOfFilters_Overriden += 1;     // collect data for analytics
                         }
@@ -199,19 +213,20 @@ namespace UI
             ExecTimeElapseS = executionTime.Elapsed.Seconds.ToString();     // collect data for analytics
             #endregion
 
-            // INFORMATION DIALOG
-            TaskDialog tdInfo = new TaskDialog("Information")
-            {
-                MainIcon = TaskDialogIcon.TaskDialogIconInformation,
-                MainInstruction = "FILTERS TRANSFERRED:" + "\n" + "\n" // Filters Transferred
-                                   + infoFiltersTransferred + "\n" + "\n"
-                                   + "FILTERS WITH GRAPHIC SETTINGS OVERRIDEN:" + "\n" + "\n"  //Filters with graphic settings overriden
-                                   + infoFiltersGraphicOverriden,
-                TitleAutoPrefix = false
-            };
-            TaskDialogResult tdInfoResult = tdInfo.Show();
+            #region show Results Form
+            UI.Info.Form_Results.resultHead = "Results";
+            UI.Info.Form_Results.resultMain1 = "Filters Transferred:";
+            UI.Info.Form_Results.resultMain2 = "Filters with Graphic Settings Overriden";
+            UI.Info.Form_Results.resultList1 = infoFiltersTransferred;
+            UI.Info.Form_Results.resultList2 = infoFiltersGraphicOverriden;
 
-            DialogResult = DialogResult.OK;
+            using (UI.Info.Form_Results thisForm = new Info.Form_Results())
+            {
+                thisForm.ShowDialog();
+            }
+            #endregion// show Results Form
+
+            //DialogResult = DialogResult.OK;
             useTime.Stop();
             UseTimeElapseS = useTime.Elapsed.Seconds.ToString();    // collect data for analytics
             Utilities.GetAnalyticsCSV(m_doc, m_app);
