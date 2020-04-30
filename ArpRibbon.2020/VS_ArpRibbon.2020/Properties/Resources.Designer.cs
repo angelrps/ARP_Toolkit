@@ -61,6 +61,16 @@ namespace ArpRibbon.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] ARP_Toolkit_Documentation {
+            get {
+                object obj = ResourceManager.GetObject("ARP_Toolkit_Documentation", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap logo_gris {

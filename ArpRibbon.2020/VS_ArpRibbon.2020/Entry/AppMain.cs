@@ -62,7 +62,7 @@ namespace Entry
             RibbonPanel modelManagementPanel = application.CreateRibbonPanel(ArpTabName, "Model Management");
             RibbonPanel drawingsPanel = application.CreateRibbonPanel(ArpTabName, "Drawings");
             RibbonPanel printPanel = application.CreateRibbonPanel(ArpTabName, "Print");
-            RibbonPanel helpPanel = application.CreateRibbonPanel(ArpTabName, "ARP Tools v" + AssemblyVersion);
+            RibbonPanel helpPanel = application.CreateRibbonPanel(ArpTabName, "ARP Toolkit v" + AssemblyVersion);
             #endregion
 
             #region Create Buttons            
@@ -376,36 +376,24 @@ namespace Entry
         #region importReplacement method
         public void ImportReplacement(object sender, Autodesk.Revit.UI.Events.BeforeExecutedEventArgs arg)
         {
-            TaskDialog td = new TaskDialog("Warning!")
-            {
-                MainIcon = TaskDialogIcon.TaskDialogIconWarning,
-                MainInstruction = "Stop! Do not import CAD!" + "\n"
-                                + "It is not the best practice." + "\n" + "\n"
-                                + "You can use \'Link CAD\' instead." + "\n" + "\n"
-                                + "Consider speaking with your BIM Manager.",
-
-                CommonButtons = TaskDialogCommonButtons.Ok,
-                TitleAutoPrefix = false
-            };
-            TaskDialogResult tResult = td.Show();
+            UI.Info.Form_Warning.warningMsgHead = "Stop!";
+            UI.Info.Form_Warning.warningMsgMain = "Are you trying to import a CAD?";
+            UI.Info.Form_Warning.warningMsgBody = "That is not the best practice.\n" +
+                                                 "You should use 'Link CAD' instead!\n" +
+                                                 "Please reconsider your actions...";
+            using (UI.Info.Form_Warning thisForm = new UI.Info.Form_Warning()) { thisForm.ShowDialog(); }
         }
         #endregion
 
         #region inplaceReplacement method
         public void InplaceReplacement(object sender, Autodesk.Revit.UI.Events.BeforeExecutedEventArgs arg)
         {
-            TaskDialog td = new TaskDialog("Warning!")
-            {
-                MainIcon = TaskDialogIcon.TaskDialogIconWarning,
-                MainInstruction = "Stop! Do not create In-place Components!" + "\n"
-                                + "It is not the best practice." + "\n" + "\n"
-                                + "I´m sure you can use an external family instead!" + "\n" + "\n"
-                                + "Please speak with your BIM Manager before proceeding.",
-
-                CommonButtons = TaskDialogCommonButtons.Ok,
-                TitleAutoPrefix = false
-            };
-            TaskDialogResult tResult = td.Show();
+            UI.Info.Form_Warning.warningMsgHead = "Stop!";
+            UI.Info.Form_Warning.warningMsgMain = "Are you trying to create an In-Place Component?";
+            UI.Info.Form_Warning.warningMsgBody = "That is not usually the best practice.\n" +
+                                                 "I´m sure you that can use a loadable family instead!\n" +
+                                                 "Please reconsider your actions...";
+            using (UI.Info.Form_Warning thisForm = new UI.Info.Form_Warning()) { thisForm.ShowDialog(); }
         }
         #endregion
     }

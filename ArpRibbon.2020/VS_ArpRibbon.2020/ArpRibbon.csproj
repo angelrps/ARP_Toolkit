@@ -92,8 +92,18 @@
     <Compile Include="UI\Form_Help.Designer.cs">
       <DependentUpon>Form_Help.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Form_Warning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form_Warning.designer.cs">
+      <DependentUpon>Form_Warning.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\ARP Toolkit_Documentation.pdf" />
+    <EmbeddedResource Include="UI\Form_Warning.resx">
+      <DependentUpon>Form_Warning.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Resources\logo gris1.png" />
     <None Include="Resources\logo gris.png" />
     <Resource Include="Resources\UserGuide_100x100.png" />
