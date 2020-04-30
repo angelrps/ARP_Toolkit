@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <RevitAddIns>
   <AddIn Type="Application">
-    <Name>ARP Tools</Name>
+    <Name>ARP Toolkit</Name>
     <Assembly>ArpRibbon.dll</Assembly>
     <FullClassName>Entry.AppMain</FullClassName>
     <ClientId>0c37a558-6df2-44b7-b367-70b469a399a7</ClientId>

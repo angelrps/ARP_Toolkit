@@ -15,7 +15,7 @@ namespace Entry
 {
     public class AppMain : IExternalApplication
     {
-        private const string ArpTabName = "ARP Tools"; //tab name is a constant so it can never be changed
+        private const string ArpTabName = "ARP Toolkit"; //tab name is a constant so it can never be changed
         //private string _path; //declare assembly path
         public static string AssemblyPath { get; private set; }
 
