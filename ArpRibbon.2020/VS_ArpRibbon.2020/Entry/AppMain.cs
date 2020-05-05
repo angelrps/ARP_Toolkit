@@ -85,7 +85,7 @@ namespace Entry
                 deleteFiltersButton.ToolTip = "Removed unused view filters from the project.";
 
                 // bitmap image for the button
-                BitmapImage deleteFiltersLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/DeleteUnusedFiltersIcon_32.ico"));
+                BitmapImage deleteFiltersLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/DeleteUnusedFilters_32.ico"));
                 deleteFiltersButton.LargeImage = deleteFiltersLargeImage;
                 #endregion
 
@@ -360,7 +360,7 @@ namespace Entry
 
             helpButton.ToolTip = "ARP Tools info and User Guide.";
 
-            BitmapImage helpLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/Help_32x32.ico"));
+            BitmapImage helpLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/Help_32.ico"));
             helpButton.LargeImage = helpLargeImage;
             #endregion
             #endregion

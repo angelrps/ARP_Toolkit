@@ -107,27 +107,27 @@
     <None Include="Resources\logo gris1.png" />
     <None Include="Resources\logo gris.png" />
     <Resource Include="Resources\UserGuide_100x100.png" />
-    <Resource Include="Icons\ParameterMapper_32.ico" />
-    <Resource Include="Icons\PurgeNestedFamilies_32.ico" />
-    <Resource Include="Icons\DeleteUnusedFiltersIcon_32.ico" />
-    <Resource Include="Icons\DeleteUnusedTextNoteTypesIcon_32.ico" />
-    <Resource Include="Icons\RoomCentroidAndTags_32.ico" />
-    <Resource Include="Icons\ScheduleToExcel_32.ico" />
-    <Resource Include="Icons\Flip_32.ico" />
     <Content Include="Change Log.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Icons\TransferViewTemplates_32.ico" />
-    <Resource Include="Icons\CreatePrintSet_32.ico" />
-    <Resource Include="Icons\AssignViewTemplates_32.ico" />
+    <Resource Include="Icons\DeleteUnusedFilters_32.ico" />
+    <Resource Include="Icons\DeleteUnusedTextNoteTypesIcon_32.ico" />
+    <Resource Include="Icons\PurgeNestedFamilies_32.ico" />
     <Resource Include="Icons\RemoveEmptyElevationTags_32.ico" />
-    <Resource Include="Icons\TransferWorksets_32.ico" />
-    <Resource Include="Icons\ReassignDetailNumber_32.ico" />
     <Resource Include="Icons\PurgeDimStyles_32.ico" />
     <Resource Include="Icons\ParameterLoader_32.ico" />
+    <Resource Include="Icons\ParameterMapper_32.ico" />
+    <Resource Include="Icons\ScheduleToExcel_32.ico" />
+    <Resource Include="Icons\RoomCentroidAndTags_32.ico" />
+    <Resource Include="Icons\Flip_32.ico" />
+    <Resource Include="Icons\TransferViewTemplates_32.ico" />
+    <Resource Include="Icons\AssignViewTemplates_32.ico" />
+    <Resource Include="Icons\ReassignDetailNumber_32.ico" />
     <Resource Include="Icons\SheetDuplicator_32.ico" />
-    <Resource Include="Icons\Help_32x32.ico" />
     <Resource Include="Icons\TransferViewFilters_32.ico" />
+    <Resource Include="Icons\CreatePrintSet_32.ico" />
+    <Resource Include="Icons\Help_32.ico" />
+    <Resource Include="Icons\TransferWorksets_32.ico" />
     <Content Include="PackageContents.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
