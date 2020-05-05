@@ -47,10 +47,10 @@
             this.panel1.BackColor = System.Drawing.Color.Gray;
             this.panel1.Controls.Add(this.BtnOk);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 283);
+            this.panel1.Location = new System.Drawing.Point(0, 251);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(514, 78);
+            this.panel1.Size = new System.Drawing.Size(514, 60);
             this.panel1.TabIndex = 20;
             // 
             // BtnOk
@@ -64,7 +64,7 @@
             this.BtnOk.Location = new System.Drawing.Point(0, 0);
             this.BtnOk.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.BtnOk.Name = "BtnOk";
-            this.BtnOk.Size = new System.Drawing.Size(514, 78);
+            this.BtnOk.Size = new System.Drawing.Size(514, 60);
             this.BtnOk.TabIndex = 7;
             this.BtnOk.Text = "OK";
             this.BtnOk.UseVisualStyleBackColor = true;
@@ -135,7 +135,7 @@
             this.TbxResultMessage.Multiline = true;
             this.TbxResultMessage.Name = "TbxResultMessage";
             this.TbxResultMessage.ReadOnly = true;
-            this.TbxResultMessage.Size = new System.Drawing.Size(470, 150);
+            this.TbxResultMessage.Size = new System.Drawing.Size(470, 120);
             this.TbxResultMessage.TabIndex = 34;
             this.TbxResultMessage.Text = "(placeholder text)";
             this.TbxResultMessage.WordWrap = false;
@@ -145,21 +145,22 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(514, 361);
+            this.ClientSize = new System.Drawing.Size(514, 311);
             this.Controls.Add(this.TbxResultMessage);
             this.Controls.Add(this.LblLineSeparator);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(530, 1500);
-            this.MinimumSize = new System.Drawing.Size(510, 400);
+            this.MinimumSize = new System.Drawing.Size(510, 350);
             this.Name = "Form_Results";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Purge Nested Families";
+            this.Text = "Parameter Mapper";
             this.Load += new System.EventHandler(this.Form_Results_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

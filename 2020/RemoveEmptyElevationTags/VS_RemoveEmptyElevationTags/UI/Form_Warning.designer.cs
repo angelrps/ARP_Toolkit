@@ -49,10 +49,10 @@
             this.panel1.Controls.Add(this.BtnContinue);
             this.panel1.Controls.Add(this.BtnCancel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 242);
+            this.panel1.Location = new System.Drawing.Point(0, 260);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 78);
+            this.panel1.Size = new System.Drawing.Size(500, 60);
             this.panel1.TabIndex = 20;
             // 
             // BtnContinue
@@ -66,7 +66,7 @@
             this.BtnContinue.Location = new System.Drawing.Point(0, 0);
             this.BtnContinue.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.BtnContinue.Name = "BtnContinue";
-            this.BtnContinue.Size = new System.Drawing.Size(238, 78);
+            this.BtnContinue.Size = new System.Drawing.Size(238, 60);
             this.BtnContinue.TabIndex = 7;
             this.BtnContinue.Text = "Yes";
             this.BtnContinue.UseVisualStyleBackColor = true;
@@ -84,7 +84,7 @@
             this.BtnCancel.Location = new System.Drawing.Point(262, 0);
             this.BtnCancel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.BtnCancel.Name = "BtnCancel";
-            this.BtnCancel.Size = new System.Drawing.Size(238, 78);
+            this.BtnCancel.Size = new System.Drawing.Size(238, 60);
             this.BtnCancel.TabIndex = 8;
             this.BtnCancel.Text = "No";
             this.BtnCancel.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@
             this.LblWarningMessage.Location = new System.Drawing.Point(0, 70);
             this.LblWarningMessage.Name = "LblWarningMessage";
             this.LblWarningMessage.Padding = new System.Windows.Forms.Padding(50, 0, 50, 0);
-            this.LblWarningMessage.Size = new System.Drawing.Size(500, 172);
+            this.LblWarningMessage.Size = new System.Drawing.Size(500, 190);
             this.LblWarningMessage.TabIndex = 27;
             this.LblWarningMessage.Text = "This application will remove all Empty Elevation Tags from the Project.\r\n\r\nDo you" +
     " want to continue?";
@@ -173,7 +173,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Form_Warning";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

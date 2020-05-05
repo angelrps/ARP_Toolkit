@@ -47,10 +47,10 @@
             this.panel1.BackColor = System.Drawing.Color.Gray;
             this.panel1.Controls.Add(this.BtnOk);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 183);
+            this.panel1.Location = new System.Drawing.Point(0, 201);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 78);
+            this.panel1.Size = new System.Drawing.Size(500, 60);
             this.panel1.TabIndex = 20;
             // 
             // BtnOk
@@ -64,7 +64,7 @@
             this.BtnOk.Location = new System.Drawing.Point(0, 0);
             this.BtnOk.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.BtnOk.Name = "BtnOk";
-            this.BtnOk.Size = new System.Drawing.Size(500, 78);
+            this.BtnOk.Size = new System.Drawing.Size(500, 60);
             this.BtnOk.TabIndex = 7;
             this.BtnOk.Text = "OK";
             this.BtnOk.UseVisualStyleBackColor = true;
@@ -120,7 +120,7 @@
             this.LblWarningMessage.Location = new System.Drawing.Point(0, 70);
             this.LblWarningMessage.Name = "LblWarningMessage";
             this.LblWarningMessage.Padding = new System.Windows.Forms.Padding(50, 0, 50, 0);
-            this.LblWarningMessage.Size = new System.Drawing.Size(500, 113);
+            this.LblWarningMessage.Size = new System.Drawing.Size(500, 131);
             this.LblWarningMessage.TabIndex = 27;
             this.LblWarningMessage.Text = "You need to select a Category first.";
             this.LblWarningMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -149,8 +149,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "Form_Info1";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

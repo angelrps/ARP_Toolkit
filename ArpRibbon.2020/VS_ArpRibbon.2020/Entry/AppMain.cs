@@ -152,7 +152,8 @@ namespace Entry
 
             PushButton AssignTemplateButton = drawingsPanel.AddItem(AssignTemplateButtonData) as PushButton;
 
-            AssignTemplateButton.ToolTip = "Drag a View into a View Template to assign it.";
+            AssignTemplateButton.ToolTip = "Use this tool to assign View Templates to Views accross the project." + "\n" +
+                                            "Just drag a View into a View Template to assign it.";
 
             BitmapImage AssignTemplateLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/AssignViewTemplates_32.ico"));
             AssignTemplateButton.LargeImage = AssignTemplateLargeImage;

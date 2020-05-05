@@ -188,7 +188,7 @@
             this.Name = "Form_Warning";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Transfer View Templates";
+            this.Text = "Transfer View Filters";
             this.Load += new System.EventHandler(this.Form_DupResults_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -47,10 +47,10 @@
             this.panel1.BackColor = System.Drawing.Color.Gray;
             this.panel1.Controls.Add(this.BtnOk);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 222);
+            this.panel1.Location = new System.Drawing.Point(0, 240);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 78);
+            this.panel1.Size = new System.Drawing.Size(500, 60);
             this.panel1.TabIndex = 20;
             // 
             // BtnOk
@@ -64,7 +64,7 @@
             this.BtnOk.Location = new System.Drawing.Point(0, 0);
             this.BtnOk.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.BtnOk.Name = "BtnOk";
-            this.BtnOk.Size = new System.Drawing.Size(500, 78);
+            this.BtnOk.Size = new System.Drawing.Size(500, 60);
             this.BtnOk.TabIndex = 7;
             this.BtnOk.Text = "OK";
             this.BtnOk.UseVisualStyleBackColor = true;
@@ -120,7 +120,7 @@
             this.LblWarningMessage.Location = new System.Drawing.Point(0, 70);
             this.LblWarningMessage.Name = "LblWarningMessage";
             this.LblWarningMessage.Padding = new System.Windows.Forms.Padding(50, 0, 50, 0);
-            this.LblWarningMessage.Size = new System.Drawing.Size(500, 152);
+            this.LblWarningMessage.Size = new System.Drawing.Size(500, 170);
             this.LblWarningMessage.TabIndex = 27;
             this.LblWarningMessage.Text = "There are not unused Text Note Types in this Project/Family.\r\nThis application wi" +
     "ll close.";

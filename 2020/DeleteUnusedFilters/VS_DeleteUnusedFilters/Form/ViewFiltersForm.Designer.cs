@@ -85,7 +85,7 @@
             this.btnOK.Location = new System.Drawing.Point(0, 0);
             this.btnOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(175, 78);
+            this.btnOK.Size = new System.Drawing.Size(175, 60);
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "Purge";
             this.btnOK.UseVisualStyleBackColor = false;
@@ -104,7 +104,7 @@
             this.btnCancel.Location = new System.Drawing.Point(199, 0);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(175, 78);
+            this.btnCancel.Size = new System.Drawing.Size(175, 60);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Close";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -173,10 +173,10 @@
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.btnOK);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 436);
+            this.panel1.Location = new System.Drawing.Point(0, 454);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(374, 78);
+            this.panel1.Size = new System.Drawing.Size(374, 60);
             this.panel1.TabIndex = 8;
             // 
             // panel3
