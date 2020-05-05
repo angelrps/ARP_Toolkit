@@ -59,20 +59,196 @@ namespace Entry
 
             #region Create Panels
             //create ribbon panels
-            RibbonPanel modelManagementPanel = application.CreateRibbonPanel(ArpTabName, "Model Management");
-            RibbonPanel drawingsPanel = application.CreateRibbonPanel(ArpTabName, "Drawings");
-            RibbonPanel printPanel = application.CreateRibbonPanel(ArpTabName, "Print");
             RibbonPanel helpPanel = application.CreateRibbonPanel(ArpTabName, "ARP Toolkit v" + AssemblyVersion);
+            RibbonPanel modellingPanel = application.CreateRibbonPanel(ArpTabName, "Modelling");
+            RibbonPanel drawingsPanel = application.CreateRibbonPanel(ArpTabName, "Drawings");
+            RibbonPanel printPanel = application.CreateRibbonPanel(ArpTabName, "Print & Export");
+            RibbonPanel modelManagementPanel = application.CreateRibbonPanel(ArpTabName, "Model Management");
+            
+            
+            
             #endregion
 
             #region Create Buttons            
-            // uncomment the if block below if restrict button load to specific users
-            //load the following buttons ONLY or entitled users            
+
+
+            // load buttons
+
+            // PANEL HELP
+            #region Help
+            PushButtonData helpButtonData = new PushButtonData(
+                "cmdHelp",
+                "Help",
+                Path.Combine(AssemblyPath, "ArpRibbon.dll"),
+                "Data.CmdAbout");
+
+            PushButton helpButton = helpPanel.AddItem(helpButtonData) as PushButton;
+
+            helpButton.ToolTip = "ARP Tools info and User Guide.";
+
+            BitmapImage helpLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/Help_32.ico"));
+            helpButton.LargeImage = helpLargeImage;
+            #endregion
+
+            // PANEL MODELLING
+            #region Flip button
+            PushButtonData flipButtonData = new PushButtonData(
+                "cmdFlip",
+                "Flip Walls" + "\n" + "or Doors",
+                Path.Combine(AssemblyPath, "Flip.dll"),
+                "Entry.CmdMain");
+
+            PushButton flipButton = modellingPanel.AddItem(flipButtonData) as PushButton;
+
+            flipButton.ToolTip = "Flip a selection of Walls by centerline regardless of the Location Line." + "\n"
+                                            + "Flip a selection of doors controlling whether you want to flip the hand or the facing.";
+
+            BitmapImage flipLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/Flip_32.ico"));
+            flipButton.LargeImage = flipLargeImage;
+            #endregion
+
+            // PANEL DRAWINGS
+            #region Room Centroid and Tag Button
+            PushButtonData roomCentroidButtonData = new PushButtonData(
+                "cmdRoomCentroid",
+                "Room Centroid," + "\n" + "Tag to Room",
+                Path.Combine(AssemblyPath, "RoomCentroidAndTags.dll"),
+                "Entry.CmdMain");
+
+            PushButton roomCentroidButton = drawingsPanel.AddItem(roomCentroidButtonData) as PushButton;
+
+            roomCentroidButton.ToolTip = "Moves room insertion point to room centroid." + "\n"
+                                            + "Move room tags to room insertion point. " +
+                                            "It works with both tags tagging rooms in the current model or in a linked model " +
+                                            "(but linked models and current model coordinates must match).";
+
+            BitmapImage roomCentroidLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/RoomCentroidAndTags_32.ico"));
+            roomCentroidButton.LargeImage = roomCentroidLargeImage;
+            #endregion
+
+            #region Remove Empty Elevation Tags
+            PushButtonData elevationTagsButtonData = new PushButtonData(
+                "cmdElevationTags",
+                "Remove Empty" + "\n" + "Elevation Tags",
+                Path.Combine(AssemblyPath, "RemoveEmptyElevationTags.dll"),
+                "Entry.CmdMain");
+
+            PushButton elevationTagsButton = drawingsPanel.AddItem(elevationTagsButtonData) as PushButton;
+
+            elevationTagsButton.ToolTip = "Generally if all elevations hosted in an elevation tag are deleted from the model, " + "\n"
+                                            + "the empty elevation tag still remains in its location. This application will delete " + "\n"
+                                            + "all empty elevation tags from the model.";
+
+            BitmapImage elevationTagsLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/RemoveEmptyElevationTags_32.ico"));
+            elevationTagsButton.LargeImage = elevationTagsLargeImage;
+            #endregion
+
+            #region Assign View Template
+            PushButtonData AssignTemplateButtonData = new PushButtonData(
+                "cmdAssignTemplate",
+                "Assign" + "\n" + "View Templates",
+                Path.Combine(AssemblyPath, "AssignViewTemplates.dll"),
+                "Entry.CmdMain");
+
+            PushButton AssignTemplateButton = drawingsPanel.AddItem(AssignTemplateButtonData) as PushButton;
+
+            AssignTemplateButton.ToolTip = "Drag a View into a View Template to assign it.";
+
+            BitmapImage AssignTemplateLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/AssignViewTemplates_32.ico"));
+            AssignTemplateButton.LargeImage = AssignTemplateLargeImage;
+            #endregion
+
+            #region Transfer View Filters
+            PushButtonData transFiltersButtonData = new PushButtonData(
+                "cmdTransferViewFilters",
+                "Transfer" + "\n" + "View Filters",
+                Path.Combine(AssemblyPath, "TransferViewFilters.dll"),
+                "Entry.CmdMain");
+
+            PushButton transFiltersButton = drawingsPanel.AddItem(transFiltersButtonData) as PushButton;
+
+            transFiltersButton.ToolTip = "Transfer multiple View Filters from one template to another." + "\n"
+                                         + "Or override their graphic settings if the selected filters are already applied in the target Template.";
+
+            BitmapImage transFiltersLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/TransferViewFilters_32.ico"));
+            transFiltersButton.LargeImage = transFiltersLargeImage;
+            #endregion
+
+            #region Reassign Detail Number
+            PushButtonData ReassignDetNumButtonData = new PushButtonData(
+                "cmdReassignDetNum",
+                "Reassign" + "\n" + "Detail Number",
+                Path.Combine(AssemblyPath, "ReassignDetailNumbers.dll"),
+                "Entry.CmdMain");
+
+            PushButton ReassignDetNumButton = drawingsPanel.AddItem(ReassignDetNumButtonData) as PushButton;
+
+            ReassignDetNumButton.ToolTip = "Run this tool in a sheet view and click on sheet viewports" + "\n"
+                                            + "one by one to change the detail number sequentially.";
+
+            BitmapImage ReassignDetNumLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/ReassignDetailNumber_32.ico"));
+            ReassignDetNumButton.LargeImage = ReassignDetNumLargeImage;
+            #endregion
+
+            #region Sheet Duplicator
+            PushButtonData sheetDuplicatorButtonData = new PushButtonData(
+                "cmdSheetDuplicator",
+                "Sheet" + "\n" + "Duplicator",
+                Path.Combine(AssemblyPath, "SheetDuplicator.dll"),
+                "Entry.CmdMain");
+
+            PushButton sheetDuplicatorButton = drawingsPanel.AddItem(sheetDuplicatorButtonData) as PushButton;
+
+            sheetDuplicatorButton.ToolTip = "Select a sheet and duplicate it multiple times." + "\n"
+                                            + "Default duplicate option is 'with Detailing'. For dependent views, you can choose 'Duplicate as a Dependent'." + "\n"
+                                            + "Legend Views and Schedules are not duplicated, just placed again in the sheet.";
+
+            BitmapImage sheetDuplicatorLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/SheetDuplicator_32.ico"));
+            sheetDuplicatorButton.LargeImage = sheetDuplicatorLargeImage;
+            #endregion
+
+            // PANEL PRINT & EXPORT    
+
+            #region Create Print Set
+            PushButtonData printSetButtonData = new PushButtonData(
+                "cmdPrintSet",
+                "Create" + "\n" + "Print Set",
+                Path.Combine(AssemblyPath, "CreatePrintSet.dll"),
+                "Entry.CmdMain");
+
+            PushButton printSetButton = printPanel.AddItem(printSetButtonData) as PushButton;
+
+            printSetButton.ToolTip = "Creates a Sheet Set from selected sheets." + "\n"
+                                            + "Once created, it will appear in the Print menu > Print Range > Selected views/sheets.";
+
+            BitmapImage printSetLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/CreatePrintSet_32.ico"));
+            printSetButton.LargeImage = printSetLargeImage;
+            #endregion
+
+            #region Schedule to Excel
+            PushButtonData scheduleToExcelData = new PushButtonData(
+                "cmdScheduleToExcel",
+                "Schedule" + "\n" + "to Excel",
+                Path.Combine(AssemblyPath, "ScheduleToExcel.dll"),
+                "Entry.CmdMain");
+
+            PushButton scheduleToExcelButton = printPanel.AddItem(scheduleToExcelData) as PushButton;
+
+            scheduleToExcelButton.ToolTip = "Select schedules in the Project Browser and then click this button. They will open in Excel." + "\n"
+                                         + "It can also open your active view in Excel (if this is a schedule).";
+
+            BitmapImage scheduleToExcelLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/ScheduleToExcel_32.ico"));
+            scheduleToExcelButton.LargeImage = scheduleToExcelLargeImage;
+            #endregion
+
+            // uncomment the if block below if you want to restrict button load to specific users
+            //load the following buttons ONLY for entitled users            
             //if (Data.Helpers.IsExtendedToolsEntitled())
             //{
-                # region Delete Unused Filters Button
-                // create data needed for the button
-                PushButtonData deleteFiltersButtonData = new PushButtonData(
+            // PANEL MODEL MANAGEMENT
+            #region Delete Unused Filters Button
+            // create data needed for the button
+            PushButtonData deleteFiltersButtonData = new PushButtonData(
                     "cmdDeleteFilters",                                    // unique name/id for the new button
                     "Purge" + "\n" + "Filters",                            // text that will be displayed under the button
                     Path.Combine(AssemblyPath, "DeleteUnusedFilters.dll"),        // dll location that will run where the button is pushed
@@ -117,23 +293,6 @@ namespace Entry
 
                 BitmapImage purgeDimStylesLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/PurgeDimStyles_32.ico"));
                 purgeDimStylesButton.LargeImage = purgeDimStylesLargeImage;
-                #endregion
-
-                #region Remove Empty Elevation Tags
-                PushButtonData elevationTagsButtonData = new PushButtonData(
-                    "cmdElevationTags",
-                    "Remove Empty" + "\n" + "Elevation Tags",
-                    Path.Combine(AssemblyPath, "RemoveEmptyElevationTags.dll"),
-                    "Entry.CmdMain");
-
-                PushButton elevationTagsButton = modelManagementPanel.AddItem(elevationTagsButtonData) as PushButton;
-
-                elevationTagsButton.ToolTip = "Generally if all elevations hosted in an elevation tag are deleted from the model, " + "\n"
-                                                + "the empty elevation tag still remains in its location. This application will delete " + "\n"
-                                                +"all empty elevation tags from the model.";
-
-                BitmapImage elevationTagsLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/RemoveEmptyElevationTags_32.ico"));
-                elevationTagsButton.LargeImage = elevationTagsLargeImage;
                 #endregion
 
                 #region Purge Nested Families Button
@@ -198,171 +357,25 @@ namespace Entry
 
                 BitmapImage transferWorksetsLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/TransferWorksets_32.ico"));
                 transferWorksetsButton.LargeImage = transferWorksetsLargeImage;
+            #endregion
+
+                #region Transfer View Template
+                PushButtonData transTemplateButtonData = new PushButtonData(
+                    "cmdTransferTemplate",
+                    "Transfer" + "\n" + "View Templates",
+                    Path.Combine(AssemblyPath, "TransferViewTemplate.dll"),
+                    "Entry.CmdMain");
+
+                PushButton transTemplateButton = modelManagementPanel.AddItem(transTemplateButtonData) as PushButton;
+
+                transTemplateButton.ToolTip = "Transfer selected View Templates from another project." + "\n"
+                                                + "The source porject must be either opened in the same Revit session" +
+                                                " or linked (and loaded) in the current project.";
+
+                BitmapImage transferTemplateLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/TransferViewTemplates_32.ico"));
+                transTemplateButton.LargeImage = transferTemplateLargeImage;
                 #endregion
             //}
-
-            // load the rest of the buttons
-            #region Schedule to Excel
-            PushButtonData scheduleToExcelData = new PushButtonData(
-                "cmdScheduleToExcel",
-                "Schedule" + "\n" + "to Excel",
-                Path.Combine(AssemblyPath, "ScheduleToExcel.dll"),
-                "Entry.CmdMain");
-
-            PushButton scheduleToExcelButton = modelManagementPanel.AddItem(scheduleToExcelData) as PushButton;
-
-            scheduleToExcelButton.ToolTip = "Select schedules in the Project Browser and then click this button. They will open in Excel." + "\n"
-                                         + "It can also open your active view in Excel (if this is a schedule).";
-
-            BitmapImage scheduleToExcelLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/ScheduleToExcel_32.ico"));
-            scheduleToExcelButton.LargeImage = scheduleToExcelLargeImage;
-            #endregion
-
-            #region Room Centroid and Tag Button
-            PushButtonData roomCentroidButtonData = new PushButtonData(
-                "cmdRoomCentroid",
-                "Room Centroid," + "\n" + "Tag to Room",
-                Path.Combine(AssemblyPath, "RoomCentroidAndTags.dll"),
-                "Entry.CmdMain");
-
-            PushButton roomCentroidButton = drawingsPanel.AddItem(roomCentroidButtonData) as PushButton;
-
-            roomCentroidButton.ToolTip = "Moves room insertion point to room centroid." + "\n"
-                                            + "Move room tags to room insertion point. " +
-                                            "It works with both tags tagging rooms in the current model or in a linked model " +
-                                            "(but linked models and current model coordinates must match).";
-
-            BitmapImage roomCentroidLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/RoomCentroidAndTags_32.ico"));
-            roomCentroidButton.LargeImage = roomCentroidLargeImage;
-            #endregion
-
-            #region Flip button
-            PushButtonData flipButtonData = new PushButtonData(
-                "cmdFlip",
-                "Flip Walls" + "\n" + "or Doors",
-                Path.Combine(AssemblyPath, "Flip.dll"),
-                "Entry.CmdMain");
-
-            PushButton flipButton = drawingsPanel.AddItem(flipButtonData) as PushButton;
-
-            flipButton.ToolTip = "Flip a selection of Walls by centerline regardless of the Location Line." + "\n"
-                                            + "Flip a selection of doors controlling whether you want to flip the hand or the facing.";
-
-            BitmapImage flipLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/Flip_32.ico"));
-            flipButton.LargeImage = flipLargeImage;
-            #endregion
-
-            #region Transfer View Template
-            PushButtonData transTemplateButtonData = new PushButtonData(
-                "cmdTransferTemplate",
-                "Transfer" + "\n" + "View Templates",
-                Path.Combine(AssemblyPath, "TransferViewTemplate.dll"),
-                "Entry.CmdMain");
-
-            PushButton transTemplateButton = drawingsPanel.AddItem(transTemplateButtonData) as PushButton;
-
-            transTemplateButton.ToolTip = "Transfer selected View Templates from another project." + "\n"
-                                            + "The source porject must be either opened in the same Revit session" +
-                                            " or linked (and loaded) in the current project.";
-
-            BitmapImage transferTemplateLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/TransferViewTemplates_32.ico"));
-            transTemplateButton.LargeImage = transferTemplateLargeImage;
-            #endregion
-
-            #region Assign View Template
-            PushButtonData AssignTemplateButtonData = new PushButtonData(
-                "cmdAssignTemplate",
-                "Assign" + "\n" + "View Templates",
-                Path.Combine(AssemblyPath, "AssignViewTemplates.dll"),
-                "Entry.CmdMain");
-
-            PushButton AssignTemplateButton = drawingsPanel.AddItem(AssignTemplateButtonData) as PushButton;
-
-            AssignTemplateButton.ToolTip = "Drag a View into a View Template to assign it.";
-
-            BitmapImage AssignTemplateLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/AssignViewTemplates_32.ico"));
-            AssignTemplateButton.LargeImage = AssignTemplateLargeImage;
-            #endregion
-
-            #region Reassign Detail Number
-            PushButtonData ReassignDetNumButtonData = new PushButtonData(
-                "cmdReassignDetNum",
-                "Reassign" + "\n" + "Detail Number",
-                Path.Combine(AssemblyPath, "ReassignDetailNumbers.dll"),
-                "Entry.CmdMain");
-
-            PushButton ReassignDetNumButton = drawingsPanel.AddItem(ReassignDetNumButtonData) as PushButton;
-
-            ReassignDetNumButton.ToolTip = "Run this tool in a sheet view and click on sheet viewports" + "\n"
-                                            + "one by one to change the detail number sequentially.";
-
-            BitmapImage ReassignDetNumLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/ReassignDetailNumber_32.ico"));
-            ReassignDetNumButton.LargeImage = ReassignDetNumLargeImage;
-            #endregion
-
-            #region Create Print Set
-            PushButtonData printSetButtonData = new PushButtonData(
-                "cmdPrintSet",
-                "Create" + "\n" + "Print Set",
-                Path.Combine(AssemblyPath, "CreatePrintSet.dll"),
-                "Entry.CmdMain");
-
-            PushButton printSetButton = printPanel.AddItem(printSetButtonData) as PushButton;
-
-            printSetButton.ToolTip = "Creates a Sheet Set from selected sheets." + "\n"
-                                            + "Once created, it will appear in the Print menu > Print Range > Selected views/sheets.";
-
-            BitmapImage printSetLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/CreatePrintSet_32.ico"));
-            printSetButton.LargeImage = printSetLargeImage;
-            #endregion
-
-            #region Sheet Duplicator
-            PushButtonData sheetDuplicatorButtonData = new PushButtonData(
-                "cmdSheetDuplicator",
-                "Sheet" + "\n" + "Duplicator",
-                Path.Combine(AssemblyPath, "SheetDuplicator.dll"),
-                "Entry.CmdMain");
-
-            PushButton sheetDuplicatorButton = drawingsPanel.AddItem(sheetDuplicatorButtonData) as PushButton;
-
-            sheetDuplicatorButton.ToolTip = "Select a sheet and duplicate it multiple times." + "\n"
-                                            + "Default duplicate option is 'with Detailing'. For dependent views, you can choose 'Duplicate as a Dependent'." + "\n"
-                                            + "Legend Views and Schedules are not duplicated, just placed again in the sheet.";
-
-            BitmapImage sheetDuplicatorLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/SheetDuplicator_32.ico"));
-            sheetDuplicatorButton.LargeImage = sheetDuplicatorLargeImage;
-            #endregion
-
-            #region Transfer View Filters
-            PushButtonData transFiltersButtonData = new PushButtonData(
-                "cmdTransferViewFilters",
-                "Transfer" + "\n" + "View Filters",
-                Path.Combine(AssemblyPath, "TransferViewFilters.dll"),
-                "Entry.CmdMain");
-
-            PushButton transFiltersButton = drawingsPanel.AddItem(transFiltersButtonData) as PushButton;
-
-            transFiltersButton.ToolTip = "Transfer multiple View Filters from one template to another." + "\n"
-                                         + "Or override their graphic settings if the selected filters are already applied in the target Template.";
-
-            BitmapImage transFiltersLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/TransferViewFilters_32.ico"));
-            transFiltersButton.LargeImage = transFiltersLargeImage;
-            #endregion
-
-            #region Help
-            PushButtonData helpButtonData = new PushButtonData(
-                "cmdHelp",
-                "Help",
-                Path.Combine(AssemblyPath, "ArpRibbon.dll"),
-                "Data.CmdAbout");
-
-            PushButton helpButton = helpPanel.AddItem(helpButtonData) as PushButton;
-
-            helpButton.ToolTip = "ARP Tools info and User Guide.";
-
-            BitmapImage helpLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/Help_32.ico"));
-            helpButton.LargeImage = helpLargeImage;
-            #endregion
             #endregion
 
             return Result.Succeeded;
