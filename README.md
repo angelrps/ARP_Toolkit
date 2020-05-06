@@ -9,6 +9,8 @@
 ## Description
 This repository is a C# .NET Revit add-in project that works with Revit 2018, 2019 and 2020.<br>
 It is a collection of custom tools programmed to help out with drawing production, modeling and model management.<br>
+Currently these are the tools included in the ribbon:
+- List them.
 
 ### Folder estructure
 `./2020`: Here you can find all the IExternalCommands stored in different folders. Each IExternalCommand has its own manifest ```.addin``` file and could be installed and used separately.
@@ -26,7 +28,8 @@ If you specify the full DLL pathname in the add-in manifest, it can also be loca
 
 They will appear under the Add-Ins Tab > External Tools
 
-## Full App List
+## Usage
+Detailed information about the usage in the wiki page.
 
 ## Credits
 
