@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 using System.IO;
 using static Data.Helpers;
 using Autodesk.Revit.ApplicationServices;
-using ArpUtilities;
+//using ArpUtilities;
 
 
 namespace Entry
@@ -30,6 +30,9 @@ namespace Entry
             UIDocument uidoc = commandData.Application.ActiveUIDocument;
             Document doc = uidoc.Document;
 
+            // add event handler for when the app does not find the ArpUtilies.dll assembly
+            //AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
+
             if (!GetSelectedDoors(uidoc).Any() && !GetSelectedWalls(uidoc).Any())
             {
                 infoMsgMain = "Select";
@@ -47,15 +50,26 @@ namespace Entry
                     return Result.Cancelled;
                 }
             }
-            try
-            {
-                Utilities.GetAnalyticsCSV(doc, app);
-            }
-            catch (Exception)
-            {
-            }
+            //try
+            //{
+            //    Utilities.GetAnalyticsCSV(doc, app);
+            //}
+            //catch (Exception)
+            //{
+            //}
 
             return Result.Succeeded;
         }
+
+        // event handle for when the ArpUtilities.dll assembly is missing. I will read it from the project resources
+        //private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        //{
+        //    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Flip.Resources.ArpUtilities.dll"))
+        //    {
+        //        byte[] assemblyData = new byte[stream.Length];
+        //        stream.Read(assemblyData, 0, assemblyData.Length);
+        //        return Assembly.Load(assemblyData);
+        //    }
+        //}
     }
 }

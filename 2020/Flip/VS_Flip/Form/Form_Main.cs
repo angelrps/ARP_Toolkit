@@ -72,6 +72,8 @@ namespace Form
 
                     IList<FamilyInstance> doorInstances = GetSelectedDoors(m_uidoc).Cast<FamilyInstance>().ToList();
                     elemTry = doorInstances.Count();
+                    elemSuccess = 0;
+                    elemFail = 0;
                     using (Transaction t = new Transaction(m_doc, "Flip Door Hand"))
                     {
                         t.Start();
@@ -119,6 +121,8 @@ namespace Form
 
                     IList<FamilyInstance> doorInstances = GetSelectedDoors(m_uidoc).Cast<FamilyInstance>().ToList();
                     elemTry = doorInstances.Count();
+                    elemSuccess = 0;
+                    elemFail = 0;
                     using (Transaction t = new Transaction(m_doc, "Flip Door Facing"))
                     {
                         t.Start();
@@ -166,6 +170,9 @@ namespace Form
 
                     IList<Wall> wallInstances = GetSelectedWalls(m_uidoc).Cast<Wall>().ToList();
                     elemTry = wallInstances.Count();
+                    elemSuccess = 0;
+                    elemFail = 0;
+
                     using (TransactionGroup tg = new TransactionGroup(m_doc, "Flip Walls"))
                     {
                         tg.Start();

@@ -26,41 +26,46 @@ namespace Entry
             Application app = uiapp.Application;
             Document doc = commandData.Application.ActiveUIDocument.Document;
 
-            // check if is family document
+            // add event handler for when the app does not find the ArpUtilies.dll assembly
+            //AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
+
+            #region Is family document?
             if (doc.IsFamilyDocument)
             {
-                TaskDialog tdFam = new TaskDialog("Information")
+                UI.Info.Form_Info1.infoMsgMain = "Wrong document";
+                UI.Info.Form_Info1.infoMsgBody = "This is a family document.\nRun this tool in a project document.";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
                 {
-                    MainInstruction = "This is a family document.\nRun this tool in a project document.",
-                    TitleAutoPrefix = false
-                };
-                TaskDialogResult tdInfoResult = tdFam.Show();
-                return Result.Cancelled;
+                    thisForm.ShowDialog();
+                    return Result.Cancelled;
+                }
             }
+            #endregion
 
             // check if document is workshared
             if (!doc.IsWorkshared)
             {
-                TaskDialog tdWorkshared = new TaskDialog("Information")
+                UI.Info.Form_Info1.infoMsgMain = "Worksharing?";
+                UI.Info.Form_Info1.infoMsgBody = "This document is not workshared." + Environment.NewLine 
+                                                + "Activate 'Collaborate' to enable collaboration and workset creation.";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
                 {
-                    MainInstruction = "This document is not workshared. Activate 'Collaborate' to enable collaboration and workset creation.",
-                    TitleAutoPrefix = false
-                };
-                TaskDialogResult tdWorksharedInfoResult = tdWorkshared.Show();
-                return Result.Cancelled;
+                    thisForm.ShowDialog();
+                    return Result.Cancelled;
+                }
             }
 
             //check if open document are workshared
             if (!GetOpenDocuments(doc, app).Any())
             {
-                TaskDialog tdOpenDoc = new TaskDialog("Information")
+                UI.Info.Form_Info1.infoMsgMain = "Worksharing?";
+                UI.Info.Form_Info1.infoMsgBody = "None of the other open documents in this session are Workshared." + Environment.NewLine
+                                                + "This application will close.";
+                using (UI.Info.Form_Info1 thisForm = new UI.Info.Form_Info1())
                 {
-                    MainInstruction = "None of the other open documents in this session are Workshared."
-                                        + "\n" + "This application will be closed.",
-                    TitleAutoPrefix = false
-                };
-                TaskDialogResult tdWorksharedInfoResult = tdOpenDoc.Show();
-                return Result.Cancelled;
+                    thisForm.ShowDialog();
+                    return Result.Cancelled;
+                }
             }
 
             using (UI.Form_Main thisForm = new UI.Form_Main(doc, app))
@@ -71,14 +76,25 @@ namespace Entry
                     return Result.Cancelled;
                 }
             }
-            try
-            {
-                Utilities.GetAnalyticsCSV(doc, app);
-            }
-            catch (Exception)
-            {
-            }
+            //try
+            //{
+            //    Utilities.GetAnalyticsCSV(doc, app);
+            //}
+            //catch (Exception)
+            //{
+            //}
             return Result.Succeeded;
         }
+
+        // event handle for when the ArpUtilities.dll assembly is missing. I will read it from the project resources
+        //private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        //{
+        //    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("TransferWorksets.Resources.ArpUtilities.dll"))
+        //    {
+        //        byte[] assemblyData = new byte[stream.Length];
+        //        stream.Read(assemblyData, 0, assemblyData.Length);
+        //        return Assembly.Load(assemblyData);
+        //    }
+        //}
     }
 }

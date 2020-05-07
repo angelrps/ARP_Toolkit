@@ -23,6 +23,9 @@ namespace Entry
             Application app = uiapp.Application;
             Document doc = commandData.Application.ActiveUIDocument.Document;
 
+            // add event handler for when the app does not find the ArpUtilies.dll assembly
+            //AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
+
             using (UI.Form_Main thisForm = new UI.Form_Main(doc, app))
             {
                 thisForm.ShowDialog();
@@ -34,5 +37,16 @@ namespace Entry
 
             return Result.Succeeded;
         }
+
+        // event handle for when the ArpUtilities.dll assembly is missing. I will read it from the project resources
+        //private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        //{
+        //    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("PurgeDimStyles.Resources.ArpUtilities.dll"))
+        //    {
+        //        byte[] assemblyData = new byte[stream.Length];
+        //        stream.Read(assemblyData, 0, assemblyData.Length);
+        //        return Assembly.Load(assemblyData);
+        //    }
+        //}
     }
 }

@@ -121,6 +121,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ArpUtilities.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if not exist "$(SolutionDir)..\..\..\Deploy\ArpRibbon.bundle\Contents\2018" mkdir "$(SolutionDir)..\..\..\Deploy\ArpRibbon.bundle\Contents\2018"

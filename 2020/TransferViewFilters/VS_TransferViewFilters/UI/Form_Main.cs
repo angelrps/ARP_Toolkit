@@ -226,7 +226,7 @@ namespace UI
             }
             #endregion// show Results Form
 
-            //DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
             useTime.Stop();
             UseTimeElapseS = useTime.Elapsed.Seconds.ToString();    // collect data for analytics
             Utilities.GetAnalyticsCSV(m_doc, m_app);

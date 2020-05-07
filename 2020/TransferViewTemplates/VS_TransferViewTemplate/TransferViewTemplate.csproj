@@ -51,6 +51,7 @@
     <Reference Include="ArpUtilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\z_Resources\ArpUtilities\VS_ArpUtilities\bin\x64\Debug\ArpUtilities.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -135,7 +136,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\TransferViewTemplates_32.ico" />
+    <EmbeddedResource Include="Resources\ArpUtilities.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

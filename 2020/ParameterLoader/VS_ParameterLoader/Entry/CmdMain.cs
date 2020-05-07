@@ -9,7 +9,7 @@ using Autodesk.Revit.UI;
 using System.Windows.Media.Imaging;
 using System.IO;
 using Autodesk.Revit.ApplicationServices;
-using ArpUtilities;
+//using ArpUtilities;
 
 namespace Entry
 {
@@ -25,16 +25,8 @@ namespace Entry
             UIDocument uidoc = commandData.Application.ActiveUIDocument;
             Document doc = uidoc.Document;
 
-            #region check if it is family document
-            if (doc.IsFamilyDocument)
-            {
-                using (UI.Form_FamDoc thisForm = new UI.Form_FamDoc())
-                {
-                    thisForm.ShowDialog();
-                    return Result.Cancelled;
-                }
-            }
-            #endregion
+            // add event handler for when the app does not find the ArpUtilies.dll assembly
+            //AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
 
             using (UI.Form_Main thisForm = new UI.Form_Main(doc, app))
             {
@@ -44,14 +36,25 @@ namespace Entry
                     return Result.Cancelled;
                 }
             }
-            try
-            {
-                Utilities.GetAnalyticsCSV(doc, app);
-            }
-            catch (Exception)
-            {
-            }
+            //try
+            //{
+            //    Utilities.GetAnalyticsCSV(doc, app);
+            //}
+            //catch (Exception)
+            //{
+            //}
             return Result.Succeeded;
         }
+
+        // event handle for when the ArpUtilities.dll assembly is missing. I will read it from the project resources
+        //private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        //{
+        //    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ParameterLoader.Resources.ArpUtilities.dll"))
+        //    {
+        //        byte[] assemblyData = new byte[stream.Length];
+        //        stream.Read(assemblyData, 0, assemblyData.Length);
+        //        return Assembly.Load(assemblyData);
+        //    }
+        //}
     }
 }

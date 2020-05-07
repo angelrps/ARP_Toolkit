@@ -164,13 +164,13 @@ namespace UI
         {
             if (transactionMade == true) // only record analytics if a transaction has been made
             {
-                try
-                {
-                    Utilities.GetAnalyticsCSV(m_doc, m_app);
-                }
-                catch (Exception)
-                {
-                }
+                //try
+                //{
+                //    Utilities.GetAnalyticsCSV(m_doc, m_app);
+                //}
+                //catch (Exception)
+                //{
+                //}
             }
             DialogResult = DialogResult.OK;
             Close();

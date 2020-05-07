@@ -61,6 +61,8 @@ namespace UI
             // check if at least one item is selected
             if (LsvWorksets.CheckedItems.Count == 0)
             {
+                UI.Info.Form_Info1.infoMsgMain = "Selection";
+                UI.Info.Form_Info1.infoMsgBody = "Select one or more worksets from the list.";
                 using (UI.Info.Form_Info1 thisForm = new Info.Form_Info1())
                 {
                     thisForm.ShowDialog();

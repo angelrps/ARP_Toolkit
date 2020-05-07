@@ -29,6 +29,9 @@ namespace Entry
             Application app = uiapp.Application;
             Document doc = commandData.Application.ActiveUIDocument.Document;
 
+            // add event handler for when the app does not find the ArpUtilies.dll assembly
+            //AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
+
             #region check if it is family document
             if (doc.IsFamilyDocument)
             {
@@ -113,17 +116,27 @@ namespace Entry
             }
 
             #region get analytics
-            try
-            {
-                Utilities.GetAnalyticsCSV(doc, app);
-            }
-            catch (Exception)
-            {
-            }
+            //try
+            //{
+            //    Utilities.GetAnalyticsCSV(doc, app);
+            //}
+            //catch (Exception)
+            //{
+            //}
             #endregion
 
             return Result.Succeeded;   
-            
         }
+
+        // event handle for when the ArpUtilities.dll assembly is missing. I will read it from the project resources
+        //private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        //{
+        //    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("RemoveEmptyElevationTags.Resources.ArpUtilities.dll"))
+        //    {
+        //        byte[] assemblyData = new byte[stream.Length];
+        //        stream.Read(assemblyData, 0, assemblyData.Length);
+        //        return Assembly.Load(assemblyData);
+        //    }
+        //}
     }
 }

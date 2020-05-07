@@ -63,17 +63,10 @@ namespace Entry
             RibbonPanel modellingPanel = application.CreateRibbonPanel(ArpTabName, "Modelling");
             RibbonPanel drawingsPanel = application.CreateRibbonPanel(ArpTabName, "Drawings");
             RibbonPanel printPanel = application.CreateRibbonPanel(ArpTabName, "Print & Export");
-            RibbonPanel modelManagementPanel = application.CreateRibbonPanel(ArpTabName, "Model Management");
-            
-            
-            
+            RibbonPanel modelManagementPanel = application.CreateRibbonPanel(ArpTabName, "Model Management"); 
             #endregion
 
             #region Create Buttons            
-
-
-            // load buttons
-
             // PANEL HELP
             #region Help
             PushButtonData helpButtonData = new PushButtonData(
@@ -208,8 +201,7 @@ namespace Entry
             sheetDuplicatorButton.LargeImage = sheetDuplicatorLargeImage;
             #endregion
 
-            // PANEL PRINT & EXPORT    
-
+            // PANEL PRINT & EXPORT
             #region Create Print Set
             PushButtonData printSetButtonData = new PushButtonData(
                 "cmdPrintSet",

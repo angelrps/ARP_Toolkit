@@ -3,7 +3,7 @@
   <AddIn Type="Command">
     <Assembly>DeleteUnusedFilters.dll</Assembly>
     <AddInId>557AE539-1458-4548-982E-D657C48D9A2B</AddInId>
-    <FullClassName>Entry.CmdMain</FullClassName>
+    <FullClassName>DeleteUnusedFilters.CmdMain</FullClassName>
     <Text>Delete Unused Filters</Text>
     <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
   </AddIn>

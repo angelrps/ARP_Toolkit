@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.ApplicationServices;
+using System.Reflection;
 
 namespace DeleteUnusedTextNoteTypes
 {
@@ -19,6 +20,9 @@ namespace DeleteUnusedTextNoteTypes
             UIApplication uiapp = commandData.Application;
             Application app = uiapp.Application;
             Document doc = commandData.Application.ActiveUIDocument.Document;
+
+            // add event handler for when the app does not find the ArpUtilies.dll assembly
+            //AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
 
             // check if there are unused text note types and show a message if there aren´t
             if (!Helpers.GetUnusedTextNoteTypes(doc).Any())
@@ -45,5 +49,16 @@ namespace DeleteUnusedTextNoteTypes
                 return Result.Succeeded;
             }
         }
+
+        // event handle for when the ArpUtilities.dll assembly is missing. I will read it from the project resources
+        //private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        //{
+        //    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("DeleteUnusedTextNoteTypes.Resources.ArpUtilities.dll"))
+        //    {
+        //        byte[] assemblyData = new byte[stream.Length];
+        //        stream.Read(assemblyData, 0, assemblyData.Length);
+        //        return Assembly.Load(assemblyData);
+        //    }
+        //}
     }
 }

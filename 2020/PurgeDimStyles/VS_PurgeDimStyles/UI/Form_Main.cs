@@ -139,13 +139,13 @@ namespace UI
                 }
 
                 this.DialogResult = DialogResult.OK;
-                try
-                {
-                    Utilities.GetAnalyticsCSV(m_doc, m_app);
-                }
-                catch (Exception)
-                {
-                }                
+                //try
+                //{
+                //    Utilities.GetAnalyticsCSV(m_doc, m_app);
+                //}
+                //catch (Exception)
+                //{
+                //}                
             }
         }
 

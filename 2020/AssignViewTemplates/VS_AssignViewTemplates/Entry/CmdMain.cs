@@ -9,6 +9,7 @@ using Autodesk.Revit.UI;
 using System.Windows.Media.Imaging;
 using System.IO;
 using Autodesk.Revit.ApplicationServices;
+using System.Reflection;
 
 
 namespace Entry
@@ -23,6 +24,9 @@ namespace Entry
             UIApplication uiapp = commandData.Application;
             Application app = uiapp.Application;
             Document doc = commandData.Application.ActiveUIDocument.Document;
+
+            // add event handler for when the app does not find the ArpUtilies.dll assembly
+            //AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
 
             // is family document
             if (doc.IsFamilyDocument)
@@ -47,5 +51,16 @@ namespace Entry
 
             return Result.Succeeded;
         }
+
+        // event handle for when the ArpUtilities.dll assembly is missing. I will read it from the project resources
+        //private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        //{
+        //    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("AssignViewTemplates.Resources.ArpUtilities.dll"))
+        //    {
+        //        byte[] assemblyData = new byte[stream.Length];
+        //        stream.Read(assemblyData, 0, assemblyData.Length);
+        //        return Assembly.Load(assemblyData);
+        //    }
+        //}
     }
 }

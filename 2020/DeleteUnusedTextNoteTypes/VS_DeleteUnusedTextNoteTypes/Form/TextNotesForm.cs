@@ -145,14 +145,14 @@ namespace DeleteUnusedTextNoteTypes
                 {
                     thisForm.ShowDialog();
                 }
-                try
-                {
-                    Utilities.GetAnalyticsCSV(m_doc, m_app);
-                    //GetAnalyticsCSV(m_doc, m_app);
-                }
-                catch (Exception)
-                {
-                }
+                //try
+                //{
+                //    Utilities.GetAnalyticsCSV(m_doc, m_app);
+                //    //GetAnalyticsCSV(m_doc, m_app);
+                //}
+                //catch (Exception)
+                //{
+                //}
                 this.DialogResult = DialogResult.OK;
                 Close();
             }

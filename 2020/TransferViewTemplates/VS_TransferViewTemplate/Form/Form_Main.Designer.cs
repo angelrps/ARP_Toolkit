@@ -44,6 +44,7 @@
             this.LblLineSeparator = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -92,7 +93,7 @@
             this.CbxOpenDocs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbxOpenDocs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CbxOpenDocs.FormattingEnabled = true;
-            this.CbxOpenDocs.Location = new System.Drawing.Point(100, 70);
+            this.CbxOpenDocs.Location = new System.Drawing.Point(100, 67);
             this.CbxOpenDocs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CbxOpenDocs.Name = "CbxOpenDocs";
             this.CbxOpenDocs.Size = new System.Drawing.Size(260, 25);
@@ -107,19 +108,20 @@
             this.ClbTemplates.CheckOnClick = true;
             this.ClbTemplates.FormattingEnabled = true;
             this.ClbTemplates.HorizontalScrollbar = true;
-            this.ClbTemplates.Location = new System.Drawing.Point(20, 115);
+            this.ClbTemplates.Location = new System.Drawing.Point(20, 135);
             this.ClbTemplates.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ClbTemplates.Name = "ClbTemplates";
-            this.ClbTemplates.Size = new System.Drawing.Size(340, 304);
+            this.ClbTemplates.Size = new System.Drawing.Size(340, 284);
             this.ClbTemplates.TabIndex = 3;
             this.ClbTemplates.SelectedIndexChanged += new System.EventHandler(this.ClbTemplates_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(20, 70);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 19);
+            this.label1.Size = new System.Drawing.Size(85, 19);
             this.label1.TabIndex = 5;
             this.label1.Text = "Copy from:";
             // 
@@ -130,7 +132,7 @@
             this.BtnAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(172)))), ((int)(((byte)(0)))));
             this.BtnAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAll.Image = ((System.Drawing.Image)(resources.GetObject("BtnAll.Image")));
-            this.BtnAll.Location = new System.Drawing.Point(360, 115);
+            this.BtnAll.Location = new System.Drawing.Point(360, 135);
             this.BtnAll.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnAll.Name = "BtnAll";
             this.BtnAll.Size = new System.Drawing.Size(50, 35);
@@ -146,7 +148,7 @@
             this.BtnNone.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(172)))), ((int)(((byte)(0)))));
             this.BtnNone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNone.Image = ((System.Drawing.Image)(resources.GetObject("BtnNone.Image")));
-            this.BtnNone.Location = new System.Drawing.Point(360, 156);
+            this.BtnNone.Location = new System.Drawing.Point(360, 176);
             this.BtnNone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnNone.Name = "BtnNone";
             this.BtnNone.Size = new System.Drawing.Size(50, 35);
@@ -221,6 +223,16 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(20, 110);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(117, 19);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "View Templates:";
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -228,6 +240,7 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton = this.BtnCancel;
             this.ClientSize = new System.Drawing.Size(409, 541);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.LblCount);
@@ -271,5 +284,6 @@
         private System.Windows.Forms.Label LblLineSeparator;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip Tooltip;
+        private System.Windows.Forms.Label label3;
     }
 }

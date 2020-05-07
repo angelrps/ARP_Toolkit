@@ -34,8 +34,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelHeader = new System.Windows.Forms.Panel();
-            this.LblInfo1 = new System.Windows.Forms.Label();
-            this.LblWarningMessage = new System.Windows.Forms.Label();
+            this.LblInfo1Main = new System.Windows.Forms.Label();
+            this.LblInfo1Body = new System.Windows.Forms.Label();
             this.LblLineSeparator = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -47,7 +47,7 @@
             this.panel1.BackColor = System.Drawing.Color.Gray;
             this.panel1.Controls.Add(this.BtnOk);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 201);
+            this.panel1.Location = new System.Drawing.Point(0, 221);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(500, 60);
@@ -92,7 +92,7 @@
             // 
             // panelHeader
             // 
-            this.panelHeader.Controls.Add(this.LblInfo1);
+            this.panelHeader.Controls.Add(this.LblInfo1Main);
             this.panelHeader.Controls.Add(this.pictureBox1);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 20);
@@ -100,30 +100,30 @@
             this.panelHeader.Size = new System.Drawing.Size(500, 50);
             this.panelHeader.TabIndex = 26;
             // 
-            // LblInfo1
+            // LblInfo1Main
             // 
-            this.LblInfo1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblInfo1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblInfo1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
-            this.LblInfo1.Location = new System.Drawing.Point(100, 0);
-            this.LblInfo1.Name = "LblInfo1";
-            this.LblInfo1.Size = new System.Drawing.Size(400, 50);
-            this.LblInfo1.TabIndex = 25;
-            this.LblInfo1.Text = "Selection";
-            this.LblInfo1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LblInfo1Main.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LblInfo1Main.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInfo1Main.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(182)))));
+            this.LblInfo1Main.Location = new System.Drawing.Point(100, 0);
+            this.LblInfo1Main.Name = "LblInfo1Main";
+            this.LblInfo1Main.Size = new System.Drawing.Size(400, 50);
+            this.LblInfo1Main.TabIndex = 25;
+            this.LblInfo1Main.Text = "<placeholder text>";
+            this.LblInfo1Main.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // LblWarningMessage
+            // LblInfo1Body
             // 
-            this.LblWarningMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblWarningMessage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LblWarningMessage.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblWarningMessage.Location = new System.Drawing.Point(0, 70);
-            this.LblWarningMessage.Name = "LblWarningMessage";
-            this.LblWarningMessage.Padding = new System.Windows.Forms.Padding(50, 0, 50, 0);
-            this.LblWarningMessage.Size = new System.Drawing.Size(500, 131);
-            this.LblWarningMessage.TabIndex = 27;
-            this.LblWarningMessage.Text = "Select one or more worksets from the list.";
-            this.LblWarningMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LblInfo1Body.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LblInfo1Body.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LblInfo1Body.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInfo1Body.Location = new System.Drawing.Point(0, 70);
+            this.LblInfo1Body.Name = "LblInfo1Body";
+            this.LblInfo1Body.Padding = new System.Windows.Forms.Padding(50, 0, 50, 0);
+            this.LblInfo1Body.Size = new System.Drawing.Size(500, 151);
+            this.LblInfo1Body.TabIndex = 27;
+            this.LblInfo1Body.Text = "Select one or more worksets from the list.";
+            this.LblInfo1Body.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // LblLineSeparator
             // 
@@ -142,9 +142,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(500, 261);
+            this.ClientSize = new System.Drawing.Size(500, 281);
             this.Controls.Add(this.LblLineSeparator);
-            this.Controls.Add(this.LblWarningMessage);
+            this.Controls.Add(this.LblInfo1Body);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -170,8 +170,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panelHeader;
-        private System.Windows.Forms.Label LblInfo1;
-        private System.Windows.Forms.Label LblWarningMessage;
+        private System.Windows.Forms.Label LblInfo1Main;
+        private System.Windows.Forms.Label LblInfo1Body;
         private System.Windows.Forms.Label LblLineSeparator;
     }
 }

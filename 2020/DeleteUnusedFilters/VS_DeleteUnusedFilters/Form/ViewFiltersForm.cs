@@ -97,13 +97,13 @@ namespace DeleteUnusedFilters
                     thisForm.ShowDialog();
                 }
 
-                try
-                {
-                    Utilities.GetAnalyticsCSV(m_doc, m_app);
-                }
-                catch (Exception)
-                {
-                }
+                //try
+                //{
+                //    Utilities.GetAnalyticsCSV(m_doc, m_app);
+                //}
+                //catch (Exception)
+                //{
+                //}
                 DialogResult = DialogResult.OK;
                 Close();
             }

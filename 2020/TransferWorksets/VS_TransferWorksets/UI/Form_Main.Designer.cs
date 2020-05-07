@@ -124,9 +124,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(20, 70);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 19);
+            this.label1.Size = new System.Drawing.Size(85, 19);
             this.label1.TabIndex = 9;
             this.label1.Text = "Copy from:";
             // 
@@ -138,7 +139,7 @@
             this.CbxOpenDocs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbxOpenDocs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CbxOpenDocs.FormattingEnabled = true;
-            this.CbxOpenDocs.Location = new System.Drawing.Point(100, 70);
+            this.CbxOpenDocs.Location = new System.Drawing.Point(100, 67);
             this.CbxOpenDocs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CbxOpenDocs.Name = "CbxOpenDocs";
             this.CbxOpenDocs.Size = new System.Drawing.Size(260, 25);
@@ -148,7 +149,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(100, 100);
+            this.label2.Location = new System.Drawing.Point(100, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(254, 19);
             this.label2.TabIndex = 10;

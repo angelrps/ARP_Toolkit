@@ -130,9 +130,9 @@
             this.LblCategory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblCategory.Location = new System.Drawing.Point(20, 20);
             this.LblCategory.Name = "LblCategory";
-            this.LblCategory.Size = new System.Drawing.Size(120, 19);
+            this.LblCategory.Size = new System.Drawing.Size(116, 19);
             this.LblCategory.TabIndex = 1;
-            this.LblCategory.Text = "Select Category:";
+            this.LblCategory.Text = "Select Category";
             // 
             // RbtAsNumber
             // 
@@ -300,9 +300,9 @@
             this.LblTargetParam.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTargetParam.Location = new System.Drawing.Point(20, 20);
             this.LblTargetParam.Name = "LblTargetParam";
-            this.LblTargetParam.Size = new System.Drawing.Size(176, 19);
+            this.LblTargetParam.Size = new System.Drawing.Size(171, 19);
             this.LblTargetParam.TabIndex = 3;
-            this.LblTargetParam.Text = "Select Target Parameter:";
+            this.LblTargetParam.Text = "Select Target Parameter";
             // 
             // panel2
             // 

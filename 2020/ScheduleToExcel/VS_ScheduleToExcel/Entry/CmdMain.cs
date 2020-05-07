@@ -32,6 +32,9 @@ namespace Entry
 
         public Result Execute (ExternalCommandData commandData, ref string message, ElementSet elements)
         {
+            // add event handler for when the app does not find the ArpUtilies.dll assembly
+            //AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
+
             #region variables
             UIApplication uiapp = commandData.Application;
             Autodesk.Revit.ApplicationServices.Application app = uiapp.Application;
@@ -124,15 +127,26 @@ namespace Entry
                 UseTimeElapseS = useTime.Elapsed.Seconds.ToString();
                 ExecTimeElapseS = UseTimeElapseS;
             }
-            try
-            {
-                Utilities.GetAnalyticsCSV(doc, app);
-                Data.Helpers.ScheduleToExcelAnalytics(doc, app, UseTimeElapseS, ExecTimeElapseS, Ana_NoOfExports);
-            }
-            catch (Exception)
-            {
-            }
+            //try
+            //{
+            //    Utilities.GetAnalyticsCSV(doc, app);
+            //    Data.Helpers.ScheduleToExcelAnalytics(doc, app, UseTimeElapseS, ExecTimeElapseS, Ana_NoOfExports);
+            //}
+            //catch (Exception)
+            //{
+            //}
             return Result.Succeeded;
         }
+
+        // event handle for when the ArpUtilities.dll assembly is missing. I will read it from the project resources
+        //private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        //{
+        //    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ScheduleToExcel.Resources.ArpUtilities.dll"))
+        //    {
+        //        byte[] assemblyData = new byte[stream.Length];
+        //        stream.Read(assemblyData, 0, assemblyData.Length);
+        //        return Assembly.Load(assemblyData);
+        //    }
+        //}
     }
 }

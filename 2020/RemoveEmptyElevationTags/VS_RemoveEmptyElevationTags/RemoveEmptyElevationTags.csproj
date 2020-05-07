@@ -53,6 +53,7 @@
   <ItemGroup>
     <Reference Include="ArpUtilities">
       <HintPath>..\..\..\z_Resources\ArpUtilities\VS_ArpUtilities\bin\x64\Debug\ArpUtilities.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="RevitAPI">
@@ -103,9 +104,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="RemoveEmptyElevationTags.addin">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -124,6 +123,9 @@
     <EmbeddedResource Include="UI\Form_Warning.resx">
       <DependentUpon>Form_Warning.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ArpUtilities.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

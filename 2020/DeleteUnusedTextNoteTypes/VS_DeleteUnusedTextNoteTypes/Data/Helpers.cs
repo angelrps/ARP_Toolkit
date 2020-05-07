@@ -17,11 +17,23 @@ namespace DeleteUnusedTextNoteTypes
         {
             List<ElementId> usedTextNoteTypeIds = new List<ElementId>();
 
+            // collect text notes
             FilteredElementCollector TextNoteCollector = new FilteredElementCollector(doc).OfClass(typeof(TextNote));
+            // collect View Schedules
+            FilteredElementCollector TextNoteScheduleCol = new FilteredElementCollector(doc).OfClass(typeof(ViewSchedule));
 
+            // get used text from Text Notes
             foreach (TextNote tn in TextNoteCollector)
             {
                 usedTextNoteTypeIds.Add(tn.TextNoteType.Id);
+            }
+
+            // get used text from Schedule Appearance
+            foreach (ViewSchedule vs in TextNoteScheduleCol)
+            {
+                usedTextNoteTypeIds.Add(vs.TitleTextTypeId);
+                usedTextNoteTypeIds.Add(vs.HeaderTextTypeId);
+                usedTextNoteTypeIds.Add(vs.BodyTextTypeId);
             }
 
             // sort list by Name
