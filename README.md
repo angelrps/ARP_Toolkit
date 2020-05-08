@@ -60,8 +60,8 @@ If you open the add-in manifest and specify the full DLL pathname, it can also b
 
 More information about Add-In Registration can be found [here](http://help.autodesk.com/view/RVT/2019/ENU/?guid=Revit_API_Revit_API_Developers_Guide_Introduction_Add_In_Integration_Add_in_Registration_html).
 
-## Apps Documentation
-Detailed information about how to use each app can be found in this [gitbook](https://angelruizpeinado.gitbook.io/arp-toolkit/).
+## Documentation
+Detailed information about how to use each tool can be found in this [gitbook](https://angelruizpeinado.gitbook.io/arp-toolkit/).
 
 ## Author
 [Angel Ruiz-Peinado Sanchez](https://www.linkedin.com/in/angelruizpeinado/)   [<img src="https://github.com/angelrps/MasterDataScience_FinalProject/blob/master/img/linkedin-icon.jpg" width="25" height="25" title="Linkedin Logo">](https://www.linkedin.com/in/angelruizpeinado/)
