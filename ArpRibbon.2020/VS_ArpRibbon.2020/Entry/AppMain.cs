@@ -373,7 +373,7 @@ namespace Entry
 
             return Result.Succeeded;
         }
-
+        
         public Result OnShutdown (UIControlledApplication application)
         {
             return Result.Succeeded;

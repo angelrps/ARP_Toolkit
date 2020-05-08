@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ApplicationPackage SchemaVersion="1.0" AutodeskProduct="Revit" AppVersion="1.0.8" ProductCode="b57c480f-24f5-4fbf-804c-7df86c770305">
+  <RuntimeRequirements OS="Win64" Platform="Revit" SeriesMin="R2018" SeriesMax="R2018" />
+  <Components Description="2018">
+    <RuntimeRequirements OS="Win64" Platform="Revit" SeriesMin="R2018" SeriesMax="R2018" />
+    <ComponentEntry AppName="ARP Tools" ModuleName="./Contents/2018/ArpRibbon.addin"></ComponentEntry>
+  </Components>
+  <Components Description="2019">
+    <RuntimeRequirements OS="Win64" Platform="Revit" SeriesMin="R2019" SeriesMax="R2019" />
+    <ComponentEntry AppName="ARP Tools" ModuleName="./Contents/2019/ArpRibbon.addin"></ComponentEntry>
+  </Components>
+  <Components Description="2020">
+    <RuntimeRequirements OS="Win64" Platform="Revit" SeriesMin="R2020" SeriesMax="R2020" />
+    <ComponentEntry AppName="ARP Tools" ModuleName="./Contents/2020/ArpRibbon.addin"></ComponentEntry>
+  </Components>
+</ApplicationPackage>

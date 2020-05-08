@@ -162,8 +162,6 @@ if not exist "$(SolutionDir)..\..\Deploy\ArpRibbon.bundle\Contents\2020" mkdir "
 xcopy "$(SolutioDir)ArpRibbon.dll" "$(SolutionDir)..\..\Deploy\ArpRibbon.bundle\Contents\2020" /E /Y
 xcopy "$(SolutioDir)ArpRibbon.addin" "$(SolutionDir)..\..\Deploy\ArpRibbon.bundle\Contents\2020" /E /Y
 
-xcopy "$(SolutioDir)PackageContents.xml" "$(SolutionDir)..\..\Deploy\ArpRibbon.bundle" /E /Y
-
-xcopy "$(SolutioDir)Change Log.txt" "$(SolutionDir)..\..\Deploy\ArpRibbon.bundle" /E /Y</PostBuildEvent>
+xcopy "$(SolutioDir)PackageContents.xml" "$(SolutionDir)..\..\Deploy\ArpRibbon.bundle" /E /Y</PostBuildEvent>
   </PropertyGroup>
 </Project>
