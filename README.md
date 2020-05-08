@@ -6,7 +6,7 @@
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgray.svg)
 ![.NET](https://img.shields.io/badge/.NET-4.7-blue.svg)
 
-This repository is a C# .NET Revit add-in project that works with Revit 2018, 2019 and 2020.<br>
+This repository is a C# .NET Revit add-in project that works with Autodesk Revit 2018, 2019 and 2020.<br>
 It is a collection of custom tools programmed to help out with drawing production, modeling and model management.<br>
 The collection is composed of the following tools:
 - **Flip Walls and Doors** ([documentation](https://angelruizpeinado.gitbook.io/arp-toolkit/tools/flip-walls-or-doors)/[code](https://github.com/angelrps/ARP_Toolkit/tree/master/2020/Flip/VS_Flip))
@@ -28,39 +28,43 @@ The collection is composed of the following tools:
 - **Import CAD Popup Message** ([documentation](https://angelruizpeinado.gitbook.io/arp-toolkit/tools/import-cad-popup-message)/[code](https://github.com/angelrps/ARP_Toolkit/tree/master/ArpRibbon.2020/VS_ArpRibbon.2020/Entry))
 - **In-Place Component Popup Message** ([documentation](https://angelruizpeinado.gitbook.io/arp-toolkit/tools/create-model-in-place-popup-message)/[code](https://github.com/angelrps/ARP_Toolkit/tree/master/ArpRibbon.2020/VS_ArpRibbon.2020/Entry))
 
-# Installation
+## Installation
 These instructions will get you a copy of the project up and running on your local machine.
 
-## Prerequisites
+### Prerequisites
 Revit 2018-2020.
 
-## Install full ARP Toolkit Ribbon
+### Install full ARP Toolkit Ribbon
 - Browse to the ```Deploy``` folder.
 - Copy the ```ArpRibbon.bundle``` folder and paste it into this destination:
 ```%ProgramData%\Autodesk\ApplicationPlugins```
-- If the ```\ApplicationPlugins```folder does not exists, create it.
+- If the ```\ApplicationPlugins``` folder does not exists, create it.
 - Open Revit. If you see this message click 'Always Load'.
 <img src="https://github.com/angelrps/ARP_Toolkit/blob/master/img/UnssignedAddinPrompt.PNG">
 
-## Install each tool separately 
+### Install each tool separately 
 If you just want to install a couple of tools you can do it by copying the ```.addin``` manifest file and the assembly ```.dll``` to the Revit Add-Ins folder and they will appear under the *Add-Ins Tab > External Tools*.
+<img src="https://github.com/angelrps/ARP_Toolkit/blob/master/img/AddinsTab.PNG">
 
+Both ```.addin``` and ```.dll``` files can be found in this route ```..\bin\x64\Debug``` inside each project location.
 
+You can use any of these addins folders:
 
-Both files can be found in this route ```..\bin\x64\Debug``` inside each project location.<br>
-There are a few Revit Add-ins folder you can use. This is one of them:<br>
-```%AppData%\Roaming\Autodesk\Revit\Addins\2020``` (```\2019``` or ```\2018``` for other versions of Revit).
+User Addins:<br>
+```%AppData%\Autodesk\Revit\Addins\2020``` (or whatever your Revit version is).
 
-by [copying the add-in manifest and the assembly DLL to the Revit Add-Ins folder](http://help.autodesk.com/view/RVT/2019/ENU/?guid=Revit_API_Revit_API_Developers_Guide_Introduction_Add_In_Integration_Add_in_Registration_html).
+Machine Addins (for all users of the machine):<br>
+```%ProgramData%\Autodesk\Revit\Addins\2020``` (or whatever your Revit version is).
 
-If you specify the full DLL pathname in the add-in manifest, it can also be located elsewhere.
+If you open the add-in manifest and specify the full DLL pathname, it can also be located elsewhere.
 
+More information about Add-In Registration can be found [here](http://help.autodesk.com/view/RVT/2019/ENU/?guid=Revit_API_Revit_API_Developers_Guide_Introduction_Add_In_Integration_Add_in_Registration_html).
 
+## Documentation
+Detailed information about how to use each tool can be found in this [gitbook](https://angelruizpeinado.gitbook.io/arp-toolkit/).
 
-## Apps Documentation
-Detailed information about how to use each app can be found in this [gitbook](https://angelruizpeinado.gitbook.io/arp-toolkit/).
-
-**Author:** [Angel Ruiz-Peinado Sanchez](https://www.linkedin.com/in/angelruizpeinado/)   [<img src="https://github.com/angelrps/MasterDataScience_FinalProject/blob/master/img/linkedin-icon.jpg" width="25" height="25" title="Linkedin Logo">](https://www.linkedin.com/in/angelruizpeinado/)
+## Author
+[Angel Ruiz-Peinado Sanchez](https://www.linkedin.com/in/angelruizpeinado/)   [<img src="https://github.com/angelrps/MasterDataScience_FinalProject/blob/master/img/linkedin-icon.jpg" width="25" height="25" title="Linkedin Logo">](https://www.linkedin.com/in/angelruizpeinado/)
 
 ## Acknowledgements
 
