@@ -38,29 +38,27 @@ Revit 2018-2020.
 - Browse to the ```Deploy``` folder.
 - Copy the ```ArpRibbon.bundle``` folder and paste it into this destination:
 ```%ProgramData%\Autodesk\ApplicationPlugins```
-- If the ```\ApplicationPlugins```folder does not exists, create it.
+- If the ```\ApplicationPlugins``` folder does not exists, create it.
 - Open Revit. If you see this message click 'Always Load'.
 <img src="https://github.com/angelrps/ARP_Toolkit/blob/master/img/UnssignedAddinPrompt.PNG">
 
 ## Install each tool separately 
 If you just want to install a couple of tools you can do it by copying the ```.addin``` manifest file and the assembly ```.dll``` to the Revit Add-Ins folder and they will appear under the *Add-Ins Tab > External Tools*.
-
-
+<img src="https://github.com/angelrps/ARP_Toolkit/blob/master/img/AddinsTab.PNG">
 
 Both files can be found in this route ```..\bin\x64\Debug``` inside each project location.<br>
-There are a few Revit Add-ins folder you can use. This is one of them:<br>
+There are a few Revit Add-ins folders that you can use. This is one of them:<br>
 ```%AppData%\Roaming\Autodesk\Revit\Addins\2020``` (```\2019``` or ```\2018``` for other versions of Revit).
 
-by [copying the add-in manifest and the assembly DLL to the Revit Add-Ins folder](http://help.autodesk.com/view/RVT/2019/ENU/?guid=Revit_API_Revit_API_Developers_Guide_Introduction_Add_In_Integration_Add_in_Registration_html).
+If you open the add-in manifest and specify the full DLL pathname, it can also be located elsewhere.
 
-If you specify the full DLL pathname in the add-in manifest, it can also be located elsewhere.
-
-
+More information about Add-In Registration can be found [here](http://help.autodesk.com/view/RVT/2019/ENU/?guid=Revit_API_Revit_API_Developers_Guide_Introduction_Add_In_Integration_Add_in_Registration_html).
 
 ## Apps Documentation
 Detailed information about how to use each app can be found in this [gitbook](https://angelruizpeinado.gitbook.io/arp-toolkit/).
 
-**Author:** [Angel Ruiz-Peinado Sanchez](https://www.linkedin.com/in/angelruizpeinado/)   [<img src="https://github.com/angelrps/MasterDataScience_FinalProject/blob/master/img/linkedin-icon.jpg" width="25" height="25" title="Linkedin Logo">](https://www.linkedin.com/in/angelruizpeinado/)
+## Author
+[Angel Ruiz-Peinado Sanchez](https://www.linkedin.com/in/angelruizpeinado/)   [<img src="https://github.com/angelrps/MasterDataScience_FinalProject/blob/master/img/linkedin-icon.jpg" width="25" height="25" title="Linkedin Logo">](https://www.linkedin.com/in/angelruizpeinado/)
 
 ## Acknowledgements
 
