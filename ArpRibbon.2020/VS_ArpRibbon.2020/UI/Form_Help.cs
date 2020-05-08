@@ -49,19 +49,24 @@ namespace ArpRibbon.UI
 
         private void linkLabel_UserGuide_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            string filename = "ARP Toolkit_Documentation.pdf";
-            string filepath = @"D:\ANGEL\BIM\07-Macros and Plugins\ARP_Toolkit\z_Resources\ARP Toolkit Documentation\";
-            string file = filepath + filename;
-            System.IO.File.WriteAllBytes(file, global::ArpRibbon.Properties.Resources.ARP_Toolkit_Documentation);
-
-            try
-            {
-                System.Diagnostics.Process.Start(file);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + "\n" + filename);
-            }
+            System.Diagnostics.Process.Start("https://angelruizpeinado.gitbook.io/arp-toolkit/");
         }
+
+        //private void linkLabel_UserGuide_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        //{
+        //    string filename = "ARP Toolkit_Documentation.pdf";
+        //    string filepath = @"D:\ANGEL\BIM\07-Macros and Plugins\ARP_Toolkit\z_Resources\ARP Toolkit Documentation\";
+        //    string file = filepath + filename;
+        //    System.IO.File.WriteAllBytes(file, global::ArpRibbon.Properties.Resources.ARP_Toolkit_Documentation);
+
+        //    try
+        //    {
+        //        System.Diagnostics.Process.Start(file);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message + "\n" + filename);
+        //    }
+        //}
     }
 }
