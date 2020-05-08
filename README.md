@@ -68,6 +68,6 @@ Detailed information about how to use each tool can be found in this [gitbook](h
 
 ## Acknowledgements
 
-Many thanks to [PyRevit](https://github.com/eirannejad/pyRevit) for let us access his code. Also many thanks to CASE Apps for freeing up their code and [John Pierson](https://github.com/johnpierson/case-apps) for hosting the source code. I have used both frecuently as a starting point and adapted it to my needs. 
+Many thanks to [PyRevit](https://github.com/eirannejad/pyRevit) for letting us access his code. Also many thanks to CASE Apps for freeing up their code and [John Pierson](https://github.com/johnpierson/case-apps) for hosting the source code. I have used both frecuently as a starting point and adapted it to my needs. 
 
-Thanks to [icons8.com](https://icons8.com) and [thenounproject.com](https://thenounproject.com/) for most of the icons. I have used them as a base and tweak them to fit my style.
+Thanks to [icons8.com](https://icons8.com) and [thenounproject.com](https://thenounproject.com/) for most of the icons. I have used them as a base and tweaked them to fit my style.
