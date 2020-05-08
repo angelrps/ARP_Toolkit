@@ -46,7 +46,8 @@ Revit 2018-2020.
 If you just want to install a couple of tools you can do it by copying the ```.addin``` manifest file and the assembly ```.dll``` to the Revit Add-Ins folder and they will appear under the *Add-Ins Tab > External Tools*.
 <img src="https://github.com/angelrps/ARP_Toolkit/blob/master/img/AddinsTab.PNG">
 
-Both files can be found in this route ```..\bin\x64\Debug``` inside each project location.<br>
+Both ```.addin``` and ```.dll``` files can be found in this route ```..\bin\x64\Debug``` inside each project location.
+
 You can use any of these addins folders:
 
 User Addins:<br>
