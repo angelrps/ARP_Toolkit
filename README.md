@@ -28,14 +28,21 @@ The collection is composed of the following tools:
 - Import CAD Popup Message ([documentation](https://angelruizpeinado.gitbook.io/arp-toolkit/tools/import-cad-popup-message)/[code](https://github.com/angelrps/ARP_Toolkit/tree/master/ArpRibbon.2020/VS_ArpRibbon.2020/Entry))
 - In-Place Component Popup Message ([documentation](https://angelruizpeinado.gitbook.io/arp-toolkit/tools/create-model-in-place-popup-message)/[code](https://github.com/angelrps/ARP_Toolkit/tree/master/ArpRibbon.2020/VS_ArpRibbon.2020/Entry))
 
-## Installation
-#### Full ARP Toolkit Ribbon
-To install the whole ribbon:
-- Browse to the ```Deploy``` folder.
-- Copy the ```ArpRibbon.bundle``` folder and paste into this destination:
+# Installation
+These instructions will get you a copy of the project up and running on your local machine.
 
-```%ProgramData%\Autodesk\Revit\Addins\2020```
-#### Each tool separately 
+## Prerequisites
+Revit 2018-2020.
+
+## Install full ARP Toolkit Ribbon
+- Browse to the ```Deploy``` folder.
+- Copy the ```ArpRibbon.bundle``` folder and paste it into this destination:
+```%ProgramData%\Autodesk\ApplicationPlugins```
+- If the ```\ApplicationPlugins```folder does not exists, create it.
+- Open Revit. If you see this message click 'Always Load'.
+<img src="https://github.com/angelrps/ARP_Toolkit/blob/master/img/ARP_Toolkit_Ribbon.PNG">
+
+## Install each tool separately 
 You can install any tool like any other Revit add-in,
 by [copying the add-in manifest and the assembly DLL to the Revit Add-Ins folder](http://help.autodesk.com/view/RVT/2019/ENU/?guid=Revit_API_Revit_API_Developers_Guide_Introduction_Add_In_Integration_Add_in_Registration_html).
 
