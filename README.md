@@ -6,7 +6,7 @@
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgray.svg)
 ![.NET](https://img.shields.io/badge/.NET-4.7-blue.svg)
 
-This repository is a C# .NET Revit add-in project that works with Revit 2018, 2019 and 2020.<br>
+This repository is a C# .NET Revit add-in project that works with Autodesk Revit 2018, 2019 and 2020.<br>
 It is a collection of custom tools programmed to help out with drawing production, modeling and model management.<br>
 The collection is composed of the following tools:
 - **Flip Walls and Doors** ([documentation](https://angelruizpeinado.gitbook.io/arp-toolkit/tools/flip-walls-or-doors)/[code](https://github.com/angelrps/ARP_Toolkit/tree/master/2020/Flip/VS_Flip))
@@ -28,13 +28,13 @@ The collection is composed of the following tools:
 - **Import CAD Popup Message** ([documentation](https://angelruizpeinado.gitbook.io/arp-toolkit/tools/import-cad-popup-message)/[code](https://github.com/angelrps/ARP_Toolkit/tree/master/ArpRibbon.2020/VS_ArpRibbon.2020/Entry))
 - **In-Place Component Popup Message** ([documentation](https://angelruizpeinado.gitbook.io/arp-toolkit/tools/create-model-in-place-popup-message)/[code](https://github.com/angelrps/ARP_Toolkit/tree/master/ArpRibbon.2020/VS_ArpRibbon.2020/Entry))
 
-# Installation
+## Installation
 These instructions will get you a copy of the project up and running on your local machine.
 
-## Prerequisites
+### Prerequisites
 Revit 2018-2020.
 
-## Install full ARP Toolkit Ribbon
+### Install full ARP Toolkit Ribbon
 - Browse to the ```Deploy``` folder.
 - Copy the ```ArpRibbon.bundle``` folder and paste it into this destination:
 ```%ProgramData%\Autodesk\ApplicationPlugins```
@@ -42,13 +42,18 @@ Revit 2018-2020.
 - Open Revit. If you see this message click 'Always Load'.
 <img src="https://github.com/angelrps/ARP_Toolkit/blob/master/img/UnssignedAddinPrompt.PNG">
 
-## Install each tool separately 
+### Install each tool separately 
 If you just want to install a couple of tools you can do it by copying the ```.addin``` manifest file and the assembly ```.dll``` to the Revit Add-Ins folder and they will appear under the *Add-Ins Tab > External Tools*.
 <img src="https://github.com/angelrps/ARP_Toolkit/blob/master/img/AddinsTab.PNG">
 
 Both files can be found in this route ```..\bin\x64\Debug``` inside each project location.<br>
-There are a few Revit Add-ins folders that you can use. This is one of them:<br>
-```%AppData%\Roaming\Autodesk\Revit\Addins\2020``` (```\2019``` or ```\2018``` for other versions of Revit).
+You can use any of these addins folders:
+
+User Addins:<br>
+```%AppData%\Autodesk\Revit\Addins\2020``` (or whatever your Revit version is).
+
+Machine Addins (for all users of the machine):<br>
+```%ProgramData%\Autodesk\Revit\Addins\2020``` (or whatever your Revit version is).
 
 If you open the add-in manifest and specify the full DLL pathname, it can also be located elsewhere.
 
