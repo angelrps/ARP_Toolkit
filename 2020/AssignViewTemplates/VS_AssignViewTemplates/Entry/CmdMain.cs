@@ -51,7 +51,7 @@ namespace Entry
 
             return Result.Succeeded;
         }
-
+        
         // event handle for when the ArpUtilities.dll assembly is missing. I will read it from the project resources
         //private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         //{
