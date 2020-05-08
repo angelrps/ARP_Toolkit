@@ -6,19 +6,10 @@
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgray.svg)
 ![.NET](https://img.shields.io/badge/.NET-4.7-blue.svg)
 
-**Author:** [Angel Ruiz-Peinado Sanchez](https://www.linkedin.com/in/angelruizpeinado/)   [<img src="https://github.com/angelrps/MasterDataScience_FinalProject/blob/master/img/linkedin-icon.jpg" width="25" height="25" title="Linkedin Logo">](https://www.linkedin.com/in/angelruizpeinado/)
-
-
-
-
-## Description
 This repository is a C# .NET Revit add-in project that works with Revit 2018, 2019 and 2020.<br>
 It is a collection of custom tools programmed to help out with drawing production, modeling and model management.<br>
-Currently these are the tools included in the ribbon:
-- List them.
-
-### Folder estructure
-`./2020`: Here you can find all the IExternalCommands stored in different folders. Each IExternalCommand has its own manifest ```.addin``` file and could be installed and used separately.
+The collection is composed of the following tools:
+- [Flip Walls and Doors](https://angelruizpeinado.gitbook.io/arp-toolkit/tools/flip-walls-or-doors)
 
 ## Installation
 #### Full ARP Toolkit Ribbon
@@ -35,10 +26,12 @@ If you specify the full DLL pathname in the add-in manifest, it can also be loca
 
 They will appear under the Add-Ins Tab > External Tools
 
-## Usage
-Detailed information about the usage in the wiki page.
+## Apps Documentation
+Detailed information about how to use each app can be found in this [gitbook](https://angelruizpeinado.gitbook.io/arp-toolkit/).
 
-## Credits
+**Author:** [Angel Ruiz-Peinado Sanchez](https://www.linkedin.com/in/angelruizpeinado/)   [<img src="https://github.com/angelrps/MasterDataScience_FinalProject/blob/master/img/linkedin-icon.jpg" width="25" height="25" title="Linkedin Logo">](https://www.linkedin.com/in/angelruizpeinado/)
+
+## Acknowledgements
 
 Many thanks to [PyRevit](https://github.com/eirannejad/pyRevit) for let us access his code. Also many thanks to CASE Apps for freeing up their code and [John Pierson](https://github.com/johnpierson/case-apps) for hosting the source code. I have used both frecuently as a starting point and adapted it to my needs. 
 
