@@ -35,7 +35,7 @@ These instructions will get you a copy of the project up and running on your loc
 Revit 2018-2020.
 
 ### Install full ARP Toolkit Ribbon
-- Browse to the ```Deploy``` folder.
+- Download the repository and browse to the ```Deploy``` folder.
 - Copy the ```ArpRibbon.bundle``` folder and paste it into this destination:
 ```%ProgramData%\Autodesk\ApplicationPlugins```
 - If the ```\ApplicationPlugins``` folder does not exists, create it.
