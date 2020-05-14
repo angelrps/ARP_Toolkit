@@ -2,10 +2,10 @@
 <RevitAddIns>
   <AddIn Type="Command">
     <Assembly>PurgeNestedFamilies.dll</Assembly>
-    <AddInId>72214AC1-046F-4176-A8EB-A31E0CEFF864</AddInId>
+    <AddInId>FAF39317-C57B-4D41-8F2B-FA73422B3717</AddInId>
     <FullClassName>Entry.CmdMain</FullClassName>
     <Text>Purge Nested Families</Text>
-    <VendorId>luis vidal + architects</VendorId>
+    <VendorId>Angel Ruiz-Peinado Sanchez</VendorId>
   </AddIn>
 </RevitAddIns>
 

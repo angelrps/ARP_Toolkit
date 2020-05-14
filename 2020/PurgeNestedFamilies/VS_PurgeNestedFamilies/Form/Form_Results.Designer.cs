@@ -92,10 +92,10 @@
             this.panel1.BackColor = System.Drawing.Color.Gray;
             this.panel1.Controls.Add(this.BtnOk);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 543);
+            this.panel1.Location = new System.Drawing.Point(0, 561);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(404, 78);
+            this.panel1.Size = new System.Drawing.Size(404, 60);
             this.panel1.TabIndex = 37;
             // 
             // BtnOk
@@ -111,7 +111,7 @@
             this.BtnOk.Location = new System.Drawing.Point(0, 0);
             this.BtnOk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnOk.Name = "BtnOk";
-            this.BtnOk.Size = new System.Drawing.Size(404, 78);
+            this.BtnOk.Size = new System.Drawing.Size(404, 60);
             this.BtnOk.TabIndex = 3;
             this.BtnOk.Text = "OK";
             this.BtnOk.UseVisualStyleBackColor = false;

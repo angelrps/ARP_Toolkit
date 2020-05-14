@@ -17,6 +17,8 @@ namespace Entry
 
     public class CmdMain : IExternalCommand
     {
+        static readonly AddInId appId = new AddInId(new Guid("FAF39317-C57B-4D41-8F2B-FA73422B3717"));
+
         public static List<string> lt_purgedFamilies = new List<string>();
         public static List<string> lt_purgedNestedFam = new List<string>();
         public static List<string> lt_purgedNestedTypes = new List<string>();
@@ -36,6 +38,10 @@ namespace Entry
             List<int> categoriesToPurge = new List<int>();
             List<Family> familiesToPurge = new List<Family>();
             #endregion
+
+            // clear dictionaries to avoid second run error: "An item with the same key already exists"
+            DictTypeResults.Clear();
+            dictNestedResults.Clear();
 
             #region List of loadable categories which families will be purged
 
@@ -163,7 +169,7 @@ namespace Entry
                         #endregion
 
                         #region PURGE TYPES
-                        if (nestedTypesToPurge != null)
+                        if (nestedTypesToPurge != null && nestedTypesToPurge.Count() != 0)
                         {
                             using (Transaction t = new Transaction (famdoc, "Purge family types"))
                             {
@@ -206,39 +212,46 @@ namespace Entry
                         #endregion
 
                         #region PURGE FAMILIES
-                        foreach (ElementId eId in nestedFamiliesToPurge)
+                        if (nestedFamiliesToPurge.Count() != 0)
                         {
-                            if (famdoc.GetElement(eId) != null)
+                            foreach (ElementId eId in nestedFamiliesToPurge)
                             {
-                                try
+                                if (famdoc.GetElement(eId) != null)
                                 {
-                                    lt_purgedNestedFam.Add(famdoc.GetElement(eId).Name);
-                                    using (Transaction t = new Transaction(famdoc, "Purge nested families Transaction"))
+                                    try
                                     {
-                                        t.Start();
-                                        famdoc.Delete(eId);
-                                        t.Commit();
+                                        lt_purgedNestedFam.Add(famdoc.GetElement(eId).Name);
+                                        using (Transaction t = new Transaction(famdoc, "Purge nested families Transaction"))
+                                        {
+                                            t.Start();
+                                            famdoc.Delete(eId);
+                                            t.Commit();
+                                        }
                                     }
-                                }
-                                catch (Exception)
-                                {
+                                    catch (Exception)
+                                    {
 
+                                    }
                                 }
                             }
                         }
+                        
                         #endregion
                     }
                 }
 
                 #region Load families back to the project
-                foreach (Family f in familiesToPurge)
+                if (familiesToPurge.Count() != 0)
                 {
-                    lt_purgedFamilies.Add(f.Name);
-                    Document fdoc = doc.EditFamily(f);
+                    foreach (Family f in familiesToPurge)
+                    {
+                        lt_purgedFamilies.Add(f.Name);
+                        Document fdoc = doc.EditFamily(f);
 
-                    Data.Helpers.MyFamilyLoadOptions familyOptions = new Data.Helpers.MyFamilyLoadOptions();
-                    fdoc.LoadFamily(doc, familyOptions);
-                    fdoc.Close(false);
+                        Data.Helpers.MyFamilyLoadOptions familyOptions = new Data.Helpers.MyFamilyLoadOptions();
+                        fdoc.LoadFamily(doc, familyOptions);
+                        fdoc.Close(false);
+                    }
                 }
                 #endregion
 
@@ -255,15 +268,15 @@ namespace Entry
                 }
             }
 
-            try
-            {
-                Utilities.GetAnalyticsCSV(doc, app);
-            }
-            catch (Exception)
-            {
+            //try
+            //{
+            //    Utilities.GetAnalyticsCSV(doc, app);
+            //}
+            //catch (Exception)
+            //{
 
-                throw;
-            }
+            //    throw;
+            //}
             return Result.Succeeded;
         }
     }
