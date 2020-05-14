@@ -169,10 +169,12 @@ $RECYCLE.BIN/
 # =========================
 
 resources/
+z_Resources/
 sources/
 backups/
 *.rvt
 *.rfa
 _my backups/
-PurgeNestedFamilies/ 
+PurgeNestedFamilies/
+GitTIPS.txt 
  
