@@ -297,8 +297,8 @@ namespace Entry
 
                 PushButton purgeNestedFamButton = modelManagementPanel.AddItem(purgeNestedFamButtonData) as PushButton;
 
-                purgeNestedFamButton.ToolTip = "Use this tool to purge nested families from your project families." + "\n"
-                                                + "It currently purges up to one level of nesting, and only model categories (not annotation categories).";
+                purgeNestedFamButton.ToolTip = "Purge families nested into your project loadable families." + "\n"
+                                                + "It purges up to one level of nesting, and only model categories (not annotation categories).";
 
                 BitmapImage purgeNestedFamLargeImage = new BitmapImage(new Uri("pack://application:,,,/ArpRibbon;component/Icons/PurgeNestedFamilies_32.ico"));
                 purgeNestedFamButton.LargeImage = purgeNestedFamLargeImage;

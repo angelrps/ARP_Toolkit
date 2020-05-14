@@ -44,7 +44,7 @@ namespace ArpRibbon.UI
 
         private void linkLabel_YouTube_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.youtube.com/channel/UCyTdvDYsex9jm1oQ4vyDUBA");
+            System.Diagnostics.Process.Start("https://www.youtube.com/playlist?list=PLXjtlvx_795saX6dFGplBMF4KT5Uxeuw2");
         }
 
         private void linkLabel_UserGuide_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
