@@ -92,6 +92,7 @@ namespace UI
                     using (TransactionGroup tg = new TransactionGroup(m_doc, "Transfer Worksets"))
                     {
                         tg.Start();
+                        createdWorksets.Clear(); // clear results list for when running the command more than once.
                         foreach (string WorksetName in selectedWorksets)
                         {
                             using (Transaction t = new Transaction(m_doc, "Single Transaction"))
