@@ -128,6 +128,7 @@ namespace Entry
 
                 // set new value for each item selected
                 int newDetNumber = 0;
+                infoResult.Clear(); // clear the results list for when the app is run multiple times
                 foreach (Element e in selection)
                 {
                     newDetNumber += 1;
