@@ -37,34 +37,7 @@ namespace UI.Info
             foreach (string item in Entry.CmdMain.infoFail)
             {
                 TbxResultMessage.AppendText(item + Environment.NewLine);
-            }
-
-            //if (!TextNotesForm.itemExceptList.Any())
-            //{
-            //    LblResults.Text = string.Format("You have successfully deleted {0} Text Note Types: \r\n \r\n", TextNotesForm.nOfItems);
-            //    TbxResultMessage.Clear();
-            //    foreach (string item in TextNotesForm.infoList)
-            //    {
-            //        TbxResultMessage.AppendText(item + Environment.NewLine);
-            //    }
-            //}
-            //else
-            //{
-            //    LblResults.Text = string.Format("You have successfully deleted {0} Text Note Type(s): \r\n \r\n", TextNotesForm.nOfItems);
-            //    TbxResultMessage.Clear();
-            //    foreach (string item in TextNotesForm.infoList)
-            //    {
-            //        TbxResultMessage.AppendText(item + Environment.NewLine);
-            //    }
-
-            //    // append not purged items
-            //    TbxResultMessage.AppendText("\r\nThe following item(s) could not be deleted: \r\n \r\n");
-            //    foreach (string item in TextNotesForm.itemExceptList)
-            //    {
-            //        TbxResultMessage.AppendText(item + Environment.NewLine);
-            //    }
-            //}
-            
+            }            
         }
 
         public void AppendTextBoxLine(TextBox source, string myStr)

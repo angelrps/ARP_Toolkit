@@ -58,6 +58,7 @@ namespace Entry
             using (TransactionGroup tg = new TransactionGroup (doc, "Remove Elevation Tags"))
             {
                 tg.Start();
+                count = 0; // reset the counter for when the app is run more than once
                 foreach (Element e in new FilteredElementCollector(doc)
                                         .OfClass(typeof(ElevationMarker))
                                         .WhereElementIsNotElementType()
