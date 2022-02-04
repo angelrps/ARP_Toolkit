@@ -46,8 +46,9 @@
             // 
             // TreeResults
             // 
-            this.TreeResults.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.TreeResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TreeResults.Location = new System.Drawing.Point(20, 120);
             this.TreeResults.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TreeResults.Name = "TreeResults";
@@ -179,9 +180,8 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.TreeResults);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximumSize = new System.Drawing.Size(420, 1500);
+            this.MaximumSize = new System.Drawing.Size(800, 1500);
             this.MinimumSize = new System.Drawing.Size(420, 660);
             this.Name = "Form_Results";
             this.ShowIcon = false;

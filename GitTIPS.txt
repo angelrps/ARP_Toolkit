@@ -1,0 +1,31 @@
+CREATE BRANCH AND SWITCH TO IT
+git checkout -b PurgeDimStyles
+git push origin PurgeDimStyles
+git branch -a
+
+do some changes....
+
+ADD, COMMIT AND PUSH CHANGES TO REMOTE BRANCH
+git add .\2020\PurgeDimStyles\
+git commit -m "new form style"
+git push origin PurgeDimStyles
+
+PULL CHANGES FROM MASTER TO BRANCH
+git checkout my_branch    # move on your branch (make sure it exists)
+git fetch origin          # fetch all changes
+git pull origin master    # pull changes from the origin remote, master branch and merge them into my_branch
+git push origin my_branch # push my_branch
+
+MERGE BRANCH WITH MASTER
+git checkout master
+git merge <branch name>
+git push origin master	# update master in remote
+
+DELETE BRANCH LOCALLY
+# make sure branches are merged with master
+# delete the branch
+git branch -d <branch name>
+
+DELETE BRANCH REMOTELY
+# make sure branches are merged
+git push origin --delete <branch name>

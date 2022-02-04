@@ -65,7 +65,7 @@ Released Date: 14.11.2019
 2019.11.11 - Analytics_SheetDuplicator added
 
 ** Release v1.0.8 **
-Released Date: XXXX.XX.XX
+Released Date: 24.05.2020
 
 - BUG FIXES -
 
@@ -73,3 +73,11 @@ Released Date: XXXX.XX.XX
 2019.11.14 - New button added (Transfer View Filters)
 2019.11.19 - Analytics_TransferViewFilters added
 2019.11.19 - Analytics_Flip added
+
+** Release v1.0.9 **
+Released Date: 03.02.2022
+
+- BUG FIXES -
+
+- IMPROVEMENTS -
+03.02.2022 - Compatibility with Revit 2021 added
