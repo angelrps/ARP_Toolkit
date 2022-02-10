@@ -6,7 +6,7 @@
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgray.svg)
 ![.NET](https://img.shields.io/badge/.NET-4.7-blue.svg)
 
-This repository is a C# .NET Revit add-in project that works with Autodesk Revit 2018, 2019 and 2020.<br>
+This repository is a C# .NET Revit add-in project that works with Autodesk Revit 2018, 2019, 2020 and 2021.<br>
 It is a collection of custom tools programmed to help out with drawing production, modeling and model management.<br>
 The collection is composed of the following tools:
 - **Flip Walls and Doors** ([documentation](https://angelruizpeinado.gitbook.io/arp-toolkit/tools/flip-walls-or-doors)/[code](https://github.com/angelrps/ARP_Toolkit/tree/master/2020/Flip/VS_Flip))
@@ -32,7 +32,7 @@ The collection is composed of the following tools:
 These instructions will get you a copy of the project up and running on your local machine.
 
 ### Prerequisites
-Revit 2018-2020.
+Revit 2018-2021.
 
 ### Install full ARP Toolkit Ribbon
 - Download the repository.
